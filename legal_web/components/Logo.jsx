@@ -21,9 +21,10 @@ const Logo = ({onPress}) => {
       </div> */}
       <div className="w-14 h-14 bg-white flex items-center rounded-lg  justify-center">
                 {/* <Scale className="w-7 h-7 text-white" /> */}
-                <img src="/jpicon4.png" alt="img" className="w-14 h-14 rounded-lg" onClick={onPress} />
+                <img src="/jpicon4.png" alt="img" className="w-14 h-14 rounded-lg cursor-pointer" onClick={onPress} />
               </div>
-      <div className={` flex flex-col justify-center font-serif font-bold text-xl   ${scrolled ? ' text-black  lg:text-white transition-all duration-300 ' : 'font-bold transition-all duration-100 text-black'}`}>
+      <div className={` flex flex-col justify-center font-serif font-bold text-xl 
+         font-bold transition-all duration-100 text-black`}>
         JP Law Suvidha
         <p className="text-sm font-normal  font-merriweather font-serif">
           Justice for People Driven by Technology

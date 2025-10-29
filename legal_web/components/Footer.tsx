@@ -19,7 +19,7 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-6">Quick Links</h3>
             <ul className="space-y-3">
               <li><HashLink to="/#" className="text-gray-400 hover:text-white transition-colors">Home</HashLink></li>
-              <li><HashLink to="/#services" className="text-gray-400 hover:text-white transition-colors"
+              <li><HashLink to="/services" className="text-gray-400 hover:text-white transition-colors"
             >Services</HashLink></li>
               <li><HashLink to="/#expertise" className="text-gray-400 hover:text-white transition-colors"
         >Areas of Expertise</HashLink></li>
@@ -116,9 +116,9 @@ const Footer = () => {
             &copy; {new Date().getFullYear()} JP Law Suvidha. All rights reserved.
           </div>
           <div className="flex gap-4 sm:gap-10 flex-wrap">
-            <Link href="/privacy-policy" className="underline">Privacy Policy</Link>
-            <Link href="/disclaimers" className="underline">Disclaimer</Link>
-            <Link href="/user-disclaimers" className="underline">User Agreement</Link>
+            <Link href="/PrivacyPolicy" className="underline">Privacy Policy</Link>
+            <Link href="/Disclaimers" className="underline">Disclaimer</Link>
+            <Link href="/UserAgreement" className="underline">User Agreement</Link>
           </div>
         </div>
       </div>

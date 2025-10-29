@@ -51,7 +51,7 @@ const MobileMenu = ({
                       }`}
                     style={{ animationDelay: `${index * 50}ms` }}
                   >
-                    <span className="font-medium">{item.label}</span>
+                    <span className="font-medium ">{item.label}</span>
                     <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transform translate-x-0 group-hover:translate-x-1 transition-all duration-200" />
                   </button>
                   {/* Render children for mobile */}
@@ -62,7 +62,7 @@ const MobileMenu = ({
                           key={child.to}
                           href={child.to}
                           onClick={onClose}
-                          className="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"
+                          className="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md cursor-pointer"
                         >
                           {child.label}
                         </Link>
@@ -136,7 +136,7 @@ const Navbar = () => {
       ]
     },
     { label: "Expertise", href: "#expertise" },
-    { label: "NRI Services", href: "nri" },
+    { label: "NRI Services", href: "Nriservices" },
   ];
 
   useEffect(() => {
@@ -162,7 +162,7 @@ const handleNavClick = (href: string) => {
   };
   return (
     <>
-      <div className={`sticky top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white lg:bg-black border-b shadow-lg' : 'bg-card/90 shadow-md'}`}>
+      <div className={`sticky top-0 w-full z-50 transition-all duration-300 bg-white`}>
         <div className="container mx-auto px-4 max-w-7xl flex items-center justify-between py-4">
           <Logo onPress={()=>navigate.push('/')} />
 
@@ -171,8 +171,8 @@ const handleNavClick = (href: string) => {
             {menuItems.map(item => (
               <div key={item.label} className="relative" onMouseEnter={() => item.children && setServicesOpen(true)} onMouseLeave={() => item.children && setServicesOpen(false)}>
                 <button
-                  onClick={() => {item.href === "nri" ? navigate.push('/nri') : item.href && setActiveSection(item.href.substring(1))}}
-                  className={`text-md font-medium transition-all duration-300 ${activeSection === item.href?.substring(1) ? 'text-primary' : 'text-gray-600'} ${scrolled ? 'text-white hover:text-white' : 'hover:text-primary'}`}
+                  onClick={() => {item.href === "Nriservices" ? navigate.push('/Nriservices') : item.href && setActiveSection(item.href.substring(1))}}
+                  className={`text-md font-medium transition-all duration-300 cursor-pointer ${activeSection === item.href?.substring(1) ? 'text-primary' : 'text-gray-600'}`}
                 >
                   {item.label}
                 </button>
@@ -180,8 +180,7 @@ const handleNavClick = (href: string) => {
                     className={`absolute left-0 right-0 bottom-0 h-0.5 transform origin-left transition-transform duration-300 
               ${activeSection === item.href.substring(1)
                         ? 'scale-x-100'
-                        : 'scale-x-0 group-hover:scale-x-100'} 
-              ${scrolled ? 'bg-white' : 'bg-primary'}`}
+                        : 'scale-x-0 group-hover:scale-x-100'} `}
                   />
 
                 {/* Dropdown */}
@@ -199,15 +198,15 @@ const handleNavClick = (href: string) => {
               </div>
             ))}
 
-            <button onClick={() => navigate.push('/about')} className={`text-md font-medium transition-all duration-300 hover:text-primary text-gray-600 ${scrolled ? 'text-white hover:text-white' : ''}`}>About Us</button>
+            <button onClick={() => navigate.push('/Aboutus')} className={`text-md font-medium transition-all duration-300 hover:text-primary text-gray-600 cursor-pointer`}>About Us</button>
           </nav>
 
           {/* Desktop Actions */}
           <div className="hidden lg:flex items-center space-x-4">
-            <button   onClick={() => navigate.push('/login')} className="group flex items-center gap-2 border-gray-300 hover:bg-gray-100 hover:border-primary transform hover:scale-105 transition-all duration-200">
+            <button   onClick={() => navigate.push('/login')} className="group flex items-center gap-2 transform hover:scale-105 transition-all duration-200 text-blue-500">
               <User className="w-4 h-4 text-yellow-700 group-hover:scale-110 transition-transform" /> Login
             </button>
-            <button  onClick={() => navigate.push('/signup')} className="group flex items-center gap-2 bg-primary text-white hover:bg-white hover:text-black transform hover:scale-105 transition-all duration-200 shadow-md hover:shadow-lg">
+            <button  onClick={() => navigate.push('/signup')} className="group flex items-center gap-2  text-black hover:text-gray-400 transform hover:scale-105 transition-all duration-200">
               <UserPlus className="w-4 h-4 text-emerald-700 group-hover:scale-110 transition-transform" /> Subscribe
             </button>
             {/* <Languagechecker onClose={() => { }} /> */}

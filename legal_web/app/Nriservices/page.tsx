@@ -1,0 +1,317 @@
+"use client"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Footer from "@/components/Footer";
+import { ArrowDown, ArrowLeft, ArrowUp, ChevronDown, ChevronUp, Mouse } from "lucide-react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { useEffect, useState } from "react";
+import Navbar from "@/components/Navbar";
+
+const services = [
+  {
+    category: "Property and Real Estate Services",
+    image: '/property2.jpeg',
+    color: 'teal-300',
+    style: {},
+    items: [
+      "Property dispute resolution (with tenants, relatives, or encroachers).",
+      "Title verification and property due diligence before purchase/sale.",
+      "Property partition and settlement (between siblings or relatives).",
+      "Drafting and registration of Power of Attorney (POA) to manage property.",
+      "Illegal possession or encroachment cases.",
+      "Property transfer, mutation, and registration services.",
+      "Assistance in selling, renting, or managing ancestral property.",
+      "Stamp duty, land revenue, and property tax issues.",
+    ],
+  },
+  {
+    category: "Family and Matrimonial Services",
+    image: '/family.jpeg',
+    color: 'white',
+    items: [
+      "Divorce filing and representation in India.",
+      "Child custody and visitation rights.",
+      "Maintenance and alimony claims.",
+      "Domestic violence cases.",
+      "Marriage registration or annulment services.",
+      "Inter-country marriage disputes (where spouse is in India).",
+    ],
+  },
+  {
+    category: "Inheritance and Succession",
+    image: '/inheritance2.jpeg',
+    color: 'green-400',
+    items: [
+      "Drafting wills and succession planning for Indian assets.",
+      "Probate of wills.",
+      "Legal heirship certificate procurement.",
+      "Partition of ancestral property.",
+      "Trust and estate management for parents in India.",
+    ],
+  },
+  {
+    category: "Civil and Criminal Services",
+    image: '/civil.jpeg',
+    color: 'yellow-400',
+    items: [
+      "Civil disputes (contracts, agreements, money recovery).",
+      "Criminal defense for false FIRs or complaints.",
+      "Cybercrime complaints (fraud, online scams affecting NRIs).",
+      "Cheque bounce and financial fraud cases.",
+    ],
+  },
+  {
+    category: "Immigration and Visa-Related Services",
+    image: '/immigration.jpeg',
+    color: 'orange-600',
+    items: [
+      "Assistance in OCI (Overseas Citizen of India) and PIO card issues.",
+      "Visa extension, renewal, or overstay issues.",
+      "Citizenship renunciation services.",
+      "Immigration fraud cases.",
+      "Representation in India for immigration-related disputes.",
+    ],
+  },
+  {
+    category: "Documentation and Certification",
+    image: '/documentation.jpeg',
+    color: 'emerald-400',
+    items: [
+      "Attestation and notarization of documents.",
+      "Birth, marriage, and death certificate procurement in India.",
+      "Police clearance certificate (PCC) for NRI applications.",
+      "PAN card, Aadhaar, and Indian ID documentation issues.",
+      "Drafting affidavits, indemnity bonds, and NRI declarations.",
+    ],
+  },
+  {
+    category: "Banking and Financial Services",
+    image: '/financial.jpeg',
+    color: 'lime-300',
+    items: [
+      "NRI bank account disputes.",
+      "Repatriation of funds (from India to abroad).",
+      "Tax compliance and representation before authorities.",
+      "Insurance claim settlements in India.",
+      "Loan recovery and disputes with banks/NBFCs.",
+    ],
+  },
+  {
+    category: "Corporate and Business Services",
+    image: '/corporate.jpeg',
+    color: 'amber-600',
+    items: [
+      "Setting up a company or LLP in India.",
+      "Drafting partnership agreements or shareholder agreements.",
+      "Contract enforcement and disputes.",
+      "Trademark, patent, and copyright registrations.",
+      "Arbitration and mediation in commercial disputes.",
+    ],
+  },
+  {
+    category: "Parents and Elderly Care Services",
+    image: '/elderly.jpeg',
+    color: 'rose-300',
+    style: { objectPosition: '70% 74%' },
+    items: [
+      "Legal guardianship or caretaking agreements.",
+      "Resolving disputes with tenants/caretakers in parents’ property.",
+      "Protection against frauds targeting elderly parents in India.",
+      "Medical insurance and claim assistance.",
+    ],
+  },
+  {
+    category: "Insurance and Compensation",
+    image: '/insurance2.jpeg',
+    color: 'cyan-300',
+    items: [
+      "Life insurance or health insurance claim settlement in India.",
+      "Accident or compensation claims.",
+      "Property insurance disputes.",
+    ],
+  },
+];
+
+function NriServices() {
+  const [showScrollHint, setShowScrollHint] = useState(true);
+  const [isMac, setIsMac] = useState(false);
+  const [isEnd,setIsEnd]=useState(false)
+  const [banner , setBanner]=useState(true)
+  useEffect(() => {
+    const checkEnd = () => {
+      const nearBottom =
+        window.innerHeight + window.scrollY >= document.body.offsetHeight - 40;
+      setIsEnd(nearBottom);
+    };
+
+    window.addEventListener("scroll", checkEnd);
+    checkEnd(); // run once on load
+
+    return () => window.removeEventListener("scroll", checkEnd);
+  }, []);
+  // useEffect(() => {
+  //   // Detect OS on mount
+  //   const platform = navigator.userAgent.toLowerCase();
+    
+  //   if (platform.includes("mac")) {
+  //     setIsMac(true);
+     
+  //   }
+  // }, [isMac]);
+
+  const handleScroll = () => {
+    // Different scroll behavior for Mac vs Windows
+    window.scrollBy({
+      top: isMac ? window.innerHeight : window.innerHeight + 200,
+      behavior: "smooth",
+    });
+  };
+  const handleScrollTop=()=>{
+    window.scrollTo({
+      top:0,
+      behavior:'smooth'
+    })
+  }
+
+  return (
+    <div className="relative">
+
+      {/* {banner &&    
+    <NotificationBanner Close={() => setBanner(false)} />
+ 
+      )}  */}
+      {/* Navbar */}
+      <Navbar/>
+      {/* Hero Section */}
+      <section className=" pt-10 relative">
+        <div className="container-custom relative z-10 text-center  mx-auto mb-7">
+          <div className="w-full animate-fade-in">
+            <h1 className="text-3xl md:text-4xl lg:text-6xl font-extrabold font-serif text-gray-900 leading-tight tracking-tight ">
+              Comprehensive <span className="text-orange-600 font-serif">NRI Legal Services</span>
+            </h1>
+          </div>
+        </div>
+      </section>
+
+      {/* slider section */}
+      <section className="container-custom  pt-2 h-[500px] text-center mb-40 ">
+        <Swiper
+          modules={[Autoplay, Pagination, Navigation]}
+          spaceBetween={0} // no space since we want big slide
+          slidesPerView={1} // only 1 slide visible
+          loop={true}
+          autoplay={{ delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true }}
+          navigation={false}
+          pagination={{
+            clickable: true,
+            renderBullet: (index: any, className: any) => {
+              // default inactive bullet style
+              return `<span class="${className} inline-block w-2.5 h-2.5 rounded-full bg-blue transition-transform duration-300"></span>`;
+            },
+          }}
+          onClick={(swiper: { autoplay: { stop: () => void; start: () => void; }; }) => {
+            swiper.autoplay.stop()
+            setTimeout(() => {
+              swiper.autoplay.start()
+            }, 10000);
+
+          }}
+          className="w-full h-full" // height of carousel
+        >
+          {services.map((slide, index) => (
+            <SwiperSlide key={index}>
+              <div className="relative w-full h-full  overflow-hidden">
+                {/* Background Image */}
+                <img
+                  src={slide.image}
+                  alt={slide.category}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  style={slide.style}
+                  loading="lazy"
+                />
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-black/40" />
+                {/* Text on top */}
+                <div className={`relative z-10 flex items-center justify-center h-full  px-6 text-center top-20`}>
+                  <h2
+                    className={`text-3xl sm:text-hero font-serif mb-2 text-shadow-emboss text-${slide.color} `}
+                  >
+                    {slide.category}
+                  </h2>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+      </section>
+
+      {/* downwards arrow */}
+        {!isEnd && (
+          <div className="lg:fixed  bottom-2 left-1/2 transform -translate-x-1/2  z-50 transition-opacity duration-500">
+            <button
+              onClick={handleScroll}
+              className="relative flex flex-col items-center group"
+            >
+              <div className="p-3 bg-white rounded-full shadow-lg transition relative
+                      ring-2 ring-gray-400 group-hover:ring-2 group-hover:ring-black
+                      group-hover:animate-pulse">
+                <ChevronDown className="w-6 h-6 text-2xl text-black hover:text-black animate-bounce " />
+              </div>
+            </button>
+          </div>
+        )}
+        {isEnd && (
+          <div className="lg:fixed  bottom-16 left-1/2 transform -translate-x-1/2 z-50 transition-opacity duration-500">
+            <button
+              onClick={handleScrollTop}
+              className="relative flex flex-col items-center group"
+            >
+              <div className="p-3 bg-white rounded-full shadow-lg transition relative
+                      ring-2 ring-white group-hover:ring-2 group-hover:ring-black
+                      group-hover:animate-pulse">
+                <ChevronUp className="w-6 h-6 text-black hover:text-black animate-bounce" />
+              </div>
+            </button>
+          </div>
+        )}
+
+
+      {/* Services Cards */}
+      <div className="text-center max-w-7xl mx-auto mb-7">
+        <h2 className="heading-sm md:text-3xl font-serif text-gray-900">
+          Comprehensive Solutions, Tailored to You
+        </h2>
+        <p className="text-gray-600 mt-2">
+          Explore our wide range of legal services designed to assist NRIs in resolving
+          property, family, business, and documentation matters with confidence.
+        </p>
+        <section className="z-10 px-6 md:px-0 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 mb-16 mt-10">
+          {services.map((service, index) => (
+            <Card key={index} className="shadow-md rounded-2xl border">
+              <CardHeader>
+                <CardTitle className="text-xl font-serif text-center">{service.category}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-gray-700">
+                  {service.items.map((item, i) => (
+                    <li key={i} className="flex items-start">
+                      <span className="text-primary mt-1 mr-2">✓</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          ))}
+        </section>
+      </div>
+      <Footer />
+    </div>
+  );
+}
+
+export default NriServices;

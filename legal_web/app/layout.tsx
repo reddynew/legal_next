@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
+import { AuthProvider } from "@/context/LoginContext";
+import { PlanProvider } from "@/context/PlansContext";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +31,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+          <PlanProvider>
+        <AuthProvider>
+
         {children}
+
+        </AuthProvider>
+          </PlanProvider>
 
         {/* Tawk.to widget */}
         <Script

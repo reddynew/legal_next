@@ -8,7 +8,7 @@
     ],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": true,
+    "strict": false,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
@@ -26,7 +26,8 @@
       "@/*": [
         "./*"
       ]
-    }
+    },
+    "strictNullChecks": true
   },
   "include": [
     "next-env.d.ts",
@@ -36,8 +37,12 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts",
     ".next\\dev/types/**/*.ts",
-    ".next\\dev/types/**/*.ts"
-  ],
+    ".next\\dev/types/**/*.ts",
+    "context/LoginContext.jsx",
+    "context/LoginContext.jsx",
+    "pages/Register.jsx",
+    "components/Personal_dashboard.jsx"
+, "components/ProtectedRoute.jsx", "components/Profile.jsx"  ],
   "exclude": [
     "node_modules"
   ]
