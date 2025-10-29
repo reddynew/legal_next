@@ -2,6 +2,7 @@ import Footer from '@/components/Footer'
 import Hero from '@/components/Hero'
 import Navbar from '@/components/Navbar'
 import Expertise from '@/pages/Expertise'
+import FAQSection from '@/pages/Faq'
 import Services from '@/pages/Services'
 import React from 'react'
 
@@ -10,8 +11,9 @@ function page() {
     <div>
       <Navbar/>
       <Hero/>
-      <Expertise/>
       <Services/>
+      <Expertise/>
+      <FAQSection/>
       <Footer/>
     </div>
   )
