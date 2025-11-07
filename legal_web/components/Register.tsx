@@ -19,6 +19,7 @@ import Footer from '@/components/Footer';
 import axios from 'axios';
 import { usePlan } from '@/context/PlansContext';
 import ChangePlan from '../components/ChangePlan';
+import regions from '@/Data/regions_data';
 const TermsAndConditionsModalSubscription = ({ onClose, onAccept }: { onClose: () => void; onAccept: () => void }) => (
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
         <div className="bg-white rounded-xl max-w-2xl w-full max-h-[80vh] overflow-hidden shadow-2xl">
@@ -93,78 +94,78 @@ const TermsAndConditionsModalSubscription = ({ onClose, onAccept }: { onClose: (
 );
 
 // Enhanced FAQ Modal
-const FAQModal = ({ onClose }: { onClose: () => void }) => {
-    const faqItems = [
-        {
-            question: "How does the subscription billing work?",
-            answer: "Subscriptions are billed automatically based on your selected plan (monthly or yearly). You'll receive an invoice 3 days before each billing cycle and can cancel anytime with 30 days notice."
-        },
-        {
-            question: "What types of leads will I receive?",
-            answer: "You'll receive verified leads from potential clients actively seeking legal services in your practice areas. All leads include contact information, case details, and urgency level."
-        },
-        {
-            question: "Can I upgrade or downgrade my plan?",
-            answer: "Yes, you can change your plan anytime. Upgrades take effect immediately, while downgrades take effect at your next billing cycle. No fees for plan changes."
-        },
-        {
-            question: "Is there a minimum contract period?",
-            answer: "No, there are no long-term contracts. You can cancel your subscription anytime with 30 days written notice. We believe in earning your business through value."
-        },
-        {
-            question: "How is my data protected?",
-            answer: "We use bank-level encryption and comply with all legal industry standards including attorney-client privilege protection. All data is stored securely and never shared with third parties."
-        },
-        {
-            question: "What support is included?",
-            answer: "All plans include email support. Growth plan includes priority support (24hr response), and Pro Plus includes dedicated account management with real-time support."
-        }
-    ];
+// const FAQModal = ({ onClose }: { onClose: () => void }) => {
+//     const faqItems = [
+//         {
+//             question: "How does the subscription billing work?",
+//             answer: "Subscriptions are billed automatically based on your selected plan (monthly or yearly). You'll receive an invoice 3 days before each billing cycle and can cancel anytime with 30 days notice."
+//         },
+//         {
+//             question: "What types of leads will I receive?",
+//             answer: "You'll receive verified leads from potential clients actively seeking legal services in your practice areas. All leads include contact information, case details, and urgency level."
+//         },
+//         {
+//             question: "Can I upgrade or downgrade my plan?",
+//             answer: "Yes, you can change your plan anytime. Upgrades take effect immediately, while downgrades take effect at your next billing cycle. No fees for plan changes."
+//         },
+//         {
+//             question: "Is there a minimum contract period?",
+//             answer: "No, there are no long-term contracts. You can cancel your subscription anytime with 30 days written notice. We believe in earning your business through value."
+//         },
+//         {
+//             question: "How is my data protected?",
+//             answer: "We use bank-level encryption and comply with all legal industry standards including attorney-client privilege protection. All data is stored securely and never shared with third parties."
+//         },
+//         {
+//             question: "What support is included?",
+//             answer: "All plans include email support. Growth plan includes priority support (24hr response), and Pro Plus includes dedicated account management with real-time support."
+//         }
+//     ];
 
-    return (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-            <div className="bg-white rounded-xl max-w-2xl w-full max-h-[80vh] overflow-hidden shadow-2xl">
-                <div className="p-6 border-b border-gray-200">
-                    <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                                <HelpCircle className="w-5 h-5 text-blue-600" />
-                            </div>
-                            <div>
-                                <h3 className="text-xl font-semibold text-gray-900">Frequently Asked Questions</h3>
-                                <p className="text-sm text-gray-600">Common questions about our subscription service</p>
-                            </div>
-                        </div>
-                        <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
-                            <X className="w-5 h-5" />
-                        </button>
-                    </div>
-                </div>
+//     return (
+//         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+//             <div className="bg-white rounded-xl max-w-2xl w-full max-h-[80vh] overflow-hidden shadow-2xl">
+//                 <div className="p-6 border-b border-gray-200">
+//                     <div className="flex items-center justify-between">
+//                         <div className="flex items-center gap-3">
+//                             <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+//                                 <HelpCircle className="w-5 h-5 text-blue-600" />
+//                             </div>
+//                             <div>
+//                                 <h3 className="text-xl font-semibold text-gray-900">Frequently Asked Questions</h3>
+//                                 <p className="text-sm text-gray-600">Common questions about our subscription service</p>
+//                             </div>
+//                         </div>
+//                         <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+//                             <X className="w-5 h-5" />
+//                         </button>
+//                     </div>
+//                 </div>
 
-                <div className="p-6 overflow-y-auto max-h-96">
-                    <Accordion type="single" collapsible className="w-full">
-                        {faqItems.map((item, idx) => (
-                            <AccordionItem key={idx} value={`item-${idx}`} className="border-gray-200">
-                                <AccordionTrigger className="text-left hover:no-underline">
-                                    <span className="font-medium text-gray-900 text-sm">{item.question}</span>
-                                </AccordionTrigger>
-                                <AccordionContent className="text-gray-600 leading-relaxed text-sm">
-                                    {item.answer}
-                                </AccordionContent>
-                            </AccordionItem>
-                        ))}
-                    </Accordion>
-                </div>
+//                 <div className="p-6 overflow-y-auto max-h-96">
+//                     <Accordion type="single" collapsible className="w-full">
+//                         {faqItems.map((item, idx) => (
+//                             <AccordionItem key={idx} value={`item-${idx}`} className="border-gray-200">
+//                                 <AccordionTrigger className="text-left hover:no-underline">
+//                                     <span className="font-medium text-gray-900 text-sm">{item.question}</span>
+//                                 </AccordionTrigger>
+//                                 <AccordionContent className="text-gray-600 leading-relaxed text-sm">
+//                                     {item.answer}
+//                                 </AccordionContent>
+//                             </AccordionItem>
+//                         ))}
+//                     </Accordion>
+//                 </div>
 
-                <div className="p-6 border-t border-gray-200 bg-gray-50">
-                    <Button onClick={onClose} className="w-full">
-                        Close
-                    </Button>
-                </div>
-            </div>
-        </div>
-    );
-};
+//                 <div className="p-6 border-t border-gray-200 bg-gray-50">
+//                     <Button onClick={onClose} className="w-full">
+//                         Close
+//                     </Button>
+//                 </div>
+//             </div>
+//         </div>
+//     );
+// };
 
 // Success Modal
 const SuccessModal = ({ onClose, planName }: { onClose: () => void; planName: string }) => (
@@ -203,20 +204,48 @@ const SubscriptionForm = () => {
     };
     // Get plan details from mock location state (in real app this would come from useLocation)
     const navigate=useRouter()
-   const { selectedPlan,isPlanLoaded } = usePlan();
+   const { selectedPlan,isPlanLoaded,selectedRegions,setSelectedRegions } = usePlan();
  useEffect(()=>{
 
-     console.log("Selected Plan:", selectedPlan);
+    //  console.log("Selected Plan:", selectedPlan);
  },[selectedPlan])
+
   // state setup
   const [price, setPrice] = useState('');
   const [planName, setPlanName] = useState('');
   const [icon, setIcon] = useState('');
+//   const IconComponent=selectedPlan.icon
   useEffect(() => {
   if (isPlanLoaded && selectedPlan) {
     setPrice(selectedPlan.price);
     setPlanName(selectedPlan.name);
     setIcon(selectedPlan.icon);
+    // setSelectedRegions(selectedPlan.regions)
+  }
+}, [isPlanLoaded, selectedPlan]);
+useEffect(() => {
+    // console.log('useeffect register')
+  if (isPlanLoaded && selectedPlan) {
+    setPrice(selectedPlan.price);
+    // console.log('inside register',selectedPlan.price)
+    setPlanName(selectedPlan.name);
+  
+    //  console.log('inside register',selectedPlan.name)
+    setIcon(selectedPlan.icon);
+      const IconComponent=iconMap[selectedPlan?.icon]
+    //  console.log('inside register',selectedPlan.icon)
+    setSelectedRegions(selectedPlan.regions); // ✅ sync regions here
+
+    // also update formData to include those regions
+    setFormData(prev => ({
+      ...prev,
+      regions: selectedPlan.regions
+    }));
+ setFormData(prev => ({
+      ...prev,
+      plan: selectedPlan.name
+    }));
+
   }
 }, [isPlanLoaded, selectedPlan]);
 // useEffect(() => {
@@ -243,6 +272,9 @@ type Lawyer = {
   practiceAreas: string[];
   experience: string;
   firm: string;
+  plan:any;
+  regions:any
+
 };
 
     const [formData, setFormData] = useState<Lawyer>({
@@ -253,7 +285,9 @@ type Lawyer = {
         email: '',
         practiceAreas: [] as string[],
         experience: '',
-        firm: ''
+        firm: '',
+        plan:selectedPlan?.name,
+        regions:selectedPlan?.regions
     });
 
     const [formState, setFormState] = useState({
@@ -335,7 +369,7 @@ type Lawyer = {
         e.preventDefault();
         setIsSubmit(!isSubmit)
         // console.log('change plan is disabled')
-        console.log('advregister form', formData)
+        // console.log('advregister form', formData)
 
 
         if (!formState.termsAccepted) {
@@ -365,8 +399,12 @@ type Lawyer = {
             // Simulate API call
             await new Promise(resolve => setTimeout(resolve, 2000));
             const res = await axios.post('http://localhost:3001/api/register', { formData })
-            console.log('res from server', res)
-            console.log('Subscription form submitted:', formData);
+            // console.log('res from server', res)
+            // console.log('Subscription form submitted:', formData);
+            const planName = res.data.planDetails.name;
+            const price = res.data.planDetails.price;
+            // console.log(planName,price)
+        navigate.replace(`/Payments?plan=${encodeURIComponent(planName)}&price=${price}`);
 
             setFormState(prev => ({
                 ...prev,
@@ -410,7 +448,7 @@ type Lawyer = {
                                 <span className="font-medium">Back to Plans</span>
                             </></Link>
 
-                        <div className="flex items-center gap-3">
+                        <div className="hidden lg:flex items-center gap-3">
                             <div className="w-14 h-14 bg-white flex items-center rounded-lg  justify-center">
                                 {/* <Scale className="w-7 h-7 text-white" /> */}
                                 <img src="/jpicon4.png" alt="img" className="w-14 h-14 rounded-lg" />
@@ -786,7 +824,11 @@ type Lawyer = {
       <CardHeader className={`bg-gradient-to-br ${plan?.color} p-8`}>
         <div className="flex items-center gap-3 mb-4">
           <div className="w-12 h-12 rounded-xl bg-white/80 flex items-center justify-center">
-            {/* <IconComponent className="w-6 h-6 text-gray-700" /> */}
+          {IconComponent ? (
+    <IconComponent className="w-6 h-6 text-gray-700" />
+  ) : (
+    <div className="w-6 h-6" /> // or a skeleton/placeholder
+  )}
           </div>
           <div>
             <h3 className="text-2xl font-bold text-gray-900">{plan?.name}</h3>
@@ -849,6 +891,12 @@ type Lawyer = {
               </li>
             ))}
           </ul>
+          <span className=''>selected regions</span>
+         {Array.isArray(selectedPlan?.regions) && selectedPlan.regions.length > 0 ? (
+  selectedPlan.regions.map((r) => <li key={r}>{r}</li>)
+) : (
+  <li>No regions selected</li>
+)}
         </div>
 
         <div className="mt-6 pt-6 border-t border-gray-200">
@@ -888,7 +936,7 @@ type Lawyer = {
       )} */}
             {
         changePlan &&
-        (<ChangePlan onSelect={function (planName: string, price: string, icon: any): void {
+        (<ChangePlan onSelect={function (planName: string, price: string, icon: any,requiredRegions:any): void {
           //  price=price
           //  planName=planName
           //  console.log('new price',price)
@@ -903,9 +951,9 @@ type Lawyer = {
           setChangePlan(!changePlan)
         }} />)
       }
-            {/* {formState.showSuccessModal && (
+            {formState.showSuccessModal && (
                 <SuccessModal onClose={handleSuccessClose} planName={planName} />
-            )} */}
+            )}
             <Footer />
         </div>
     );

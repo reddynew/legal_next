@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ArrowLeft, Check, Star, Shield, Users, Zap, Crown, Award, Phone, X, Building, Scale, HelpCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
@@ -11,6 +11,9 @@ import Footer from './Footer';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Navbar from '@/components/Navbar';
 import { usePlan } from '@/context/PlansContext';
+import regions from '@/Data/regions_data';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { createPortal } from 'react-dom';
 
 const FAQModal = ({ onClose }: { onClose: () => void }) => {
   const faqItems = [
@@ -91,8 +94,23 @@ function SubscriptionPlans() {
   // const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [faq, setfaq] = useState(false)
-  const { setSelectedPlan,selectedPlan } = usePlan();
+  const { setSelectedPlan,selectedRegions,setSelectedRegions } = usePlan();
   const navigate = useRouter()
+   useEffect(() => {
+
+      // Cleanup when leaving the page
+      setSelectedRegions({});
+      setOpenSelect(null);
+    
+  }, []);
+//   useEffect(() => {
+//   return () => {
+//     // Cleanup when leaving the page
+//     setSelectedRegions({});
+//     setOpenSelect(null);
+//   };
+// }, []);
+
   const iconMap = {
     Users,
     Zap,
@@ -101,22 +119,51 @@ function SubscriptionPlans() {
   };
   type IconName = keyof typeof iconMap; // "Users" | "Zap" | "Crown" | "Building"
 
+// const [selectedRegions, setSelectedRegions] = useState<{ [key: string]: string[] }>({});
+const [openSelect, setOpenSelect] = useState<string | null>();
 
 
+  const handleRegionSelect = (planName: string, region: string, limit: number) => {
+    const current = selectedRegions[planName] || [];
 
-  const subscribeHandler = async (planName: string, price: string, icon: any) => {
-    setSelectedPlan({ name: planName, price, icon });
-    setIsProcessing(true);
-    navigate.push(`/register`);
+    if (current.includes(region)) {
+      // deselect region
+      setSelectedRegions({
+        ...selectedRegions,
+        [planName]: current.filter(r => r !== region),
+      });
+    } else if (current.length < limit) {
+      // select new region
+      setSelectedRegions({
+        ...selectedRegions,
+        [planName]: [...current, region],
+      });
+    } else {
+      alert(`You can select only ${limit} region${limit > 1 ? 's' : ''} for ${planName} plan.`);
+    }
+  };
 
-    // // Simulate processing
-    // await new Promise(resolve => setTimeout(resolve, 1500));
 
-    // mockNavigate('/Advregister', {
-    //   state: { price, planName },
-    // });
+  const subscribeHandler = async (planName: string, price: string, icon: any,requiredRegions:any) => {
+  const planRegions = selectedRegions[planName] || [];
+  // console.log('planRegions',planRegions)
+  
+  // Check if user has selected the required number of regions
+  if (requiredRegions > 0 && planRegions.length !== requiredRegions) {
+    alert(`Please select exactly ${requiredRegions} region${requiredRegions > 1 ? 's' : ''} for the ${planName} plan.`);
+    return; // Don't proceed further
+  }
 
-    setIsProcessing(false);
+  // If validation passes, proceed with subscription
+  setSelectedPlan({ 
+    name: planName, 
+    price, 
+    icon,
+    regions:planRegions // Include selected regions in the plan data
+  });
+  
+  // setIsProcessing(true);
+  navigate.push(`/register`);
   };
 
   return (
@@ -162,31 +209,34 @@ function SubscriptionPlans() {
             const IconComponent = iconMap[plan.icon as IconName];
             const isSelected =plan.name;
             const isProcessingThis = isProcessing && isSelected;
+        const planRegions = selectedRegions[plan.name] || [];
 
             return (
               <Card
                 key={plan.name}
                 className={` relative flex flex-col justify-between rounded-xl border ${plan.highlight ? 'border-orange-400 ring-2 ring-orange-300' : 'border-gray-200'
-                  } shadow-sm overflow-hidden`}
+                  } shadow-sm overflow-visible`}
               >
                 {/* Popular Badge */}
                 {plan.highlight && (
-                  <div className="absolute top-0 right-0 bg-gradient-to-r from-orange-400 to-yellow-400 text-white px-4 py-1 text-sm font-bold rounded-bl-lg">
+                  <div className="absolute top-0 right-0 bg-gradient-to-r from-orange-400 to-yellow-400 text-white px-4 py-1 text-sm font-bold rounded-bl-lg z-20"
+                  style={{ clipPath: 'inset(0 round 0 0.7rem 0 0)' }}>
                     {plan.badge}
                   </div>
                 )}
 
                 {/* Savings Badge */}
                 {!plan.highlight && (
-                  <div className="absolute top-4 right-4">
+                  <div className="absolute top-4 right-4 z-20">
                     {(plan.name !== 'Corporate' && plan.name !== 'Trial') &&
                       <Badge  className="bg-green-100 text-green-800 text-xs">
                         {plan.savings}
                       </Badge>}
                   </div>
                 )}
-
-                <CardHeader className={`bg-gradient-to-br ${plan.color} p-7`}>
+            <div className=''>
+                <CardHeader className={`bg-gradient-to-br ${plan.color} p-7
+                `} style={{ clipPath: 'inset(0 round 0.75rem 0.75rem 0 0)' }}>
                   <div className="flex  items-center gap-3 mb-4">
                     <div className={`w-12 h-12 rounded-xl bg-white/70 flex items-center justify-center `}>
                       <IconComponent className="w-6 h-6 text-gray-700" />
@@ -216,7 +266,9 @@ function SubscriptionPlans() {
                   </div>
 
                   <p className="text-gray-600 leading-relaxed">{plan.description}</p>
+                  
                 </CardHeader>
+                </div>
 
                 <CardContent className="p-6 flex flex-col flex-grow">
                   <ul className="space-y-2 mt-4 flex-grow">
@@ -232,22 +284,142 @@ function SubscriptionPlans() {
                         </span>
                       </li>
                     ))}
+                    
                   </ul>
+              {/* Region dropdown only for plans that have regions > 0 */}
+              {(plan.regions??0) > 0 && (
+                <div className="mt-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Select up to {plan.regions} region{plan.regions??0 > 1 ? 's' : ''}
+                  </label>
+
+                  <div className="relative w-full ">
+  <button
+    type="button"
+    onClick={() => {
+      const limit = plan.regions ?? 0;
+      const currentCount = selectedRegions[plan.name]?.length || 0;
+      
+      // Toggle open, but don't close if limit not reached
+      if (openSelect === plan.name) {
+        if (currentCount < limit) {
+          setOpenSelect(null);
+        }
+      } else {
+        setOpenSelect(plan.name);
+      }
+    }}
+    className="w-full px-4 py-2 text-left bg-white border border-gray-300 rounded-md shadow-sm hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 flex items-center justify-between"
+  >
+    <span className="flex-1">
+      {selectedRegions[plan.name]?.length > 0 ? (
+        <span className="flex items-center gap-2">
+          <span className="text-sm">
+            {selectedRegions[plan.name].join(', ')}
+          </span>
+          <span className="text-xs text-gray-500">
+            ({selectedRegions[plan.name].length}/{plan.regions ?? 0})
+          </span>
+        </span>
+      ) : (
+        <span className="text-gray-500">
+          Choose {plan.regions ?? 0} Region{(plan.regions ?? 0) > 1 ? 's' : ''}
+        </span>
+      )}
+    </span>
+    <svg
+      className={`w-5 h-5 text-gray-400 transition-transform ${
+        openSelect === plan.name ? 'rotate-180' : ''
+      }`}
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+
+  {openSelect === plan.name &&(
+    <>
+      {/* Backdrop */}
+      <div
+        className="fixed inset-0 z-10"
+        onClick={() => {
+          const limit = plan.regions ?? 0;
+          const currentCount = selectedRegions[plan.name]?.length || 0;
+          if (currentCount <= limit) {
+            setOpenSelect(null);
+          }
+        }}
+        />
+       
+      
+      {/* Dropdown */}
+      <div className="absolute z-20 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto">
+        {regions.map((region) => {
+          const checked = (selectedRegions[plan.name] || []).includes(region);
+          const limit = plan.regions ?? 0;
+          const disabled = !checked && (selectedRegions[plan.name]?.length || 0) >= limit;
+
+          return (
+            <button
+              key={region}
+              type="button"
+              disabled={disabled}
+              onClick={() => {
+                if (!disabled) {
+                  handleRegionSelect(plan.name, region, plan.regions ?? 0);
+                  
+                  // Auto-close when limit reached
+                  const updatedRegions = selectedRegions[plan.name]
+                    ? [...selectedRegions[plan.name]]
+                    : [];
+                  
+                  if (!updatedRegions.includes(region) && updatedRegions.length + 1 >= limit) {
+                    setTimeout(() => setOpenSelect(null), 10);
+                  }
+                }
+              }}
+              className={`w-full px-4 py-2 text-left hover:bg-gray-100 flex items-center gap-2 ${
+                disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
+              } ${checked ? 'bg-blue-50' : ''}`}
+            >
+              <input
+                type="checkbox"
+                checked={checked}
+                readOnly
+                className="w-4 h-4 accent-blue-600 pointer-events-none"
+              />
+              <span>{region}</span>
+            </button>
+          );
+        })}
+      </div>
+    </>
+  )}
+</div>
+
+                  {/* {planRegions.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mt-2">
+                      {planRegions.map((r) => (
+                        <Badge key={r} variant="secondary" className="text-sm">
+                          {r}
+                        </Badge>
+                      ))}
+                    </div>
+                  )} */}
+                </div>
+              )}
 
                   <Button
-                    onClick={() => subscribeHandler(plan.name, plan.price, plan.icon)}
+                    onClick={() => subscribeHandler(plan.name, plan.price, plan.icon,plan.regions??0)}
                     disabled={isProcessing}
                     className={`w-full h-12 font-semibold transition-all duration-200 mt-4  ${plan.highlight
                       ? 'bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white shadow-lg'
                       : 'bg-gray-900 hover:bg-gray-800 text-white'
                       } ${isProcessingThis ? 'opacity-75' : ''}`}
                   >
-                    {isProcessingThis ? (
-                      <div className="flex items-center gap-2">
-                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                        Processing...
-                      </div>
-                    ) : (
+                    {(
                       <>
                         {plan.highlight ? 'Start Growing Now' : 'Get Started'}
                       </>

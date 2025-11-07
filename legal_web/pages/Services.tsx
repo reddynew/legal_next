@@ -2,60 +2,14 @@
 import React, { useEffect, useState } from "react";
 import { Scale, FileText, Users, ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
-
-const servicesData = {
-  section_title: "Our Legal Services",
-  section_desc:
-    "Comprehensive legal solutions tailored to meet your unique requirements with precision and care.",
-  service: [
-    {
-      title: "Legal Consultation",
-      tag: "legal consultation",
-      basic:
-        "JP LAW SUVIDHA combines expert legal advice with AI to deliver fast, secure, and personalized consultations anytime, anywhere.",
-      description: [
-        "JP LAW SUVIDHA revolutionizes the consultation experience by combining expert human insight with cutting-edge technology.",
-        "Our platform intelligently matches you with a qualified legal professional based on your specific needs.",
-        "AI-driven algorithms analyze your legal concerns and instantly connect you with verified lawyers.",
-        "Secure video conferencing, real-time messaging, and document exchange ensure confidentiality and convenience.",
-        "All interactions are encrypted and securely logged for peace of mind and follow-ups.",
-        "Whether individual or business, we ensure faster responses and better outcomes.",
-      ],
-    },
-    {
-      title: "Legal Representation",
-      tag: "legal representation",
-      basic:
-        "JP LAW SUVIDHA connects clients with trusted lawyers, streamlining legal discovery, communication, and consultation.",
-      description: [
-        "JP LAW SUVIDHA helps clients find and engage legal professionals.",
-        "Uses intelligent algorithms to connect clients with lawyers based on case type, location, and expertise.",
-        "Supports wide-ranging legal needs: court proceedings, contract negotiations, and advisory services.",
-        "Provides secure communication tools and appointment scheduling for easy consultation.",
-        "Simplifies document sharing and case tracking for clients and lawyers.",
-        "Makes legal support more approachable and responsive.",
-      ],
-    },
-    {
-      title: "Enterprise Legal",
-      tag: "enterprise legal",
-      basic:
-        "JP LAW SUVIDHA offers startups and companies digital legal services ensuring compliance, IP protection, and expert guidance.",
-      description: [
-        "Designed for startups and mid-sized firms, removing the need for in-house legal teams.",
-        "Provides easy access to essential legal documentation and compliance tools.",
-        "Covers company incorporation, employment contracts, vendor agreements, and filings.",
-        "Ensures compliance and legal safety through a digital platform.",
-        "Offers IP protection: trademark, copyright, and policy drafting.",
-        "Enables encrypted, efficient collaboration with legal experts.",
-      ],
-    },
-  ],
-};
+import { useTranslation } from 'react-i18next';
+import '../app/index.css'
+// import '@/lib/i18n';
 
 const Services = () => {
   const [selectedService, setSelectedService] = useState<any>(null);
   const router = useRouter();
+  const { t } = useTranslation('services');
 
   const icons = [
     <Scale className="w-10 h-10 text-blue-700" key="scale" />,
@@ -63,7 +17,7 @@ const Services = () => {
     <FileText className="w-10 h-10 text-pink-700" key="file" />,
   ];
 
-  // prevent background scroll when modal open
+  // Prevent background scroll when modal open
   useEffect(() => {
     document.body.style.overflow = selectedService ? "hidden" : "auto";
     return () => {
@@ -71,45 +25,55 @@ const Services = () => {
     };
   }, [selectedService]);
 
+  // Get services from translations
+  const services = [0, 1, 2].map(index => ({
+    title: t(`service.${index}.title`),
+    tag: t(`service.${index}.tag`),
+    basic: t(`service.${index}.basic`),
+    description: Array.from({ length: 6 }, (_, i) => 
+      t(`service.${index}.description.${i}`)
+    ),
+  }));
+
   return (
-    <section id="services" className="py-16 bg-gray-50 dark:bg-black dark:text-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" className="py-16 bg-gray-50">
+      <div className="container-custom mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-4">
-            {servicesData.section_title}
-          </h2>
-          <p className="text-gray-600 dark:text-gray-300 text-lg">
-            {servicesData.section_desc}
-          </p>
+         <div className="text-center max-w-2xl mx-auto mb-16">
+          <h2 className="heading-lg font-bold tracking-tight sm:text-4xl mb-4">{t('section_title')}</h2>
+          <p className="paragraph text-gray-700">{t('section_desc')}</p>
         </div>
 
         {/* Service Cards */}
         <div className="grid md:grid-cols-3 gap-7">
-          {servicesData.service.map((service, index) => (
+          {services.map((service, index) => (
             <div
               key={index}
-              className="group relative bg-white dark:bg-gray-900 p-7 rounded-xl border border-gray-200 dark:border-gray-700 transition-all duration-300 ease-out hover:shadow-xl hover:scale-[1.02]"
+              className="group  relative bg-card p-7 rounded-xl border gray-400 transition-all duration-400 ease-out hover:scale-100 hover:shadow-xl animate-slide-up transform-gpu will-change-transform"
               onClick={() => {
                 if (window.innerWidth >= 1024) setSelectedService(service);
               }}
             >
-              <div className="absolute top-4 left-1/2 -translate-x-1/2">
+              <div 
+              className="mb-6 text-primary transition-transform duration-400 group-hover:scale-110 group-hover:rotate-2 absolute top-4 left-2/4 transform -translate-x-1/2 ">
                 {icons[index]}
               </div>
 
-              <h2 className="text-xl font-semibold mt-14 text-center mb-2 text-primary">
+              <h2 
+               className=" heading-sm mt-11 text-center mb-2">
                 {service.title}
               </h2>
 
-              <p className="text-gray-600 dark:text-gray-300 line-clamp-4 text-center lg:hidden">
+              <p 
+              className="text-gray-600  line-clamp-4 text-center lg:hidden">
                 {service.basic}
               </p>
 
               <div className="flex flex-col items-center mt-4">
-                <div className="hidden lg:flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300 font-medium group-hover:gap-3 transition-all">
+                <div 
+                className="hidden lg:flex items-center gap-2 text-xs text-gray-700 font-medium group-hover:gap-2 transition-all mt-2 ">
                   <span>Know More</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
             </div>
@@ -119,43 +83,54 @@ const Services = () => {
         {/* Modal */}
         {selectedService && (
           <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+              className="fixed inset-0 z-50 flex items-center justify-center bg-background/40 "
             onClick={() => setSelectedService(null)}
             role="dialog"
             aria-modal="true"
           >
             <div
-              className="bg-white dark:bg-gray-900 max-w-4xl w-full mx-4 p-8 rounded-xl shadow-2xl relative"
+                className="bg-card max-w-4xl w-full mx-4 p-7 rounded-xl shadow-2xl border border-border relative animate-scale-in hover-scale"
               onClick={(e) => e.stopPropagation()}
             >
               <button
                 onClick={() => setSelectedService(null)}
-                className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white hover:scale-110 transition"
+                  className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground transition-all duration-200 hover:scale-110"
                 aria-label="Close modal"
               >
-                ✕
+               <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M18 6L6 18M6 6l12 12" />
+                  </svg>
               </button>
+            <div>
+              <h3
+                className="heading-sm font-semibold mb-4 text-primary pr-7 text-center">
 
-              <h3 className="text-2xl font-semibold text-center text-primary mb-6">
                 {selectedService.title}
               </h3>
-
-              <div className="border-t border-gray-300 dark:border-gray-700 pt-6">
-                <h4 className="text-lg font-semibold mb-4 text-gray-800 dark:text-white">
-                  Key Features
-                </h4>
-                <ul className="space-y-3">
-                  {selectedService.description.map((point: string, i: number) => (
-                    <li
-                      key={i}
-                      className="flex items-start text-gray-700 dark:text-gray-300 text-sm leading-relaxed"
-                    >
-                      <span className="text-primary mr-2 mt-1">✓</span>
-                      <span>{point}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
+
+              {selectedService && (
+                  <div className="mt-6 pt-6 border-t border-border">
+                    <h4 className="text-sm font-semibold text-foreground mb-4">Key Features</h4>
+                    <ul className="space-y-3">
+                      {selectedService.description.map((feature, index) => (
+                        <li key={index} className="flex items-start text-sm text-muted-foreground leading-relaxed">
+                          <span className="text-primary mt-1 mr-2">✓</span>
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
             </div>
           </div>
         )}

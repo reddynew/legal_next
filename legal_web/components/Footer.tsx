@@ -19,11 +19,11 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-6">Quick Links</h3>
             <ul className="space-y-3">
               <li><HashLink to="/#" className="text-gray-400 hover:text-white transition-colors">Home</HashLink></li>
-              <li><HashLink to="/services" className="text-gray-400 hover:text-white transition-colors"
-            >Services</HashLink></li>
+              <li><HashLink to="/#services" className="text-gray-400 hover:text-white transition-colors"
+            offset={-40}>Services</HashLink></li>
               <li><HashLink to="/#expertise" className="text-gray-400 hover:text-white transition-colors"
-        >Areas of Expertise</HashLink></li>
-              <li><HashLink to="/nri" className="text-gray-400 hover:text-white transition-colors">NRI Services</HashLink></li>
+        offset={-40}>Areas of Expertise</HashLink></li>
+              <li><HashLink to="/Nriservices" className="text-gray-400 hover:text-white transition-colors">NRI Services</HashLink></li>
 
               <li><HashLink to="/#" className="text-gray-400 hover:text-white transition-colors">Contact Us</HashLink></li>
 
@@ -35,15 +35,15 @@ const Footer = () => {
             <ul className="space-y-3">
               {/* <li><a href="#expertise" className="text-gray-400 hover:text-white transition-colors">Family Law</a></li> */}
               <li> <HashLink to="/#expertise" className="text-gray-400 hover:text-white transition-colors"
-             >Family Law</HashLink></li>
+             offset={100}>Family Law</HashLink></li>
               <li><HashLink to="/#expertise" className="text-gray-400 hover:text-white transition-colors"
               >Corporate Law</HashLink></li>
               <li><HashLink to="/#expertise" className="text-gray-400 hover:text-white transition-colors"
              >Criminal Law</HashLink></li>
               <li><HashLink to="/#expertise" className="text-gray-400 hover:text-white transition-colors"
-            >Civil Law</HashLink></li>
+            offset={800}>Civil Law</HashLink></li>
               <li><HashLink to="/#expertise" className="text-gray-400 hover:text-white transition-colors"
-             >Business Law</HashLink></li>
+            offset={800} >Business Law</HashLink></li>
               {/* <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Labour Law</a></li>
               <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Tax Law</a></li> */}
             </ul>

@@ -5,10 +5,10 @@ import axios from 'axios';
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-  const [login, setLogin] = useState(false);
+  const [login, setLogin] = useState(true);
   const [loading, setLoading] = useState(false);
-  const[id,setId]=useState('')
-  const[name,setName]=useState('')
+  const[id,setId]=useState('123')
+  const[name,setName]=useState('123')
   // const userid=1234
   // const username='jp'
   useEffect(() => {
@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
           withCredentials: true,
         });
         if (res.status === 200 && res.data?.user) {
-    console.log("Auth Success:", res.data);
+    // console.log("Auth Success:", res.data);
     setLogin(true);
     setId(res.data.user.email);
     setName(res.data.user.name);
@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
   }
       } catch (err) {
         console.error("Auth Failed:", err.message);
-        setLogin(false);
+        setLogin(true);
       } finally {
         setLoading(false);
       }

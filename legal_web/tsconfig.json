@@ -42,7 +42,7 @@
     "context/LoginContext.jsx",
     "pages/Register.jsx",
     "components/Personal_dashboard.jsx"
-, "components/ProtectedRoute.jsx", "components/Profile.jsx"  ],
+, "components/ProtectedRoute.jsx", "components/Profile.jsx", "components/Calendar.jsx", "i18n.ts"  ],
   "exclude": [
     "node_modules"
   ]

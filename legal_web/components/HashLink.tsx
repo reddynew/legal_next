@@ -19,10 +19,12 @@ export default function HashLink({ to, children, offset = 0, className }: HashLi
     e.preventDefault();
 
     const [path, hash] = to.split('#');
+    console.log(path,hash)
 
     if (pathname !== path) {
       // Navigate to the correct page first
-      router.push(to);
+      router.push(path);
+      console.log('inside the push to ')
       // Wait a tick for navigation to complete
       setTimeout(() => {
         const el = document.getElementById(hash);

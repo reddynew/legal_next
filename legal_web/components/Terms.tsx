@@ -1,4 +1,5 @@
 import { FileText, X } from "lucide-react";
+import { Button } from "./ui/button";
 
 const TermsAndConditionsModal = ({ onClose, onAccept }: { onClose: () => void; onAccept: () => void }) => (
   <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
@@ -62,9 +63,9 @@ const TermsAndConditionsModal = ({ onClose, onAccept }: { onClose: () => void; o
           {/* <Button variant="outline" onClick={onClose} className="flex-1">
             Cancel
           </Button> */}
-          <button onClick={onAccept} className="flex-1 bg-blue-600 hover:bg-blue-700">
+          <Button onClick={onAccept} className="flex-1 bg-blue-600 hover:bg-blue-700">
             Accept & Continue
-          </button>
+          </Button>
         </div>
       </div>
     </div>

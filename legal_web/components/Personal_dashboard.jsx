@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { Menu, CircleUserRound, Inbox, Users, Settings, LogOut, FileText, MapPin, Gavel, Landmark, Tag, Hourglass, Calendar } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import {useAuth} from '@/context/LoginContext'
-// import CustomCalendar from '../components/Custom'
+import CustomCalendar from '@/components/Calendar'
 const mockLeads = [
   {
     id: 1,
@@ -249,6 +249,7 @@ function PersonalDashboard() {
   const [password,setpassword]=useState(false)
   const [form, setForm] = useState({ current: '', newPass: '', confirm: '' });
   const {id:userid,name:username,login}=useAuth()
+  const[phone,setPhone]=useState({})
 //   console.log('user id is',userid)
 // console.log('login from context is ',login)
   const handleChange = (e ) => {
@@ -281,9 +282,9 @@ function PersonalDashboard() {
       setLeads(mockLeads);
     }
   }, []);
-  // useEffect(() => {
-  //   setLeads(mockLeads);
-  // }, []);
+  useEffect(() => {
+    setLeads(mockLeads);
+  }, []);
   useEffect(() => {
     localStorage.setItem('leads', JSON.stringify(leads));
   }, [leads]);
@@ -339,6 +340,8 @@ function PersonalDashboard() {
     const statustype = leads.map(lead => lead.status)
     return Array.from(new Set(statustype))
   }, [leads])
+
+  // advocate yes click handling
   const handleYes = (phone, value) => {
     const decision = 'yes'
     setResponse(true)
@@ -359,6 +362,8 @@ function PersonalDashboard() {
     setShowYesModal(value)
     setVisiblePhone(null)
   }
+
+  // advocate No click handling
   const handleNo = (phone, value) => {
     const decision = 'no';
     setResponse(true)
@@ -398,9 +403,30 @@ function PersonalDashboard() {
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
+
+
   const maskPhone = (phone) => {
     return phone.replace(/^(\d{4})\d{6}$/, '$1******');
   }
+
+  const handlePhoneClick = (phone) => {
+  // increment count
+  const storedCounts = JSON.parse(localStorage.getItem("phone_clicks") || "{}");
+  const newCount = (storedCounts[phone] || 0) + 1;
+  storedCounts[phone] = newCount;
+
+  // update state and persist
+  setClickCount((prev) => ({ ...prev, [phone]: newCount }));
+  localStorage.setItem("phone_clicks", JSON.stringify(storedCounts));
+
+  // console.log(`Phone ${phone} clicked ${newCount} times`);
+
+
+  // show number modal
+  setVisiblePhone(phone);
+};
+
+
   const handleProfile = () => {
     navigate.replace('/profile')
   }
@@ -541,7 +567,7 @@ function PersonalDashboard() {
             </li>
           </ul>
         
-        {/* <CustomCalendar id={userid} name={username}/> */}
+        <CustomCalendar id={userid} name={username} value={sidebarOpen}/>
         {/* <CalendarApp user={userid}/> */}
      
         </nav>
@@ -624,7 +650,7 @@ function PersonalDashboard() {
                   <td className="p-4 border font-medium text-gray-900">{lead.name}</td>
                   <td className="p-4 border">
                     <button
-                      onClick={() => setVisiblePhone(lead.phone)}
+                     onClick={() => handlePhoneClick(lead.phone)}
                       className="text-blue-600 hover:underline"
                     >
                       {maskPhone(lead.phone)}
@@ -680,7 +706,7 @@ function PersonalDashboard() {
         </div>
 
         {selectedLead && (
-          <div className="fixed inset-0 bg-black bg-opacity-20 flex items-center justify-center z-20">
+          <div className="fixed inset-0 bg-transparent bg-opacity-20 flex items-center justify-center z-20">
             <div className="w-[700px] p-6 bg-white rounded-lg shadow-xl relative flex flex-col items-center justify-center">
               <h2 className="text-xl font-semibold mb-2 text-gray-800">Lead Details</h2>
               <p><strong>Name:</strong> {selectedLead.name}</p>
@@ -701,7 +727,7 @@ function PersonalDashboard() {
         )}
       </div>
       {visiblePhone && (
-        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-transparent bg-opacity-40 flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded shadow-lg w-[300px] text-center">
             <h3 className="text-lg font-semibold mb-2 text-gray-800">Phone Number</h3>
             <p className="text-xl text-gray-700">{visiblePhone}</p>
@@ -732,7 +758,7 @@ function PersonalDashboard() {
 
       {/* ADVOCATE NO HANDLING MODAL */}
       {showmodal && (
-        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-transparent bg-opacity-40 flex items-center justify-center z-50">
           <div className="bg-white w-[400px] p-6 rounded shadow-xl text-center relative">
             <h3 className="text-lg font-semibold text-red-700 mb-4">Why is the client not connected?</h3>
 
@@ -805,7 +831,7 @@ function PersonalDashboard() {
 
       {/* ADVOCATE YES HANDLING MODAL */}
       {showYesModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-transparent bg-opacity-40 flex items-center justify-center z-50">
           <div className="bg-white w-[400px] p-6 rounded shadow-xl text-center relative">
             <h3 className="text-lg font-semibold text-green-700 mb-4">
               Connection Details

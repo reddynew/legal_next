@@ -1,3 +1,5 @@
+import regions from "./regions_data";
+
 const plans = [
     {
       name: "Starter",
@@ -18,14 +20,15 @@ const plans = [
       color: "from-blue-50 to-indigo-50",
       borderColor: "border-blue-200",
       badge: "Best for Beginners",
-      savings: "Save 30%"
+      savings: "Save 30%",
+      regions:1
     },
     {
       name: "Growth",
       price: "1999",
       originalPrice: "2799",
       period: "month",
-      description: "Ideal for practicing advocates aiming to significantly grow their clientele.",
+      description: "Ideal for practicing advocates aiming to significantly grow their clients.",
       features: [
         { label: "Up to 15 Verified Leads/month", status: true },
         { label: "CRM support", status: true },
@@ -39,7 +42,8 @@ const plans = [
       color: "from-orange-50 to-yellow-50",
       borderColor: "border-orange-300",
       badge: "Most Popular",
-      savings: "Save 40%"
+      savings: "Save 40%",
+      regions:2
     },
     {
       name: "Pro Plus",
@@ -61,7 +65,8 @@ const plans = [
       color: "from-purple-50 to-pink-50",
       borderColor: "border-purple-300",
       badge: "Enterprise Ready",
-      savings: "Save 50%"
+      savings: "Save 50%",
+      regions:3
     },
     {
       name: "Trial",
@@ -81,7 +86,8 @@ const plans = [
       color: "from-gray-100 to-gray-400",
       borderColor: "border-orange-300",
       badge: "Free Trial",
-      savings: "Save 40%"
+      savings: "Save 40%",
+      regions:0
     },
     {
       name: "Corporate",
@@ -109,7 +115,8 @@ const plans = [
       color: "from-gray-100 to-orange-200",
       borderColor: "border-gray-200",
       badge: "Exclusive for Corporate",
-      savings: "Save 10%"
+      savings: "Save 10%",
+      regions:0
     }
 
     

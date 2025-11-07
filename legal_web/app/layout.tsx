@@ -4,6 +4,11 @@ import "./globals.css";
 import Script from "next/script";
 import { AuthProvider } from "@/context/LoginContext";
 import { PlanProvider } from "@/context/PlansContext";
+import NotificationBanner from '@/components/NotificationBanner'
+import LayoutVisibilityWrapper from "@/components/IconsWrapper";
+import  I18nextProvider from "@/context/LanguageContext";
+import '../i18n';
+
 
 
 const geistSans = Geist({
@@ -31,13 +36,19 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+          <LayoutVisibilityWrapper>
+  <I18nextProvider>
+         
           <PlanProvider>
         <AuthProvider>
+          <NotificationBanner/>
 
         {children}
 
         </AuthProvider>
           </PlanProvider>
+          </I18nextProvider>
+           </LayoutVisibilityWrapper>
 
         {/* Tawk.to widget */}
         <Script
@@ -62,6 +73,9 @@ export default function RootLayout({
             `,
           }}
         />
+        
+        
+      
       </body>
     </html>
   );

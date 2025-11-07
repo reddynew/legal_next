@@ -1,13 +1,17 @@
 "use client"
 import { useState } from 'react';
-// import { Checkbox } from '@/components/ui/checkbox';
-// import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Scale, Eye, EyeOff, ArrowLeft, Shield, Lock, CheckCircle, Users, FileText } from 'lucide-react';
-import Link from 'next/link'
-import { useAuth } from '../context/LoginContext';
-import TermsAndConditionsModal from './Terms'
-import { useRouter } from 'next/navigation';
-// import { set } from 'date-fns';
+import { useRouter } from 'next/navigation'
+import axios from 'axios';
+import { useAuth } from '@/context/LoginContext';
+import TermsAndConditionsModal from '../components/Terms'
+import { set } from 'date-fns';
+import Link from 'next/link';
 function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -22,7 +26,7 @@ function LoginForm() {
   const valid_emails = ['jagath@lawsuvidha.in', 'hanuman@lawsuvidha.in', 'rohith@lawsuvidha.in', 'narmada@lawsuvidha.in', 'pradeep@lawsuvidha.in']
   const valid_passwords = ['Founder@1', 'D003@dataengineer', 'D004@dataengineer', 'Advc@001', 'Advc@002']
 
-  const {loginUser}:any=useAuth()
+    const {loginUser}:any=useAuth()
 
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -52,7 +56,7 @@ function LoginForm() {
         // setLogin(true);
         // setId(userData.email);
         // setName(userData.email);
-        navigate.replace('/PersonalDashboard');
+        navigate.replace('/personal_dashboard' );
       } else if (status === 'first_time') {
         navigate.replace('/signup');
       } else if (status === 'password_mismatch') {
@@ -157,11 +161,11 @@ function LoginForm() {
               </div>
             </div>
 
-            {/* {error && (
+            {error && (
               <Alert variant="destructive" className="mb-6 border-red-200 bg-red-50">
                 <AlertDescription className="text-red-700">{error}</AlertDescription>
               </Alert>
-            )} */}
+            )}
 
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Email Field */}
@@ -178,7 +182,7 @@ function LoginForm() {
                   autoComplete="email"
                   required
                 />
-                <label
+                <Label
                   htmlFor="email"
                   className={`absolute left-4 transition-all duration-200 pointer-events-none ${emailFocused || email
                       ? 'top-2 text-xs text-blue-700 font-medium'
@@ -186,7 +190,7 @@ function LoginForm() {
                     }`}
                 >
                   Email Address
-                </label>
+                </Label>
               </div>
 
               {/* Password Field */}
@@ -203,7 +207,7 @@ function LoginForm() {
                   autoComplete="current-password"
                   required
                 />
-                <label
+                <Label
                   htmlFor="password"
                   className={`absolute left-4 transition-all duration-200 pointer-events-none ${passwordFocused || password
                       ? 'top-2 text-xs text-blue-700 font-medium'
@@ -211,7 +215,7 @@ function LoginForm() {
                     }`}
                 >
                   Password
-                </label>
+                </Label>
                 <button
                   type="button"
                   className="absolute right-4 top-4 text-gray-400 hover:text-gray-600 transition-colors"
@@ -229,13 +233,13 @@ function LoginForm() {
 
               {/* Terms and Conditions */}
               <div className="flex items-start gap-3">
-                {/* <Checkbox
+                <Checkbox
                   id="terms"
                   checked={terms}
                   onCheckedChange={(checked) => setTerms(checked as boolean)}
                   className="mt-1 rounded border-gray-300"
-                /> */}
-                <label htmlFor="terms" className="text-sm text-gray-700 cursor-pointer leading-relaxed">
+                />
+                <Label htmlFor="terms" className="text-sm text-gray-700 cursor-pointer leading-relaxed">
                   I agree to the{' '}
                   <button
                     type="button"
@@ -258,10 +262,10 @@ function LoginForm() {
                   >
                     Privacy Policy
                   </button>
-                </label>
+                </Label>
               </div>
 
-              <button
+              <Button
                 type="submit"
                 className="w-full h-12 bg-black hover:bg-blue-700 text-white font-medium transition-colors focus:ring-2 focus:ring-blue-700 focus:ring-offset-2 rounded-lg"
                 disabled={isSubmitting}
@@ -277,7 +281,7 @@ function LoginForm() {
                     Sign In
                   </div>
                 )}
-              </button>
+              </Button>
             </form>
 
             <div className="mt-8 text-center">
