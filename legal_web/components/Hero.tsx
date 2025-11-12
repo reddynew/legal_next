@@ -9,21 +9,25 @@ const Hero = () => {
   return (
     <section className="pt-28 pb-16 md:pt-24 md:pb-24 relative overflow-hidden">
       {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center z-0"
-        style={{
-          backgroundImage: "url('/hero.jpeg')",
-          backgroundPosition: "right 10%",
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
-        <div className="absolute inset-0 bg-black/50"></div>
-      </div>
+      <div className="absolute inset-0 z-0 overflow-hidden">
+  <img
+    src="/hero.jpeg"
+    alt=""
+  className="
+    w-full h-full object-cover
+    object-[center_10%]
+    sm:object-[center_40%]
+    md:object-[right_10%]
+    
+  "
+    loading="lazy"
+  />
+  <div className="absolute inset-0 bg-black/50"></div>
+</div>
 
       {/* Hero Content */}
       <div className="container-custom relative z-10">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-12 items-start">
           <div
             className="
               max-w-2xl animate-fade-in relative 
@@ -70,11 +74,14 @@ const Hero = () => {
               <div className="absolute inset-0 bg-white rounded-xl opacity-0 group-hover:opacity-10 transition-opacity"></div>
 
               {/* Content */}
+              < div>
+
               <span className="relative z-10 flex items-center gap-2 text-black">
                 <Rocket className="w-5 h-5" />
                 Chat With Us
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
+              </div>
             </Button>
           </div>
         </div>

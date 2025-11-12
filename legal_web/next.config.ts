@@ -1,11 +1,16 @@
-import type { NextConfig } from "next";
-
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  trailingSlash: false,
+  output: 'export', // ⬅️ tells Next.js to generate static HTML
   images: {
-    unoptimized: true, // Required for static export
+    unoptimized: true, // ⬅️ required for static export if you use <Image />
   },
+  trailingSlash: true, // ⬅️ ensures all routes end with / (important for cPanel hosting)
 };
 
-export default nextConfig;
+module.exports = nextConfig;
+// /** @type {import('next').NextConfig} */
+// const nextConfig = {
+//   reactStrictMode: true,
+// };
+
+// module.exports = nextConfig;

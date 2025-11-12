@@ -8,21 +8,11 @@ const NotificationBanner = () => {
         {/* shimmer effect */}
         <div className="absolute max-w-6xl inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-shimmer z040"></div> 
         <div className="container-custom mx-auto max-w-6xl flex items-center justify-between relative z-10">
-          <div className="flex items-center gap-2 ">
+          <div className="flex items-center gap-2 pl-50">
             <NotebookPen className="w-4 h-4" />
             <span className="hidden sm:inline">
             At JPLawSuvidha, we function as a technology platform that helps clients access legal assistance easily.
             </span>
-            {/* <span className="sm:hidden">
-              🎉 New AI Document Review Feature!
-            </span> */}
-            <Button 
-              variant="ghost" 
-              size="sm" 
-              className="text-primary-foreground hover:bg-primary-foreground/20 h-auto p-1"
-            >
-              {/* <ArrowRight className="w-3 h-3" /> */}
-            </Button>
           </div>
           {/* <Button
             variant="ghost"

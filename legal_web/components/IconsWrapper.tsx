@@ -51,7 +51,7 @@ export default function LayoutVisibilityWrapper({ children }: { children: React.
           </div>
 
           {/* WhatsApp */}
-          <div className="lg:block fixed bottom-3 left-4 transform -translate-y-1/2 flex flex-col  pl-0 z-50">
+          <div className="lg:block fixed bottom-3 left-3 transform -translate-y-1/2 flex flex-col  pl-0 z-50">
          <a href="https://wa.me/918639930413?text=Hello%2C%20I%20want%20to%20know%20more%21"
             target="_blank"
             rel="noopener noreferrer"

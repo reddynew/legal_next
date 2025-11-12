@@ -25,7 +25,7 @@ const FAQSection = () => {
   };
 
   return (
-    <section id="faq-section" className="bg-white section-spacing">
+    <section id="faq-section" className="bg-white section-spacing px-4">
       <div className="legal-container">
         <div className="text-center mb-12">
           <span className="inline-block px-4 py-1 rounded-full bg-legal-light text-legal-DEFAULT font-medium text-sm mb-4">

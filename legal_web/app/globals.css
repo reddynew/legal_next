@@ -42,7 +42,7 @@
   --font-sans: Inter, sans-serif;
   --font-serif: "Playfair Display", serif;
   --font-mono: var(--font-geist-mono);
-  --container-padding: 0rem;
+  --container-padding: 2rem;
   --container-max-2xl: 1400px;
 }
 
@@ -184,4 +184,16 @@ body {
   --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
   --color-sidebar-border: hsl(var(--sidebar-border));
   --color-sidebar-ring: hsl(var(--sidebar-ring));
+}
+
+.blinking-iframe {
+  animation: blink-border 1s infinite;
+  border: 2px solid #ff4070;
+  border-radius: 12px;
+}
+
+@keyframes blink-border {
+  0%   { border-color: #ff4070; }
+  50%  { border-color: #fff; }
+  100% { border-color: #ff4070; }
 }

@@ -108,6 +108,7 @@ const Navbar = () => {
   const [activeSection, setActiveSection] = useState('');
   const [scrolled, setScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const[activebar,setActiveBar]=useState('')
   const navigate = useRouter();
   const location=usePathname()
   // console.log(location)
@@ -154,9 +155,16 @@ const Navbar = () => {
       const sections = menuItems.map(i => i.href?.substring(1));
       const currentSection = sections.find(section => {
         const el = section ? document.getElementById(section) : null;
-        return el && el.getBoundingClientRect().top <= 100 && el.getBoundingClientRect().bottom >= 100;
+        return el && el.getBoundingClientRect().top <= 100 && el.getBoundingClientRect().bottom >=100;
       });
-      if (currentSection) setActiveSection(currentSection);
+      if
+    (currentSection) {setActiveSection(currentSection);
+      setActiveBar(currentSection)
+      }
+      else
+      {
+        setActiveBar('')
+      }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -191,8 +199,8 @@ const Navbar = () => {
                 onMouseLeave={() => item.children && setActiveSection('')}>
 
                 <HashLink
-                  to={item.href === "Nriservices" ? "Nriservices" : `/#${item.href?.substring(1)}`}
-                  className={`text-md font-bold transition-all duration-300 cursor-pointer ${activeSection === item.href?.substring(1)
+                  to={item.href === "Nriservices" ? "/Nriservices" : `/#${item.href?.substring(1)}`}
+                  className={`text-md font-bold transition-all duration-300 cursor-pointer ${activeSection && activebar === item.href?.substring(1)
                     ? 'text-black'
                     : 'text-gray-600'
                     }`}
@@ -202,7 +210,7 @@ const Navbar = () => {
                   {item.label}
                   <span
                     className={`absolute left-0 right-0 bottom-0 h-0.5 bg-black origin-left transform transition-transform duration-300
-        ${activeSection === item.href?.substring(1)
+        ${activebar === item.href?.substring(1)
                         ? 'scale-x-100'
                         : 'scale-x-0 group-hover:scale-x-100'}`}
                   />
@@ -231,16 +239,6 @@ const Navbar = () => {
                             <div className="w-2 h-2 rounded-full bg-gray-300 group-hover:bg-black transition-colors duration-300" />
                             <span className="font-sm">{child.label}</span>
                           </div>
-
-                          {/* Arrow Icon */}
-                          {/* <svg 
-            className="w-5 h-5 text-gray-400 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300 group-hover:text-blue-600" 
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-          </svg> */}
                         </Link>
                       ))}
                     </div>
@@ -251,12 +249,11 @@ const Navbar = () => {
               </div>
               </div>
             ))}
-
-            <button 
-            onClick={() => navigate.push('/Aboutus')} 
+            <Link
+            href='/Aboutus'
             className={`text-md font-bold transition-all duration-300 hover:text-primary text-gray-600 cursor-pointer`}>
               About Us
-              </button>
+              </Link>
           </nav>
 
           {/* Desktop Actions */}
@@ -267,8 +264,8 @@ const Navbar = () => {
             <Button onClick={() => navigate.push('/signup')} className="group flex items-center gap-2  text-white hover:text-gray-400 transform hover:scale-105 transition-all duration-200">
               <UserPlus className="w-4 h-4 text-emerald-700 group-hover:scale-110 transition-transform" /> Subscribe
             </Button>
-           <div className="relative">
-                {location !== '/Nriservices' && location!== '/Aboutus' && location !== '/signup' && location !== '/PrivacyPolicy' && location !=='/Disclaimers' && location!=='/UserAgreement' && (
+           <div className="relative rounded-lg">
+                {location !== '/Nriservices/' && location!== '/Aboutus/' && location !== '/signup/' && location !== '/PrivacyPolicy/' && location !=='/Disclaimers/' && location!=='/UserAgreement/' && (
                   <LanguageSwitcher onClose={() => { }} />
                 )}
               </div>

@@ -22,8 +22,42 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "JP Law Suvidha",
-  description: "JP Law Suvidha is professional legal service techonology platform.",
+  title: "JP Law Suvidha | Justice for People Driven by Technology",
+  description:
+    "JP Law Suvidha is a secure, technology-driven platform connecting clients with expert legal professionals. We leverage advanced digital tools and deep legal insight to deliver efficient, transparent, and accessible legal services for individuals and businesses—covering family, corporate, criminal, civil, and business law.",
+  keywords: [
+    "JP Law Suvidha",
+    "legal services",
+    "tech-enabled legal platform",
+    "Hyderabad",
+    "family law",
+    "corporate law",
+    "criminal law",
+    "civil law",
+    "business law",
+    "legal consultation",
+    "digital law platform",
+    "lawyer matching"
+  ],
+  authors: [{ name: "JP Law Suvidha Team", url: "https://jplawsuvidha.com" }],
+  openGraph: {
+    title: "JP Law Suvidha | Justice for People Driven by Technology",
+    description:
+      "Empowering legal access through cutting-edge technology. Find the right legal expert and access professional legal services confidentially, efficiently, and affordably.",
+    url: "https://jplawsuvidha.com",
+    siteName: "JP Law Suvidha",
+    images: [
+      {
+        url: "https://jplawsuvidha.com/og_logo.jpg", // Update with your site logo or preview image
+        alt: "JP Law Suvidha Logo",
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
+  icons: {
+    icon: "/favicon.ico", // Adjust as needed
+  },
 };
 
 export default function RootLayout({
