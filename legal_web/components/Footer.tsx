@@ -19,13 +19,13 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-6">Quick Links</h3>
             <ul className="space-y-3">
               <li><HashLink to="/#" className="text-gray-400 hover:text-white transition-colors">Home</HashLink></li>
-              <li><HashLink to="/#services" className="text-gray-400 hover:text-white transition-colors"
-            offset={-40}>Services</HashLink></li>
               <li><HashLink to="/#expertise" className="text-gray-400 hover:text-white transition-colors"
         offset={-40}>Areas of Expertise</HashLink></li>
               <li><HashLink to="/Nriservices" className="text-gray-400 hover:text-white transition-colors">NRI Services</HashLink></li>
+              <li><HashLink to="/#jplaw" className="text-gray-400 hover:text-white transition-colors"
+            offset={-40}>Why JP Law Suvidha</HashLink></li>
 
-              <li><HashLink to="/#" className="text-gray-400 hover:text-white transition-colors">Contact Us</HashLink></li>
+              <li><HashLink to="/contact_us" className="text-gray-400 hover:text-white transition-colors">Contact Us</HashLink></li>
 
             </ul>
           </div>
@@ -57,8 +57,8 @@ const Footer = () => {
               <li className="flex ">
                 <MapPin className="w-6 h-6 mr-3 text-gray-400" />
                 <div className="flex flex-col ">
-                <span className="text-gray-400">Vanasthalipuram, Hyderabad</span>
-                <span className="text-gray-400">Telangana</span>
+                <span className="text-gray-400">Vanasthalipuram, Hyderabad,</span>
+                <span className="text-gray-400">Telangana,</span>
                 <span className="text-gray-400">India - 500070</span>
                 </div>
               </li>

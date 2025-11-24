@@ -1,7 +1,7 @@
 {
   "Faq":{
     "title":"Frequently Asked Questions",
-     "description":"Find answers to common questions about our legal services and processes. If you can't find what you're looking for, don't hesitate to contact us.",
+     "description":"Learn the answers to frequently asked questions about our legal services and procedures.",
     "Faqs": [
     {"question": "What services do you offer?", 
      "answer": "We provide access to legal consultations, document drafting, contract reviews, and lawyer matching for a wide range of legal matters—including personal, civil, criminal, business, and intellectual property law."

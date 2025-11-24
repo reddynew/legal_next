@@ -1,0 +1,62 @@
+{
+  "header": {
+    "title": "Legal Representation",
+    "description": "JP Law Suvidha connects you with trusted lawyers using technology."
+  },
+  "expert": {
+    "title": "Expert Legal Representation",
+    "description": "Legal representation means having a qualified lawyer advocate for you-whether in court, negotiations, or while providing expert legal advice. JP Law Suvidha connects you with the right lawyers specializing in family law, corporate law, criminal defense, contract law, civil litigation, and more."
+  },
+  "matching": {
+    "title": "Fast Lawyer Matching",
+    "description": "With advanced matching algorithms and a network of trusted professionals,JP Law Suvidha simplifies the process from discovering the ideal lawyer to scheduling appointments and managing legal documents."
+  },
+  "support": {
+    "title": "Hassle-Free Legal Support",
+    "description": "JP Law Suvidha provides accessible, professional, and stress-free legal support. Enjoy seamless communication, case tracking, secure document exchange, and real-time updates throughout your legal journey."
+  },
+  "features": {
+    "title": "Key Features of Legal Representation",
+    "lawyerDiscovery": {
+      "title": "Lawyer Discovery Assistance",
+      "description": "JP Law Suvidha helps you identify and engage the right legal professional for your needs."
+    },
+    "intelligentMatching": {
+      "title": "Intelligent Lawyer Matching",
+      "description": "Advanced algorithms analyze your needs to match you with suitable lawyers based on case type, location, and expertise."
+    },
+    "filters": {
+      "title": "Customizable Search Filters",
+      "description": "Search by specialization, language, experience, jurisdiction, and fee structure."
+    },
+    "coverage": {
+      "title": "Comprehensive Legal Coverage",
+      "description": "Find support for litigation, business, property, family law, IP, contracts, and advisory services."
+    },
+    "secureCommunication": {
+      "title": "Secure Communication Channel",
+      "description": "Communicate safely through encrypted chat and calls."
+    },
+    "scheduling": {
+      "title": "Easy Appointment Scheduling",
+      "description": "Book consultations, check availability, and get reminders easily."
+    },
+    "documents": {
+      "title": "Efficient Document Management",
+      "description": "Upload, share, and store documents securely."
+    },
+    "experience": {
+      "title": "Seamless User Experience",
+      "description": "Intuitive workflows, real-time updates, and transparent progress."
+    },
+    "accessible": {
+      "title": "Accessible & Stress - Free Legal Support",
+      "description": "Affordable, professional, and approachable assistance for all legal needs."
+    }
+  },
+  "footer": {
+    "title": "Making Legal Help Accessible",
+    "description1": "JP Law Suvidha makes it easy to find legal representation with a fast, transparent, and secure journey.",
+    "description2": "Choose innovation, professionalism, and confidence for all your legal needs."
+  }
+}

@@ -13,7 +13,6 @@ i18n
   )
   .init({
     fallbackLng: 'en',
-    lng: 'en',
     debug: false,
     ns: ['services', 'expertise', 'faq'],
     defaultNS: 'services',

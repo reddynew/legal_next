@@ -1,9 +1,10 @@
+import LegalRepresentationPage from '@/components/LegalRepresentation'
 import React from 'react'
 
 function page() {
   return (
     <div>
-        <h1>Legal Representation</h1>
+      <LegalRepresentationPage/>
     </div>
   )
 }

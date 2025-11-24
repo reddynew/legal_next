@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 
 // app/services/layout.js
@@ -8,6 +9,7 @@ export default function services({ children }) {
       <main>
         <Navbar/>
         {children}  {/* <-- This is the Outlet! */}
+        <Footer/>
       </main>
     </div>
   );

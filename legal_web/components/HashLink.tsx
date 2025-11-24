@@ -20,8 +20,8 @@ export default function HashLink({ to, children, offset = 0, className }: HashLi
 
     const [path, hash] = to.split('#');
     // console.log('to:',to)
-    // console.log('pathname:',pathname)
-    // console.log(path,hash)
+    console.log('pathname:',path)
+    console.log(hash)
 
     if(!hash)
       {

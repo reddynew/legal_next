@@ -378,7 +378,7 @@ type Lawyer = {
         }
 
         // Validate required fields
-        const requiredFields = ['lawyerName', 'email', 'phone'];
+        const requiredFields = ['lawyerName', 'email', 'phone','barCouncilId'];
         const missingFields = requiredFields.filter(field => !formData[field as keyof Lawyer]);
 
         if (missingFields.length > 0) {
@@ -600,7 +600,7 @@ type Lawyer = {
                                                         : 'top-4 text-base text-gray-500'
                                                         }`}
                                                 >
-                                                    Law Firm / Organization
+                                                   Place of Practice
                                                 </Label>
                                             </div>
                                         </div>
@@ -634,7 +634,7 @@ type Lawyer = {
                                                         : 'top-4 text-base text-gray-500'
                                                         }`}
                                                 >
-                                                    Bar Council ID (Optional)
+                                                    Bar Council ID *
                                                 </Label>
                                                 <span className='text-sm'>* Bar Council ID is compulsory for verification.</span>
                                             </div>

@@ -376,7 +376,7 @@ const [openSelect, setOpenSelect] = useState<string | null>();
                     : [];
                   
                   if (!updatedRegions.includes(region) && updatedRegions.length + 1 >= limit) {
-                    setTimeout(() => setOpenSelect(null), 10);
+                    // setTimeout(() => setOpenSelect(null), 1000);
                   }
                 }
               }}
@@ -421,7 +421,7 @@ const [openSelect, setOpenSelect] = useState<string | null>();
                   >
                     {(
                       <>
-                        {plan.highlight ? 'Start Growing Now' : 'Get Started'}
+                        {plan.highlight ? 'Subscribe' : 'Subscribe'}
                       </>
                     )}
                   </Button>

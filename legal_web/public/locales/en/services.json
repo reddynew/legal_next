@@ -1,53 +1,39 @@
 {
-    
-      "section_title": "Our Legal Services",
-      "section_desc": "Comprehensive legal solutions tailored to meet your unique requirements with precision and care.",
-    "service": [
-      {
-        "title": "Legal Consultation",
-        "tag": "legal consultation",
-        "basic": "JP LAW SUVIDHA combines expert legal advice with AI to deliver fast, secure, and personalized consultations anytime, anywhere.",
-        "description": [
-          "JP LAW SUVIDHA revolutionizes the consultation experience by combining expert human insight with cutting-edge technology.",
-          "Whether you're facing a legal dispute, need a document review, or questions about your rights, our platform intelligently matches you with a qualified legal professional based on your specific needs.",
-          "Using AI-driven algorithms, we analyze your legal concerns and instantly connect you with verified lawyers who specialize in relevant areas of law.",
-          "Our secure video conferencing, real-time messaging, and digital document exchange ensure that your consultation is efficient, confidential, and convenient—anytime, anywhere.",
-          "All interactions within the platform are encrypted and securely logged, giving you peace of mind and easy access to your consultation history and follow-up actions.",
-          "Whether you're an individual or a business, our platform ensures faster responses, better alignment, and more informed legal outcomes."
-        ]
-      },
-      {
-        "title": "Legal Representation",
-        "tag": "legal representation",
-        "basic": "JP LAW SUVIDHA connects clients with trusted lawyers, streamlining legal discovery, communication, and consultation.",
-        "description": [
-          "JP LAW SUVIDHA does not directly provide legal representation but helps clients find and engage legal professionals.",
-          "Uses intelligent matching algorithms to connect clients with lawyers based on case type, location, availability, and expertise.",
-          "Offers customizable filters to refine the search for legal professionals.",
-          "Supports a wide range of legal needs, including court proceedings, contract negotiations, and advisory services.",
-          "Provides secure communication tools for client-lawyer interaction.",
-          "Includes easy appointment scheduling for legal consultations.",
-          "Enables efficient document sharing to streamline case handling.",
-          "Delivers a seamless experience from first contact to legal representation.",
-          "Makes legal support more approachable, responsive, and stress-free."
-        ]
-      },
-      {
-        "title": "Enterprise Legal ",
-        "tag": "Enterprise Legal ",
-        "basic": "JP LAW SUVIDHA offers startups digital legal services, ensuring compliance, IP protection, and expert guidance without needing in-house legal teams.",
-        "description": [
-          "Tailored for startups and mid-sized companies (typically 50–100 employees), eliminating the need for an in-house legal team.",
-          "Provides streamlined access to critical legal services through a fully digital, user-friendly platform.",
-          "Supports businesses with essential legal documentation and regulatory compliance.",
-          "Covers legal needs such as company incorporation, statutory filings, employment agreements, vendor contracts, and internal policy drafting.",
-          "Ensures legal protection and compliance at all stages of business growth through a network of experienced legal professionals.",
-          "Offers dedicated Intellectual Property (IP) services to safeguard innovations and proprietary assets.",
-          "Includes drafting and review of MOUs, copyright registrations, privacy policies, and tailored IP documentation.",
-          "Integrates smart legal workflows and encrypted document sharing for secure operations.",
-          "Facilitates seamless lawyer-client collaboration to make legal operations faster, simpler, and scalable for agile businesses."
-        ]
-      }
-    ]
-  
+  "hero_title": "Legal Consultation",
+  "hero_sub": "Tech-enabled platform for legal Consultations.",
+
+  "section1_title": "Tech-Driven Legal Services Platform",
+  "section1_text": "JP Law Suvidha is an innovative, tech-driven legal services platform designed to connect you seamlessly with experienced lawyers specializing in crucial legal domains such as family law, corporate law, criminal law, civil law, compliance, contracts, litigation, intellectual property, and more. This intelligent platform is crafted to help you quickly find the precise legal expert you need, effectively eliminating common delays and confusion in securing professional legal assistance.",
+
+  "section2_title": "Seamless Connection with Expert Lawyers",
+  "section2_text": "Our platform is designed to match clients with lawyers who have specialized expertise tailored to their unique legal challenges. Whether you need advice on contracts, require corporate legal support, or face urgent family law issues, JP Law Suvidha ensures you find exactly the right professional. The platform’s intelligent matching engine guarantees that every client receives strategic support from qualified experts, fostering trust and dependability.",
+
+  "section3_title": "Client-Centered Innovation and Secure Technology",
+  "section3_text": "What distinguishes JP Law Suvidha from other platforms is its commitment to innovation, secure technology, and a client-centered mindset. This combination makes it a top choice for a wide range of clients including individuals, entrepreneurs, startups, and established businesses. The platform’s user-friendly interface and robust technology foster trust and accessibility in legal services, making complex legal processes more navigable and less time-consuming.",
+
+  "features_title": "Key Features of Legal Consultation",
+
+  "features": {
+    "smart_match_title": "Smart Lawyer Matching",
+    "smart_match_desc": "Intelligent algorithms connect you to the most suitable legal professionals based on your needs, location, and preferences.",
+
+    "coverage_title": "Comprehensive Coverage",
+    "coverage_desc": "Get expert help across family, corporate, criminal, civil, compliance, contracts, litigation, IP, and more.",
+
+    "secure_title": "Confidential & Secure",
+    "secure_desc": "Cutting-edge encryption protocols protect all consultations, documents, and messages with full transparency and control.",
+
+    "communication_title": "Streamlined Communication",
+    "communication_desc": "Enjoy secure video calls, real-time messaging, and digital document exchange for effortless lawyer collaboration.",
+
+    "individuals_title": "For Individuals & Businesses",
+    "individuals_desc": "Tailored solutions for personal matters or ongoing business support, resulting in faster, well-informed strategies.",
+
+    "documents_title": "Legal Analysis & Document Management",
+    "documents_desc": "Instant lawyer recommendations and easy document uploads keep your consultations precise and efficient."
+  },
+
+  "final_title": "Revolutionizing Legal Consultations",
+  "final_text1": "Advanced technology, seasoned experts, and a seamless client journey transform how legal help is delivered.",
+  "final_text2": "From real-time video calls and secure chat to encrypted document exchanges, JP Law Suvidha brings hassle-free and accessible legal support to your fingertips."
 }

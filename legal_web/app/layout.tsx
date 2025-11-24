@@ -8,6 +8,8 @@ import NotificationBanner from '@/components/NotificationBanner'
 import LayoutVisibilityWrapper from "@/components/IconsWrapper";
 import  I18nextProvider from "@/context/LanguageContext";
 import '../i18n';
+import ScrollToTop from "@/components/ScrollToTop";
+import CookieConsent from "@/components/Cookies";
 
 
 
@@ -70,14 +72,18 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+          {/* <CookieConsent/> */}
           <LayoutVisibilityWrapper>
   <I18nextProvider>
          
           <PlanProvider>
         <AuthProvider>
+          <ScrollToTop/>
           <NotificationBanner/>
 
+
         {children}
+        
 
         </AuthProvider>
           </PlanProvider>

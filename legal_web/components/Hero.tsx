@@ -15,10 +15,10 @@ const Hero = () => {
     alt=""
   className="
     w-full h-full object-cover
-    object-[center_10%]
+    object-[center_100%]
     sm:object-[center_40%]
     md:object-[right_10%]
-    
+    md:object-[center_100%]
   "
     loading="lazy"
   />
@@ -46,7 +46,7 @@ const Hero = () => {
                 px-4 sm:px-6 md:px-0 text-center sm:text-left max-w-2xl
               "
             >
-              JP LAW SUVIDHA is a secure, tech-enabled platform designed to
+              JP Law Suvidha is a secure, tech-enabled platform designed to
               connect clients with the right legal professionals. We combine
               advanced digital tools with deep legal industry insight to
               simplify communication and ensure timely, effective access to
@@ -78,7 +78,7 @@ const Hero = () => {
 
               <span className="relative z-10 flex items-center gap-2 text-black">
                 <Rocket className="w-5 h-5" />
-                Chat With Us
+                Chat with Us
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
               </div>

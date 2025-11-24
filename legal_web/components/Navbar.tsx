@@ -93,7 +93,7 @@ const MobileMenu = ({
                 <User className="w-4 h-4 group-hover:scale-110 transition-transform" /> Login
               </Button>
               <Button onClick={handleSignup} className="flex items-center justify-center gap-2 h-12 group transform hover:scale-105 transition-all duration-200">
-                <UserPlus className="w-4 h-4 group-hover:scale-110 transition-transform" /> Subscribe
+                <UserPlus className="w-4 h-4 group-hover:scale-110 transition-transform" /> Register
               </Button>
             </div>
           </div>
@@ -129,21 +129,21 @@ const Navbar = () => {
   const menuItems = [
     {
       label: "Services",
-      href: "#services",
+      href: "",
       children: [
-        { label: "Legal Consultation", to: "/services/Legal-consultation" },//services/legal-consultation
-        { label: "Legal Representation", to: "/services/Legal-representation" },//services/legal-representation
-        { label: "Enterprise Legal", to: "/services/Legal-enterprise" },//services/enterprise
+        { label: "Legal Consultation", to: "/services/legal-consultation" },//services/legal-consultation
+        { label: "Legal Representation", to: "/services/legal-representation" },//services/legal-representation
+        { label: "Enterprise Legal", to: "/services/legal-enterprise" },//services/enterprise
       ]
     },
     {
       label: "Expertise", href: "#expertise",
       children: [
-        { label: "Criminal Law", to: "/#expertise" },//Expertise/criminal-law
-        { label: "Corporate Law", to: "/#expertise" },//Expertise/corporate-law
-        { label: "Family Law", to: "/#expertise" },//Expertise/family-law
-        { label: "Civil Law", to: "/#expertise" },//Expertise/civil-law
-        { label: "Business Law", to: "/#expertise" }//Expertise/business-law
+        { label: "Business Law", to: "/expertise/business" },//Expertise/business-law
+        { label: "Civil Law", to: "/expertise/civil" },//Expertise/civil-law
+        { label: "Corporate Law", to: "/expertise/corporate" },//Expertise/corporate-law
+        { label: "Criminal Law", to: "/expertise/criminal" },//Expertise/criminal-law
+        { label: "Family Law", to: "/expertise/family" }//Expertise/family-law
       ]
     },
     { label: "NRI Services", href: "Nriservices" },
@@ -155,7 +155,7 @@ const Navbar = () => {
       const sections = menuItems.map(i => i.href?.substring(1));
       const currentSection = sections.find(section => {
         const el = section ? document.getElementById(section) : null;
-        return el && el.getBoundingClientRect().top <= 100 && el.getBoundingClientRect().bottom >=100;
+        return el && el.getBoundingClientRect().top <= 0 && el.getBoundingClientRect().bottom >=100;
       });
       if
     (currentSection) {setActiveSection(currentSection);
@@ -199,7 +199,7 @@ const Navbar = () => {
                 onMouseLeave={() => item.children && setActiveSection('')}>
 
                 <HashLink
-                  to={item.href === "Nriservices" ? "/Nriservices" : `/#${item.href?.substring(1)}`}
+                  to={item.href === "Nriservices" ? "/Nriservices" : ``}
                   className={`text-md font-bold transition-all duration-300 cursor-pointer ${activeSection && activebar === item.href?.substring(1)
                     ? 'text-black'
                     : 'text-gray-600'
@@ -208,18 +208,18 @@ const Navbar = () => {
 
                 >
                   {item.label}
-                  <span
+                  {/* <span
                     className={`absolute left-0 right-0 bottom-0 h-0.5 bg-black origin-left transform transition-transform duration-300
         ${activebar === item.href?.substring(1)
                         ? 'scale-x-100'
                         : 'scale-x-0 group-hover:scale-x-100'}`}
-                  />
+                  /> */}
                 </HashLink>
                 {/* Dropdown */}
                 <div className=''>
                 {item.children && activeSection === item.label && (
-                  <div className="absolute top-full left-0 mt-0 w-72 bg-white border border-gray-100 shadow-2xl rounded-xl overflow-hidden z-50 backdrop-blur-sm animate-in fade-in slide-in-from-top-3 duration-300">
-                    {/* Header Section */}
+                  <div className="absolute top-full left-0 w-72 bg-white border border-gray-100 shadow-2xl rounded-xl overflow-hidden z-50 backdrop-blur-sm animate-in fade-in slide-in-from-top-3 duration-300">                    {/* Header Section */}
+                  <div className="">
                     <div className="px-5 py-4 bg-gray-200 border-b border-gray-100">
                       <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider">
                        { `Our ${item.label}`}
@@ -243,7 +243,9 @@ const Navbar = () => {
                       ))}
                     </div>
                   </div>
+                  </div>
                 )}
+
 
 
               </div>
@@ -262,7 +264,7 @@ const Navbar = () => {
               <User className="w-4 h-4 text-yellow-700 group-hover:scale-110 transition-transform" /> Login
             </Button>
             <Button onClick={() => navigate.push('/signup')} className="group flex items-center gap-2  text-white hover:text-gray-400 transform hover:scale-105 transition-all duration-200">
-              <UserPlus className="w-4 h-4 text-emerald-700 group-hover:scale-110 transition-transform" /> Subscribe
+              <UserPlus className="w-4 h-4 text-emerald-700 group-hover:scale-110 transition-transform" /> Register
             </Button>
            <div className="relative rounded-lg">
                 {location !== '/Nriservices/' && location!== '/Aboutus/' && location !== '/signup/' && location !== '/PrivacyPolicy/' && location !=='/Disclaimers/' && location!=='/UserAgreement/' && (
