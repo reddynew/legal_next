@@ -2,6 +2,7 @@
 import { Mail, Phone, MapPin, Hash } from 'lucide-react';
 import Link from 'next/link'
 import HashLink from './HashLink';
+import Image from 'next/image'
 
 const Footer = () => {
   return (
@@ -11,7 +12,7 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
           <div>
             <div className="mb-2 ">
-              <img src="/logo3.svg" alt="logo" loading="lazy" className="h-auto w-[250px]" />
+              <img src="/logo3.avif" alt="logo"  className="h-auto w-[250px]" />
             </div>
           </div>
 

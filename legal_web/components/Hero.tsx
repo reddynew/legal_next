@@ -4,15 +4,20 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Rocket } from "lucide-react";
 import  '../app/index.css'
+import Image from "next/image";
 
 const Hero = () => {
   return (
     <section className="pt-28 pb-16 md:pt-24 md:pb-24 relative overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-  <img
-    src="/hero.jpeg"
-    alt=""
+      <Image
+  src="/hero.avif"
+  alt="Hero banner"
+  width={1600}
+  height={900}
+  priority
+  fetchPriority="high"
   className="
     w-full h-full object-cover
     object-[center_100%]
@@ -20,8 +25,7 @@ const Hero = () => {
     md:object-[right_10%]
     md:object-[center_100%]
   "
-    loading="lazy"
-  />
+/>
   <div className="absolute inset-0 bg-black/50"></div>
 </div>
 

@@ -37,7 +37,7 @@ const MobileMenu = ({
           <div className="py-4">
             <nav className="space-y-1">
               {menuItems.map((item, index) => {
-                const isHash = item.href?.startsWith('#');
+                const isHash = item.href?.startsWith('');
 
                 return (
                   <div key={item.label} className="group flex items-center justify-between w-full">
@@ -129,7 +129,7 @@ const Navbar = () => {
   const menuItems = [
     {
       label: "Services",
-      href: "",
+      href: "services/legal-consultation",
       children: [
         { label: "Legal Consultation", to: "/services/legal-consultation" },//services/legal-consultation
         { label: "Legal Representation", to: "/services/legal-representation" },//services/legal-representation
@@ -139,7 +139,7 @@ const Navbar = () => {
     {
       label: "Expertise", href: "#expertise",
       children: [
-        { label: "Business Law", to: "/expertise/business" },//Expertise/business-law
+        // { label: "Business Law", to: "/expertise/business" },//Expertise/business-law
         { label: "Civil Law", to: "/expertise/civil" },//Expertise/civil-law
         { label: "Corporate Law", to: "/expertise/corporate" },//Expertise/corporate-law
         { label: "Criminal Law", to: "/expertise/criminal" },//Expertise/criminal-law
@@ -194,17 +194,13 @@ const Navbar = () => {
             {menuItems.map(item => (
               <div
                 key={item.label}
-                className="relative"
+                className="relative hover:text-orange-400"
                 onMouseEnter={() => item.children &&setActiveSection(item.label)}
                 onMouseLeave={() => item.children && setActiveSection('')}>
 
-                <HashLink
-                  to={item.href === "Nriservices" ? "/Nriservices" : ``}
-                  className={`text-md font-bold transition-all duration-300 cursor-pointer ${activeSection && activebar === item.href?.substring(1)
-                    ? 'text-black'
-                    : 'text-gray-600'
-                    }`}
-                  offset={-40}
+                <Link
+                  href={item.href === "Nriservices" ? "/Nriservices" : ``}
+                  className={`text-md font-semibold cursor-pointer hover:text-orange-400`}
 
                 >
                   {item.label}
@@ -214,7 +210,7 @@ const Navbar = () => {
                         ? 'scale-x-100'
                         : 'scale-x-0 group-hover:scale-x-100'}`}
                   /> */}
-                </HashLink>
+                </Link>
                 {/* Dropdown */}
                 <div className=''>
                 {item.children && activeSection === item.label && (
@@ -232,7 +228,7 @@ const Navbar = () => {
                         <Link
                           key={child.to}
                           href={child.to}
-                          className="group flex items-center justify-between px-5 py-3.5 text-sm font-semibold text-gray-700 hover:bg-gradient-to-r hover:from-gray-50 hover:to-indigo-50 hover:text-gray-700 transition-all duration-300 border-l-4 border-transparent hover:border-gray-600"
+                          className="group flex items-center justify-between px-5 py-3.5 text-sm font-semibold text-gray-700 hover:bg-gradient-to-r hover:from-gray-50 hover:to-indigo-50 hover:text-gray-700 transition-all duration-300 border-l-4 border-transparent hover:border-gray-600 hover:text-gray-10"
                         >
                           <div className="flex items-center gap-3">
                             {/* Optional Icon */}
@@ -253,7 +249,7 @@ const Navbar = () => {
             ))}
             <Link
             href='/Aboutus'
-            className={`text-md font-bold transition-all duration-300 hover:text-primary text-gray-600 cursor-pointer`}>
+            className={`text-md font-semibold cursor-pointer hover:text-orange-400`}>
               About Us
               </Link>
           </nav>

@@ -179,7 +179,7 @@ function NriServices() {
 
                 <div className="container-custom relative z-10 text-center  mx-auto mb-7">
                     <div className="w-full animate-fade-in">
-                        <h1 className="text-3xl md:text-4xl lg:text-6xl font-extrabold font-serif text-gray-900 leading-tight tracking-tight ">
+                        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-serif  leading-tight tracking-tight sm:leading-[1.2] ">
                             Comprehensive <span className="text-orange-600 font-serif">NRI Legal Services</span>
                         </h1>
                     </div>
@@ -237,7 +237,7 @@ function NriServices() {
                                 {/* Text on top */}
                                 <div className={`relative z-10 flex items-center justify-center h-full  px-6 text-center top-20`}>
                                     <h2
-                                        className={`text-5xl sm:text-hero font-serif mb-2 text-shadow-emboss text-${slide.color} `}
+                                        className={`text-3xl sm:text-5xl font-semibold leading-snug text-shadow-emboss text-${slide.color} `}
                                     >
                                         {slide.category}
                                     </h2>
@@ -280,10 +280,10 @@ function NriServices() {
 
             {/* Services Cards */}
             <div className="text-center max-w-7xl mx-auto mb-7">
-                <h2 className="heading-sm md:text-3xl font-serif text-gray-900">
+                <h2 className="text-3xl sm:text-4xl font-semibold leading-snug">
                     Comprehensive Solutions, Tailored to You
                 </h2>
-                <p className="text-gray-600 mt-2 px-6 md:px-0">
+                <p className="text:sm sm:text-gray-600 leading-snug">
                     Explore our wide range of legal services designed to assist NRIs in resolving
                     property, family, business, and documentation matters with confidence.
                 </p>
@@ -322,36 +322,36 @@ function NriServices() {
                         </Card>
                     ))}
 
-                <Card className="container-custom shadow-lg rounded-2xl  border border-blue-100 bg-blue-100  flex flex-col justify-between mb-8 md:max-w-7xl mx-auto  md:col-span-2">
-                    <CardHeader>
-                        <div className="text-3xl font-serif text-center text-slate-900 mb-4">
-                           <h1>For Your Parents and Loved Ones in India</h1> 
-                        </div>
-                    </CardHeader>
-                    <CardContent>
-                        <h4 className="text-gray-800 mb-4 text-center text-lg">
-                            Living miles away? <span className="text-gray-900 font-bold text-xl">We ensure your family's legal peace of mind in India.</span>
-                            Our team delivers trusted legal help, document assistance, and on-call support-right at your family’s doorstep.
-                        </h4>
-                        <ul className="space-y-2 text-gray-700 sm:text-lg px-4 sm:px-0">
-                           <h2><li className="flex items-center"><span className="text-rose-500 mr-2 ">❤️</span> Dispute resolution with tenants & neighbors.</li></h2> 
-                           <h2><li className="flex items-center"><span className="text-rose-500 mr-2">❤️</span> Caretaking agreements & legal guardianship for elders.</li></h2> 
-                           <h2> <li className="flex items-center"><span className="text-rose-500 mr-2">❤️</span> Document delivery: wills, property, ID, insurance.</li></h2>
-                           <h2> <li className="flex items-center"><span className="text-rose-500 mr-2">❤️</span> Fraud prevention and medical claim assistance.</li></h2>
-                           <h2> <li className="flex items-center"><span className="text-rose-500 mr-2">❤️</span> Emergency help-swift, secure & compassionate.</li></h2>
-                        </ul>
-                    </CardContent>
-                    <Button
-                        className="self-center mt-6 mb-4 rounded-lg bg-blue-600 hover:bg-blue-700 text-white px-8 py-2"
-                        onClick={() => {
-                            document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-                            if (typeof window !== "undefined" && (window as any).Tawk_API) {
-                                (window as any).Tawk_API.toggle();
-                            }
-                        }}>
-                        Chat About Parent Support
-                    </Button>
-                </Card>
+                    <Card className="container-custom shadow-lg rounded-2xl  border border-blue-100 bg-blue-100  flex flex-col justify-between mb-8 md:max-w-7xl mx-auto  md:col-span-2">
+                        <CardHeader>
+                            <div className="text-3xl font-serif text-center text-slate-900 mb-4">
+                                <h1 className="text-4xl sm:text-5xl font-bold leading-tight sm:leading-[1.2]">For Your Parents and Loved Ones in India</h1>
+                            </div>
+                        </CardHeader>
+                        <CardContent>
+                            <h4 className="text-xl sm:text-2xl font-medium leading-relaxed">
+                                Living miles away? <span className="text-gray-900 font-bold text-xl">We ensure your family's legal peace of mind in India.</span>
+                                Our team delivers trusted legal help, document assistance, and on-call support-right at your family’s doorstep.
+                            </h4>
+                            <ul className="space-y-2 text-gray-700 sm:text-lg px-4 sm:px-0 mt-4">
+                                <h2><li className="flex items-center"><span className="text-rose-500 mr-2 ">❤️</span> Dispute resolution with tenants & neighbors.</li></h2>
+                                <h2><li className="flex items-center"><span className="text-rose-500 mr-2">❤️</span> Caretaking agreements & legal guardianship for elders.</li></h2>
+                                <h2> <li className="flex items-center"><span className="text-rose-500 mr-2">❤️</span> Document delivery: wills, property, ID, insurance.</li></h2>
+                                <h2> <li className="flex items-center"><span className="text-rose-500 mr-2">❤️</span> Fraud prevention and medical claim assistance.</li></h2>
+                                <h2> <li className="flex items-center"><span className="text-rose-500 mr-2">❤️</span> Emergency help-swift, secure & compassionate.</li></h2>
+                            </ul>
+                        </CardContent>
+                        <Button
+                            className="self-center mt-6 mb-4 rounded-lg bg-blue-600 hover:bg-blue-700 text-white px-8 py-2"
+                            onClick={() => {
+                                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                                if (typeof window !== "undefined" && (window as any).Tawk_API) {
+                                    (window as any).Tawk_API.toggle();
+                                }
+                            }}>
+                            Chat About Parent Support
+                        </Button>
+                    </Card>
                 </section>
 
 

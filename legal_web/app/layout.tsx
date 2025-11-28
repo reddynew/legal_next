@@ -69,6 +69,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <link rel="preload" as="image" href="/hero.avif" />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

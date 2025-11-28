@@ -15,7 +15,7 @@ function page() {
       <WhyChooseUs/>
       {/* <Services/> */}
       <Expertise/>
-      {/* <BlogListComponent/> */}
+      <BlogListComponent/>
       <FAQSection/>
       <Footer/>
     </div>
