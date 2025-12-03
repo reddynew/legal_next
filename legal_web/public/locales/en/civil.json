@@ -1,0 +1,103 @@
+{
+  "civilLawServices": "Civil Law Services",
+
+  "propertyDisputes": "Property Disputes",
+
+  "propertyIntro": "Property disputes commonly arise over <0>ownership</0>, <1>lease</1>, and <0>title issues</0>. Resolution requires a structured approach including <1>legal review, documentation, negotiation, mediation, or civil litigation</1>.",
+
+  "commonTypesPropertyDisputes": "Common Types of Property Disputes",
+
+  "typesList": [
+    "Ownership & Title Disputes: Unclear titles, incomplete records, fraudulent claims, inheritance issues.",
+    "Lease Disputes: Misuse, violation, rent defaults, eviction conflicts.",
+    "Boundary & Encroachment Disputes: Disagreements on property limits or unauthorized occupation/trespass.",
+    "Co-ownership Conflicts: Usage, division, or sale issues between co-owners."
+  ],
+
+  "causesOfDisputes": "Causes of Disputes",
+
+  "causesList": [
+    "Unclear property records and documentation errors.",
+    "Hidden liens, encumbrances, or financial restrictions.",
+    "Ambiguity in legal instruments (e.g., wills, deeds).",
+    "Lack of due diligence or absence of legal advice during transactions."
+  ],
+
+  "legalFramework": "Legal Framework",
+
+  "legalFrameworkList": [
+    "T.P. Act, 1882",
+    "Succession Act, 1925",
+    "Rent Control Acts",
+    "CPC, 1908"
+  ],
+
+  "resolutionMechanisms": "Resolution Mechanisms",
+
+  "resolutionMechanismsList": [
+    "Direct Settlement",
+    "Mediation & Arbitration",
+    "Civil Litigation",
+    "Evidence Collection"
+  ],
+
+  "how Jp Law Suvidha Helps": "JP Law Suvidha assists clients facing property disputes by connecting them with verified civil lawyers, legal consultation, and comprehensive documentation support for <0>ownership conflicts</0>, <0>title verification</0>, lease disagreements, boundary issues, and <1>succession clarifications</1>.",
+
+  "howJpHelpsProperty2": "The platform supports filing civil suits, issuing legal notices, handling <0>property partition</0>, <1>succession certificates</1>, and probate all simplified by digital tracking, advocate matching, and transparent communication for <1>asset division</1>, inheritance, co-ownership, and will-related litigation.",
+
+  "contractualDisputes": "Contractual Disputes",
+
+  "contractualIntro": "A contractual dispute arises when parties disagree on <1>interpretation</1>, <1>performance</1>, or breach of contract terms.",
+
+  "commonCausesContract": "Common Causes of Contractual Disputes",
+
+  "contractCausesList": [
+    "Breach of Contract",
+    "Disputes Over Interpretation",
+    "Non-Performance",
+    "Payment Issues",
+    "Fraud or Misrepresentation",
+    "Confidentiality or Non-Compete Violations"
+  ],
+
+  "legalFrameworkContract": "Legal Framework and Remedies",
+
+  "legalFrameworkContractList": [
+    "Indian Contract Act, 1872",
+    "Specific Relief Act, 1963",
+    "Arbitration and Conciliation Act, 1996"
+  ],
+
+  "disputeResolutionMechanismsContract": "Dispute Resolution Mechanisms",
+
+  "disputeResolutionMechanismsContractList": [
+    "Civil Litigation",
+    "Arbitration",
+    "Mediation and Conciliation",
+    "Fast-track Arbitration"
+  ],
+
+  "howJpHelpsContract": "--------- change -----------",
+
+  "howJpHelpsContract2": "The platform streamlines processes like legal notices, initiating <1>arbitration</1>, filing civil suits for <1>damages</1>, and reviewing <1>agreements</1> to prevent future disputes with instant access to advocates and online law support.",
+
+  "consumerComplaints": "Consumer Complaints",
+
+  "consumerIntro": "Consumer complaint filing in India is governed by the Consumer Protection Act, <0>2019</0>.",
+
+  "howJpHelpsConsumer": " ------- change --------",
+
+  "moneyRecovery": "Money Recovery",
+
+  "moneyRecoveryIntro": "Money recovery is the legal process by which a creditor seeks repayment using civil remedies, legal notices, summary suits, or <1>cheque bounce actions</1>.",
+
+  "howJpHelpsRecovery": "JP Law Suvidha connects clients to civil lawyers for <0>Section 138 NI Act</0> cases, legal <1>notices</1>, summary <1>suits</1>, and debt recovery claims. The platform enables digital submission and review of <1>contracts</1>, invoices, and case histories for fast legal assessment.",
+
+  "injunctionsNotices": "Injunctions and Notices",
+
+  "injunctionIntro": "Injunctions are judicial orders requiring or restraining specific actions, used frequently in property, business, or contractual matters.",
+
+  "howJpHelpsInjunction": "JP Law Suvidha assists with drafting legal <1>notices</1>, obtaining <1>injunctions</1> (temporary and permanent), pursuing <1>ex-parte orders</1>, and filing civil litigation under Specific Relief and CPC with expert civil lawyers available for consultation and digital workflow for document and evidence management.",
+
+  "footer": "<0>JP Law Suvidha</0> is your trusted <2>legal platform</2> for property disputes, contractual disagreements, consumer complaints, money recovery, and expert civil litigation support across India."
+}

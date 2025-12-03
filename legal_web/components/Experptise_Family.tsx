@@ -104,7 +104,7 @@ export default function Experptise_Family() {
           </h4>
           <ul className="list-disc ml-6 mb-4 text-gray-700 space-y-1">
             <li>Hindu Marriage Act, 1955</li>
-            <li>CrPC Section 125</li>
+            <li>BNSS Section 144</li>
             <li>Special Marriage Act, 1954</li>
             <li>Indian Divorce Act, 1869</li>
             <li>Muslim Personal Law &amp; 1986 Act</li>

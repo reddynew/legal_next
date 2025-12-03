@@ -5,8 +5,8 @@ import { Button } from "./ui/button";
 
 export default function BlogListComponent() {
   return (
-    <div>
-      <section className="container-custom h-[600px] relative">
+    <div className="relative mb-40">
+      <section className="container-custom relative">
       <div className="max-w-7xl mx-auto">
         <h1 className="heading-lg font-bold text-gray-900 mb-4 mt-10 text-center font-serif">Legal Tech Insights</h1>
         <h2 className="paragraph text-center text-gray-700 mb-10">Tech-Enabled Insights for Everyday Legal Needs</h2>
@@ -16,7 +16,12 @@ export default function BlogListComponent() {
               key={post.slug}
               className="bg-white text-black rounded-lg shadow hover:shadow-lg transition-shadow p-6 flex flex-col justify-between border"
             >
-              <h2 className="text-xl font-semibold mb-20">{post.title}</h2>
+              <h2 className="text-xl font-semibold mb-4">{post.title}</h2>
+               {post.excerpt && (
+                  <p className="text-sm text-gray-600 mb-4 line-clamp-2">
+                    {post.excerpt}
+                  </p>
+                )}
               <Link
                 href={`/blog/${post.slug}`}
                 className="mt-auto px-4 py-2 text-blue-500 hover:text-blue-700"

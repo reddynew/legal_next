@@ -9,6 +9,8 @@ import Link from 'next/link'
 import HashLink from './HashLink';
 import LanguageSwitcher from './LanguageChecker';
 import { Button } from './ui/button';
+import { Label } from '@radix-ui/react-dropdown-menu';
+import { navbarConfig } from '@/lib/navbarconfig';
 
 
 const MobileMenu = ({
@@ -112,6 +114,11 @@ const Navbar = () => {
   const navigate = useRouter();
   const location=usePathname()
   // console.log(location)
+  const config = navbarConfig;
+
+const hideHome = config.hideHomeOn.includes(location || '');
+const hideLang = config.hideLangOn.includes(location || '');
+// console.log(hideLang)
   useEffect(() => {
     if (window.innerWidth < 1024 && isMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -127,7 +134,8 @@ const Navbar = () => {
 
 
   const menuItems = [
-    {
+    
+      {
       label: "Services",
       href: "services/legal-consultation",
       children: [
@@ -137,7 +145,7 @@ const Navbar = () => {
       ]
     },
     {
-      label: "Expertise", href: "#expertise",
+      label: "Expertise", href: "",
       children: [
         // { label: "Business Law", to: "/expertise/business" },//Expertise/business-law
         { label: "Civil Law", to: "/expertise/civil" },//Expertise/civil-law
@@ -191,6 +199,11 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <nav className="hidden lg:flex items-center space-x-8 relative">
+            <Link
+            href='/'
+            className={`text-md font-semibold cursor-pointer hover:text-orange-400 ${hideHome?'invisible':''}`}>
+            Home
+              </Link>
             {menuItems.map(item => (
               <div
                 key={item.label}
@@ -199,7 +212,7 @@ const Navbar = () => {
                 onMouseLeave={() => item.children && setActiveSection('')}>
 
                 <Link
-                  href={item.href === "Nriservices" ? "/Nriservices" : ``}
+                  href={item.href === "Nriservices" ? "/Nriservices" : ''}
                   className={`text-md font-semibold cursor-pointer hover:text-orange-400`}
 
                 >
@@ -262,11 +275,9 @@ const Navbar = () => {
             <Button onClick={() => navigate.push('/signup')} className="group flex items-center gap-2  text-white hover:text-gray-400 transform hover:scale-105 transition-all duration-200">
               <UserPlus className="w-4 h-4 text-emerald-700 group-hover:scale-110 transition-transform" /> Register
             </Button>
-           <div className="relative rounded-lg">
-                {location !== '/Nriservices/' && location!== '/Aboutus/' && location !== '/signup/' && location !== '/PrivacyPolicy/' && location !=='/Disclaimers/' && location!=='/UserAgreement/' && (
-                  <LanguageSwitcher onClose={() => { }} />
-                )}
-              </div>
+          <div className={`relative rounded-lg ${hideLang ? "invisible" : ""}`}>
+  <LanguageSwitcher onClose={() => { }} />
+</div>
           </div>
 
           {/* Mobile Menu button */}

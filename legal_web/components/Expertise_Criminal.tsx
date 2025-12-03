@@ -19,7 +19,7 @@ export default function Expertise_Criminal() {
             Bail is a <em>legal provision</em> allowing temporary release of an accused person during trial after arrest.
              Anticipatory Bail, a significant aspect of <em>criminal law in India</em>, serves as a preventive remedy under 
              Section 438 <abbr title="Code of Criminal Procedure, 1973">CrPC</abbr>, enabling a person to seek bail before arrest. Through its <em>criminal law</em> <em>consultation
-              services</em>, <span className="font-bold text-black">JP Law Suvidha</span> facilitates skilled bail lawyer and anticipatory bail lawyer access for fast, strategic, and reliable <em>legal assistance</em>.
+              services</em>, <span className="font-bold text-black">JP Law Suvidha</span>  --- change facilitates skilled bail lawyer and anticipatory bail lawyer access for fast, strategic, and reliable <em>legal assistance-------</em>.
           </p>
 
           <h4 className="text-xl sm:text-2xl font-semibold leading-relaxed mt-4">Types of Bail</h4>
@@ -30,7 +30,7 @@ export default function Expertise_Criminal() {
             <li><em>Default Bail</em> – granted if investigation exceeds prescribed time limits.</li>
           </ul>
 
-          <h4 className="text-xl sm:text-2xl font-semibold leading-relaxed mt-4">Legal Provisions</h4>
+          <h4 className="text-xl sm:text-2xl font-semibold leading-relaxed mt-4">------ change Legal Provisions-------</h4>
           <ul className="list-disc ml-6 mb-4 text-gray-700 space-y-1">
             <li>Section 436 <abbr title="Code of Criminal Procedure, 1973">CrPC</abbr> – Bail in bailable offenses.</li>
             <li>Section 437 <abbr title="Code of Criminal Procedure, 1973">CrPC</abbr> – Bail in non-bailable offenses.</li>
@@ -101,7 +101,7 @@ export default function Expertise_Criminal() {
           <p className="text-base sm:text-lg leading-relaxed text-justify">
             Trial representation ensures legal rights are protected, evidence is properly challenged, and legal arguments are tailored for 
             the best outcome. The <strong>JP Law Suvidha</strong> platform also improves transparency, affordability, and timely updates throughout the 
-            criminal trial process.
+            trial process.
           </p>
         </section>
 
@@ -116,7 +116,7 @@ export default function Expertise_Criminal() {
           </p>
 
           <p className="text-base sm:text-lg leading-relaxed text-justify">
-            We assist in safeguarding digital evidence under Section 65B of the <em>Indian Evidence Act</em> and work with cyber experts 
+            We assist in safeguarding digital evidence under Section 63 of<abbr title="Bharatiya Sakshya Adhiniyam"> BSA </abbr> and work with cyber experts 
             and authorities. Our lawyers consult on cyber fraud, reputation harm, and recovery of financial loss related to 
             cybercrimes.
           </p>

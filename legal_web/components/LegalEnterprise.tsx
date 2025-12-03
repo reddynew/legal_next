@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 
 export default function EnterpriseLegalSection() {
-  const { t } = useTranslation("Legal_enterprise");
+  const { t } = useTranslation("Legalenterprise");
 
   const features = [
     {
@@ -80,10 +80,10 @@ export default function EnterpriseLegalSection() {
         <header>
           <div className="text-black py-10 px-4 text-center mx-auto">
             <h1 className="text-4xl sm:text-5xl font-bold leading-tight leading-[1.2]">
-              <Trans i18nKey="hero_title" />
+              <Trans i18nKey="hero_title" ns="Legalenterprise" />
             </h1>
             <p className="text-base sm:text-lg leading-relaxed">
-              <Trans i18nKey="hero_sub" components={[<strong/>,<em />,<mark/>]} />
+              <Trans i18nKey="hero_sub" components={[<strong/>,<em />,<mark/>]} ns="Legalenterprise"/>
             </p>
           </div>
         </header>
@@ -93,21 +93,22 @@ export default function EnterpriseLegalSection() {
         {/* Info Sections */}
         <div className="max-w-4xl mx-auto text-gray-900 px-4 mb-8">
           <h2 className="text-3xl sm:text-4xl font-semibold leading-snug">
-            <Trans i18nKey="section1_title" />
+            <Trans i18nKey="section1_title" ns="Legalenterprise" />
           </h2>
           <p className="text-base sm:text-lg leading-relaxed text-justify">
             <Trans
               i18nKey="section1_text"
               components={[
-                <strong />, // 0 JP Law Suvidha
-                <em />,     // 1 online platform
-                <mark />,   // 2 business legal services
+                <strong />, 
+                <em />,     
+                <mark />,  
               ]}
+              ns="Legalenterprise"
             />
           </p>
 
           <h2 className="text-3xl sm:text-4xl font-semibold leading-snug mt-4">
-            <Trans i18nKey="section2_title" />
+            <Trans i18nKey="section2_title" ns="Legalenterprise" />
           </h2>
           <p className="text-base sm:text-lg leading-relaxed text-justify">
             <Trans
@@ -118,11 +119,12 @@ export default function EnterpriseLegalSection() {
                 <mark/>
     
               ]}
+              ns="Legalenterprise"
             />
           </p>
 
           <h2 className="text-3xl sm:text-4xl font-semibold leading-snug mt-4">
-            <Trans i18nKey="section3_title" />
+            <Trans i18nKey="section3_title" ns="Legalenterprise" />
           </h2>
           <p className="text-base sm:text-lg leading-relaxed text-justify">
             <Trans
@@ -132,11 +134,12 @@ export default function EnterpriseLegalSection() {
                 <em/>,
                 <mark/>
               ]}
+              ns="Legalenterprise"
             />
           </p>
 
           <h2 className="text-3xl sm:text-4xl font-semibold leading-snug mt-4">
-            <Trans i18nKey="section4_title" />
+            <Trans i18nKey="section4_title" ns="Legalenterprise" />
           </h2>
           <p className="text-base sm:text-lg leading-relaxed text-justify">
             <Trans
@@ -146,6 +149,7 @@ export default function EnterpriseLegalSection() {
                 <em/>,
                 <mark/>
               ]}
+              ns="Legalenterprise"
             />
           </p>
         </div>
@@ -155,7 +159,7 @@ export default function EnterpriseLegalSection() {
         {/* Feature Grid */}
         <div className="container-custom mx-auto px-4">
           <h2 className="text-3xl sm:text-4xl font-semibold leading-snug text-center">
-            <Trans i18nKey="features_title"  components={[<strong/>,<em/>,<mark/>]}/>
+            <Trans i18nKey="features_title"  components={[<strong/>,<em/>,<mark/>]} ns="Legalenterprise"/>
           </h2>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-4">
@@ -179,6 +183,7 @@ export default function EnterpriseLegalSection() {
                 <em/>,
                 <mark/>
                       ]}
+                      ns="Legalenterprise"
                     />
                   )}
                   {feature.key === "document_drafting" && (
@@ -189,6 +194,7 @@ export default function EnterpriseLegalSection() {
                 <em/>,
                 <mark/>
                       ]}
+                      ns="Legalenterprise"
                     />
                   )}
                   {feature.key === "risk_mitigation" && (
@@ -199,6 +205,7 @@ export default function EnterpriseLegalSection() {
                 <em/>,
                 <mark/>
                       ]}
+                      ns="Legalenterprise"
                     />
                   )}
                   {feature.key === "digital_workflows" && (
@@ -209,14 +216,17 @@ export default function EnterpriseLegalSection() {
                 <em/>,
                 <mark/>
                       ]}
+                      ns="Legalenterprise"
                     />
                   )}
                   {feature.key === "ip_protection" && (
                     <Trans
                       i18nKey={`features.${feature.description}`}
-                      components={[<mark />]} // 20 copyright registration
+                      components={[<mark />]} 
+                      ns="Legalenterprise"
                     />
                   )}
+                  
                   {feature.key === "custom_compliance" && (
                     <Trans
                       i18nKey={`features.${feature.description}`}
@@ -225,6 +235,7 @@ export default function EnterpriseLegalSection() {
                 <em/>,
                 <mark/>
                       ]}
+                       ns="Legalenterprise"
                     />
                   )}
                   {feature.key === "security" && (
@@ -235,6 +246,7 @@ export default function EnterpriseLegalSection() {
                 <em/>,
                 <mark/>
                       ]}
+                      ns="Legalenterprise"
                     />
                   )}
                   {feature.key === "legal_expertise" && (
@@ -245,6 +257,7 @@ export default function EnterpriseLegalSection() {
                 <em/>,
                 <mark/>
                       ]}
+                      ns="Legalenterprise"
                     />
                   )}
                   {feature.key === "scalable_operations" && (
@@ -255,6 +268,7 @@ export default function EnterpriseLegalSection() {
                 <em/>,
                 <mark/>
                       ]}
+                      ns="Legalenterprise"
                     />
                   )}
                 </p>
@@ -266,7 +280,7 @@ export default function EnterpriseLegalSection() {
         {/* Final Section */}
         <div className="max-w-4xl mx-auto mt-12 px-4 text-center">
           <h3 className="text-2xl sm:text-3xl font-semibold leading-normal italic">
-            <Trans i18nKey="final_title" />
+            <Trans i18nKey="final_title" ns="Legalenterprise" />
           </h3>
           <p className="text-base sm:text-lg leading-relaxed italic">
             <Trans
@@ -276,6 +290,7 @@ export default function EnterpriseLegalSection() {
                 <em/>,
                 <mark/>
               ]}
+              ns="Legalenterprise"
             />
             {" "}
             <Trans
@@ -285,6 +300,7 @@ export default function EnterpriseLegalSection() {
                 <em/>,
                 <mark/>
               ]}
+              ns="Legalenterprise"
             />
           </p>
         </div>

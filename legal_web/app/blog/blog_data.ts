@@ -1,5 +1,27 @@
 export const blogPosts = [
   {
+    slug: "heartbreaking-tragedy",
+    title: "A Heartbreaking Tragedy in Visakhapatnam",
+    excerpt: "A young mother and her infant lost their lives. Her final letter reveals a painful truth about domestic violence and dowry harassment in modern India.",
+    image: "https://jplawsuvidha.com/og_logo.jpg",
+    content: `
+      <p>NRIs often face challenges with property disputes, documentation, 
+      and legal representation in India. In this guide, we cover the most 
+      important things you need to know...</p>
+    `,
+  },
+  {
+    slug: "",
+    title: "A Heartbreaking Tragedy in Visakhapatnam",
+    excerpt: "A young mother and her infant lost their lives. Her final letter reveals a painful truth about domestic violence and dowry harassment in modern India.",
+    image: "https://jplawsuvidha.com/og_logo.jpg",
+    content: `
+      <p>NRIs often face challenges with property disputes, documentation, 
+      and legal representation in India. In this guide, we cover the most 
+      important things you need to know...</p>
+    `,
+  },
+  {
     slug: "nri-legal-help",
     title: "Complete Guide to NRI Legal Help in India",
     excerpt: "Everything NRIs must know about documentation, disputes, and property issues.",

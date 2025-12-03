@@ -6,6 +6,7 @@ import FAQSection from '@/components/Faq'
 import React from 'react'
 import BlogListComponent from '@/components/BlogList'
 import WhyChooseUs from '@/components/Usp'
+import Testimonials from '@/components/Testimonials'
 
 function page() {
   return (
@@ -16,6 +17,7 @@ function page() {
       {/* <Services/> */}
       <Expertise/>
       <BlogListComponent/>
+      <Testimonials/>
       <FAQSection/>
       <Footer/>
     </div>

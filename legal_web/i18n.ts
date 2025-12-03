@@ -14,8 +14,6 @@ i18n
   .init({
     fallbackLng: 'en',
     debug: false,
-    ns: ['services', 'Legal_enterprise', 'Legalrep'],
-    defaultNS: 'Legal_enterprise',
     interpolation: {
       escapeValue: false,
     },

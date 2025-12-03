@@ -324,12 +324,12 @@ function NriServices() {
 
                     <Card className="container-custom shadow-lg rounded-2xl  border border-blue-100 bg-blue-100  flex flex-col justify-between mb-8 md:max-w-7xl mx-auto  md:col-span-2">
                         <CardHeader>
-                            <div className="text-3xl font-serif text-center text-slate-900 mb-4">
-                                <h1 className="text-4xl sm:text-5xl font-bold leading-tight sm:leading-[1.2]">For Your Parents and Loved Ones in India</h1>
+                            <div className="font-serif text-center text-slate-900 mb-4">
+                                <h1 className="text-3xl sm:text-4xl font-bold leading-tight sm:leading-[1.2]">For Your Parents and Loved Ones in India</h1>
                             </div>
                         </CardHeader>
                         <CardContent>
-                            <h4 className="text-xl sm:text-2xl font-medium leading-relaxed">
+                            <h4 className="text-lg sm:text-xl font-medium leading-relaxed">
                                 Living miles away? <span className="text-gray-900 font-bold text-xl">We ensure your family's legal peace of mind in India.</span>
                                 Our team delivers trusted legal help, document assistance, and on-call support-right at your family’s doorstep.
                             </h4>

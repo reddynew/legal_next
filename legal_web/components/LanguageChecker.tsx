@@ -15,6 +15,7 @@ export default function LanguageSwitcher({ onClose }: { onClose?: () => void }) 
   const languages = [
     { code: 'en', label: 'English', native: 'English' },
     { code: 'te', label: 'Telugu', native: 'తెలుగు' },
+     { code: 'hi', label: 'Hindi', native: 'हिन्दी' },
   ];
 
   // Persist chosen language in cookies

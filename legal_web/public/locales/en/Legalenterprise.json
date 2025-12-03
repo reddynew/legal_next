@@ -1,0 +1,51 @@
+{
+  "hero_title": "Enterprise Legal",
+  "hero_sub": "Digital legal partner offering <2>tech-driven support</2> for growing startups and businesses.",
+
+  "section1_title": "One-stopLegal Platform",
+  "section1_text": "Designed for agile founders and midsize teams, <0>JP Law Suvidha</0> offers a comprehensive <1>online platform</1> for business <1>legal services</1>. Access everything you need to launch and manage your company, from <1>company incorporation</1>, <1>regulatory filings</1>, and <1>business contract management</1> to ongoing <1>legal consultation</1> and compliance support-all in one <1>secure digital</1> environment. Our goal is to enable startups and growing businesses to scale with confidence while staying compliant with evolving legal standards.",
+
+  "section2_title": "Legal Workflow Management",
+  "section2_text": "Benefit from advanced legal workflows and encrypted document management tools that safeguard your business information and streamline day-to-day legal processes. <0>JP Law Suvidha’s</0> <1>secure platform</1> enables <2>hassle-free</2> contract creation, electronic signature collection, and centralized document storage, ensuring your sensitive business data remains protected at every stage.",
+
+  "section3_title": "Legal Network Management",
+  "section3_text": "Gain instant access to a trusted network of experienced <1>legal professionals</1> who specialize in <1>corporate law</1>, <1>intellectual property protection</1>, <1>contract review</1>, <1>regulatory compliance, and risk management</1>. Our legal experts provide tailored advice that keeps your business operations innovative, protected, and fully compliant, whether you are navigating business expansion, IP filings, or ongoing risk assessments.",
+
+  "section4_title": "Scalable and Seamless",
+  "section4_text": "Experience seamless, scalable legal operations designed for modern businesses. From fast-tracked <1>company incorporation</1> and <1>trademark registration</1> to <1>real-time regulatory updates</1> and proactive risk mitigation, <0>JP Law Suvidha</0> empowers founders and teams to focus on growth while leaving legal complexities to the experts.",
+
+  "features_title": "Key Features of <1>Enterprise Legal</1>",
+
+  "features": {
+    "business_formation_title": "Business Formation & Compliance",
+    "business_formation_desc": "Company incorporation, statutory and ROC filings, full compliance management streamlined and paperless through robust digital tools.",
+
+    "document_drafting_title": "Critical Document Drafting",
+    "document_drafting_desc": "Employment agreements, vendor/client contracts, and internal policy documentation all expertly drafted and securely shared.",
+
+    "risk_mitigation_title": "Regulatory Risk Mitigation",
+    "risk_mitigation_desc": "Ongoing monitoring and legal health checks ensure your business stays compliant at every growth stage.",
+
+    "digital_workflows_title": "End-to-End Digital Workflows",
+    "digital_workflows_desc": "Automation tools and encrypted cloud storage eliminate paperwork, delays, and administrative bottlenecks.",
+
+    "ip_protection_title": "Intellectual Property Protection",
+    "ip_protection_desc": "Copyright registration, MOUs, privacy policies, and IP documentation tailored to safeguard all your business innovations.",
+
+    "custom_compliance_title": "Custom Compliance Policies",
+    "custom_compliance_desc": "Create and manage bespoke workplace, HR, and operations policies with compliance-focused templates.",
+
+    "security_title": "Enterprise-Grade Security",
+    "security_desc": "Encrypted document sharing and platform wide data protection for confidential, professional collaboration.",
+
+    "legal_expertise_title": "Vetted Legal Expertise",
+    "legal_expertise_desc": "Access experienced legal professionals with industry specific insight-no in-house counsel required.",
+
+    "scalable_operations_title": "Scalable & Transparent Operations",
+    "scalable_operations_desc": "Smart workflows, instant updates, and clear cost structures make legal support scalable as your business grows."
+  },
+
+  "final_title": "Grow Without Legal Hassles",
+  "final_text1": "<0>JP Law Suvidha</0> makes <2>legal simple</2>, fast, and <2>fully digital</2> helping you stay compliant, protect your IP, and scale your business.",
+  "final_text2": "Embrace the future of business legal support, designed for innovators and achievers."
+}

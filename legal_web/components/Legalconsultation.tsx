@@ -1,5 +1,5 @@
 "use client";
-import { Trans } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import {
   UserCheck,
   Scale,
@@ -10,6 +10,8 @@ import {
 } from "lucide-react";
 
 export default function LegalConsultationPage() {
+    const { t } = useTranslation("services");
+  
   const features = [
   {
     key: "smartMatch",

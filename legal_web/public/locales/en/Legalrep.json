@@ -27,7 +27,7 @@
     },
     "filters": {
       "title": "Customizable Search Filters",
-      "description": "Search by specialization, language, experience, jurisdiction, and fee structure."
+      "description": "Search by specialization, language, experience and jurisdiction."
     },
     "coverage": {
       "title": "Comprehensive Legal Coverage",
@@ -51,7 +51,7 @@
     },
     "accessible": {
       "title": "Accessible & Stress - Free Legal Support",
-      "description": "Affordable, professional, and approachable assistance for all legal needs."
+      "description": "professional, and approachable assistance for all legal needs."
     }
   },
   "footer": {
