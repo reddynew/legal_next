@@ -301,11 +301,11 @@ export default function Expertise_Civil() {
           </p>
 
           <h3 className="text-2xl sm:text-3xl font-semibold leading-normal mt-4">
-            {t("howJPHelps")}
+            {t("How JP Law Suvidha Helps")}
           </h3>
 
           <p className="text-base sm:text-lg leading-relaxed text-justify">
-            <Trans i18nKey="howJpHelpsConsumer" t={t} components={[<strong />, <em />, <mark />]} />
+            <Trans i18nKey="how Jp Law Suvidha Help" t={t} components={[<strong />, <em />, <mark />]} />
           </p>
         </section>
 

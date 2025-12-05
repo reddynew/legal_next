@@ -4,10 +4,27 @@ const nextConfig = {
   images: {
     unoptimized: true, // ⬅️ required for static export if you use <Image />
   },
-  trailingSlash: true, // ⬅️ ensures all routes end with / (important for cPanel hosting)
+  trailingSlash: false, // ⬅️ ensures all routes end with / (important for cPanel hosting)
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
   },
+  async rewrites() {
+    return [
+      {
+        source: '/admin/:path*',
+        destination: '/admin/:path*'
+      }
+    ];
+  },
+  async redirects() {
+    return [
+      {
+        source: '/admin',
+        destination: '/admin/index.html',
+        permanent: false
+      }
+    ];
+  }
 };
 
 module.exports = nextConfig;

@@ -18,10 +18,8 @@ export default function Expertise_Criminal() {
           <p className="text-base sm:text-lg leading-relaxed text-justify">
             Bail is a <em>legal provision</em> allowing temporary release of an accused person during trial after arrest.
              Anticipatory Bail, a significant aspect of <em>criminal law in India</em>, serves as a preventive remedy under 
-             Section 438 <abbr title="Code of Criminal Procedure, 1973">CrPC</abbr>, enabling a person to seek bail before arrest. Through its <em>criminal law</em> <em>consultation
-              services</em>, <span className="font-bold text-black">JP Law Suvidha</span>  --- change facilitates skilled bail lawyer and anticipatory bail lawyer access for fast, strategic, and reliable <em>legal assistance-------</em>.
-          </p>
-
+             Section 482 of  <abbr title="Bharatiya Nagarik Suraksha Sanhita, 2024">BNSS</abbr>, enabling a person to seek bail before arrest. Through its <em>criminal law</em> <em>consultation
+              services</em>, <span className="font-bold text-black">JP Law Suvidha</span> facilitates access to experienced bail and anticipatory bail lawyers <em>ensuring prompt, strategic, and dependable legal representation</em>.</p>
           <h4 className="text-xl sm:text-2xl font-semibold leading-relaxed mt-4">Types of Bail</h4>
           <ul className="list-disc ml-6 mb-4 text-gray-700 space-y-1">
             <li><em>Regular Bail</em> – granted after arrest in bailable and non-bailable offenses.</li>
@@ -30,12 +28,12 @@ export default function Expertise_Criminal() {
             <li><em>Default Bail</em> – granted if investigation exceeds prescribed time limits.</li>
           </ul>
 
-          <h4 className="text-xl sm:text-2xl font-semibold leading-relaxed mt-4">------ change Legal Provisions-------</h4>
+          <h4 className="text-xl sm:text-2xl font-semibold leading-relaxed mt-4">Legal Provisions</h4>
           <ul className="list-disc ml-6 mb-4 text-gray-700 space-y-1">
-            <li>Section 436 <abbr title="Code of Criminal Procedure, 1973">CrPC</abbr> – Bail in bailable offenses.</li>
-            <li>Section 437 <abbr title="Code of Criminal Procedure, 1973">CrPC</abbr> – Bail in non-bailable offenses.</li>
-            <li>Section 438 <abbr title="Code of Criminal Procedure, 1973">CrPC</abbr> – Anticipatory bail.</li>
-            <li>Section 439 <abbr title="Code of Criminal Procedure, 1973">CrPC</abbr> – High Court/Sessions Court bail powers.</li>
+            <li>Section 478 of  <abbr title="Bharatiya Nagarik Suraksha Sanhita, 2024">BNSS</abbr> – Bail in bailable offenses.</li>
+            <li>Section 480 of  <abbr title="Bharatiya Nagarik Suraksha Sanhita, 2024">BNSS</abbr> – Bail in non-bailable offenses.</li>
+            <li>Section 482 of  <abbr title="Bharatiya Nagarik Suraksha Sanhita, 2024">BNSS</abbr> – Anticipatory bail.</li>
+            <li>Section 483 of  <abbr title="Bharatiya Nagarik Suraksha Sanhita, 2024">BNSS</abbr> – High Court/Sessions Court bail powers.</li>
           </ul>
 
           <h4 className="text-xl sm:text-2xl font-semibold leading-relaxed mt-4">Who Can Apply?</h4>
@@ -56,7 +54,7 @@ export default function Expertise_Criminal() {
 
           <h4 className="text-xl sm:text-2xl font-semibold leading-relaxed mt-4">Process for Anticipatory Bail</h4>
           <p className="text-base sm:text-lg leading-relaxed text-justify">
-            Applications are filed before the Sessions Court or High Court under Section 438 CrPC. Courts assess reasons for apprehension of arrest, antecedents, and gravity of allegations. Once anticipatory bail is granted, police must release the applicant on bail upon arrest. <span className="font-bold text-black">JP Law Suvidha</span> ensures clients understand all conditions and legal obligations attached to bail.
+            Applications are filed before the Sessions Court or High Court under Section 482 of <abbr title='Bharatiya Nagarik Suraksha Sanhita, 2024'>BNSS</abbr>. Courts assess reasons for apprehension of arrest, antecedents, and gravity of allegations. Once anticipatory bail is granted, police must release the applicant on bail upon arrest. <span className="font-bold text-black">JP Law Suvidha</span> ensures clients understand all conditions and legal obligations attached to bail.
           </p>
         </section>
 
@@ -64,15 +62,15 @@ export default function Expertise_Criminal() {
         <section>
           <h2 className="text-3xl sm:text-4xl font-semibold leading-snug border-l-4 border-gray-400 pl-4">Filing a Police Complaint and FIR</h2>
           <p className="text-base sm:text-lg leading-relaxed text-justify">
-            Complaints can be made orally or in writing at a police station under Section 156 <abbr title="Code of Criminal Procedure, 1973">CrPC</abbr>
-, or online where available. For cognizable offenses, police must register an FIR under Section 154 <abbr title="Code of Criminal Procedure, 1973">CrPC</abbr>
+            Complaints can be made orally or in writing at a police station under Section 175 of  <abbr title="Bharatiya Nagarik Suraksha Sanhita, 2024">BNSS</abbr>
+, or online where available. For cognizable offenses, police must register an FIR under Section 173 of  <abbr title="Bharatiya Nagarik Suraksha Sanhita, 2024">BNSS</abbr>
 . <em>Criminal law experts</em> at <strong>JP Law Suvidha</strong> assist clients with drafting complaints, 
  understanding police procedure, and seeking <mark>online legal help</mark> through the platform.
           </p>
 
           <p className="text-base sm:text-lg leading-relaxed text-justify">
             If police refuse to file an FIR, the complainant may approach senior officers or move a petition before a
-             magistrate under Section 156(3) <abbr title="Code of Criminal Procedure, 1973">CrPC</abbr>
+             magistrate under Section 175(3) of  <abbr title="Bharatiya Nagarik Suraksha Sanhita, 2024">BNSS</abbr>
 . <strong>JP Law Suvidha</strong> <em>legal consultation</em> ensures such rights are protected and cases are followed through legally.
           </p>
         </section>
@@ -83,8 +81,8 @@ export default function Expertise_Criminal() {
           <p className="text-base sm:text-lg leading-relaxed text-justify">
             Respondents should cooperate with police, provide truthful information, and preferably have a criminal defense
              lawyer present. Evidence such as communication logs, messages, or documents should be preserved. If police
-              inaction occurs, the remedy is to approach a magistrate under Section 156(3) <abbr title="Code of Criminal Procedure, 1973">CrPC</abbr>  or file a private 
-              complaint under Section 200 <abbr title="Code of Criminal Procedure, 1973">CrPC</abbr>
+              inaction occurs, the remedy is to approach a magistrate under Section 175(3) of  <abbr title="Bharatiya Nagarik Suraksha Sanhita, 2024">BNSS</abbr>  or file a private 
+              complaint under Section 223 of <abbr title="Bharatiya Nagarik Suraksha Sanhita, 2024">BNSS</abbr>
 . <span className="font-bold text-black">JP Law Suvidha</span> <em>connects</em> clients with criminal defense lawyers for every step.
           </p>
         </section>
