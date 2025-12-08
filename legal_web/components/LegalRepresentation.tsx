@@ -68,8 +68,10 @@ export default function LegalRepresentationPage() {
       <section className="bg-white container-custom">
         {/* Header */}
         <header>
-          <div className="text-black py-10 px-4 text-center mx-auto">
-            <h1 className="text-4xl sm:text-5xl font-bold leading-tight leading-[1.2]">
+          <div className="text-black py-10 px-4 text-center rounded-t-3xl mx-auto">
+            <img src="/legal_representation.png" alt="legal" />
+
+            {/* <h1 className="text-4xl sm:text-5xl font-bold leading-tight leading-[1.2]">
               <Trans
                 ns="Legalrep"
                 i18nKey="header.title"
@@ -82,14 +84,15 @@ export default function LegalRepresentationPage() {
                 i18nKey="header.description"
                 components={[<strong />, <em />, <mark />]}
               />
-            </p>
+            </p> */}
+
           </div>
         </header>
       </section>
 
       <section>
         {/* Informational sections */}
-        <div className="max-w-4xl mx-auto text-gray-900 px-4">
+        <div className="container-custom mx-auto text-gray-900 px-10">
           <section>
             <h2 className="text-3xl sm:text-4xl font-semibold leading-snug">
               <Trans
@@ -106,7 +109,7 @@ export default function LegalRepresentationPage() {
               />
             </p>
 
-            <h2 className="text-3xl sm:text-4xl font-semibold leading-snug mt-4">
+            {/* <h2 className="text-3xl sm:text-4xl font-semibold leading-snug mt-4">
               <Trans
                 ns="Legalrep"
                 i18nKey="matching.title"
@@ -119,9 +122,9 @@ export default function LegalRepresentationPage() {
                 i18nKey="matching.description"
                 components={[<strong />, <em />, <mark />]}
               />
-            </p>
+            </p> */}
 
-            <h2 className="text-3xl sm:text-4xl font-semibold leading-snug mt-4">
+            {/* <h2 className="text-3xl sm:text-4xl font-semibold leading-snug mt-4">
               <Trans
                 ns="Legalrep"
                 i18nKey="support.title"
@@ -134,7 +137,7 @@ export default function LegalRepresentationPage() {
                 i18nKey="support.description"
                 components={[<strong />, <em />, <mark />]}
               />
-            </p>
+            </p> */}
           </section>
         </div>
       </section>

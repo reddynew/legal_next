@@ -1,10 +1,16 @@
-# A Heartbreaking Tragedy in Visakhapatnam: When Love Turned Into Abuse
+---
+title: "A Heartbreaking Tragedy in Visakhapatnam: When Love Turned Into Abuse"
+description: "A tragic case of dowry harassment in Visakhapatnam"
+date: "2025-01-05"
+image: "/civil.jpeg"
+---
+---
 
 A young mother and her infant lost their lives, leaving behind a final letter that exposes the painful reality of domestic violence and dowry harassment in modern India.
 
 ---
 
-## Case Overview
+# Case Overview
 
 The city of Visakhapatnam was shaken by the tragic death of **Veena**, a young woman who ended her life along with her six-month-old baby boy.  
 Before taking this extreme step, she wrote a **nine-page handwritten letter** describing the relentless domestic abuse and dowry harassment she faced from her husband and in-laws.
@@ -75,7 +81,7 @@ Despite existing laws, dowry-related violence continues to destroy lives across 
 - Isolation from friends and family  
 - Lack of timely and accessible legal support  
 
-Veena’s story underlines the urgent need for **awareness, early reporting, and professional legal assistance** to prevent such tragedies.
+Veena’s story underlines the urgent need for **awareness, early reporting, and professional legal assistance**.
 
 ---
 
@@ -85,73 +91,10 @@ Timely legal intervention can save lives. **JP Law Suvidha** offers confidential
 
 ---
 
-## 1. Immediate Legal Assistance
-
-Through JP Law Suvidha, victims can quickly:
-
-- Understand their legal rights  
-- Learn about available legal options  
-- Get guidance on staying safe and protected  
-
-Early legal action helps prevent situations from escalating into life-threatening abuse.
-
----
-
-## 2. FIR and Police Complaint Support
-
-JP Law Suvidha assists in:
-
-- Drafting clear and legally sound complaints  
-- Submitting them correctly to the appropriate police station  
-- Following up to ensure **FIR registration** and proper documentation  
-
-This ensures that the **victim’s experience is officially recorded** and cannot be easily ignored.
-
----
-
-## 3. Verified & Experienced Lawyers
-
-Victims are connected with **verified legal professionals** experienced in:
-
-- Domestic violence cases  
-- Dowry harassment cases  
-- Divorce, maintenance, and child custody  
-
-These lawyers provide strong representation, strategic advice, and continuous support throughout the legal process.
-
----
-
-## 4. Safe, Private, and Confidential Support
-
-Women can seek help without fear of:
-
-- Interference or retaliation from family members  
-- Social judgment or character attacks  
-- Threats and intimidation from abusers  
-
-Privacy and confidentiality are protected at every stage of interaction.
-
----
-
-## 5. Emotional & Legal Guidance
-
-JP Law Suvidha also helps victims with:
-
-- **Evidence collection** (messages, calls, medical reports, witness statements, etc.)  
-- **Personal protection strategies** and safety planning  
-- Choosing the right **legal pathways** (police complaints, protection orders, maintenance, divorce, etc.)  
-- Planning a **safe and independent future**  
-
-Real empowerment begins with clear information and practical support.
-
----
-
 ## A Call for Awareness and Action
 
 Veena’s story is a painful reminder that **no one should be forced to suffer in silence**.  
 With the right awareness, community support, and timely legal intervention, many such tragedies can be prevented.
-
-**JP Law Suvidha** stands with victims of abuse — offering **knowledge, safety, and legal empowerment** when they need it the most.
 
 ---
 

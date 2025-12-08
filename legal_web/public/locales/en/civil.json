@@ -91,13 +91,11 @@
 
   "moneyRecoveryIntro": "Money recovery is the legal process by which a creditor seeks repayment using civil remedies, legal notices, summary suits, or <1>cheque bounce actions</1>.",
 
-  "howJpHelpsRecovery": "<0>JP Law Suvidha</0> connects clients to civil lawyers for <0>Section 138 NI Act</0> cases, legal <1>notices</1>, summary <1>suits</1>, and debt recovery claims. The platform enables digital submission and review of <1>contracts</1>, invoices, and case histories for fast legal assessment.",
-
+  "howJpHelpsRecovery": "<0>JP Law Suvidha</0> connects clients with civil lawyers for matters related to Section 138 of the NI Act, legal notices, summary suits, and debt recovery claims. The<1>platform enables digital submission and review of contracts, invoices, and case histories to ensure quick and efficient legal assessment.</1>",
   "injunctionsNotices": "Injunctions and Notices",
 
   "injunctionIntro": "Injunctions are judicial orders requiring or restraining specific actions, used frequently in property, business, or contractual matters.",
 
-  "howJpHelpsInjunction": "<0>JP Law Suvidha</0> assists with drafting legal <1>notices</1>, obtaining <1>injunctions</1> (temporary and permanent), pursuing <1>ex-parte orders</1>, and filing civil litigation under Specific Relief and CPC with expert civil lawyers available for consultation and digital workflow for document and evidence management.",
-
+  "howJpHelpsInjunction": "<0>JP Law Suvidha</0> assists clients with <1>drafting legal notices</1>, <1>obtaining temporary</1> and <1>permanent injunctions, pursuing exparte orders, and filing civil litigation</1> under the Specific Relief Act and the Civil Procedure Code (CPC). The platform provides access to expert civil lawyers for consultation and offers a digital workflow for document and evidence management.",
   "footer": "<0>JP Law Suvidha</0> is your trusted <2>legal platform</2> for property disputes, contractual disagreements, consumer complaints, money recovery, and expert civil litigation support across India."
 }

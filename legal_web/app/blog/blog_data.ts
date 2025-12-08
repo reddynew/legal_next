@@ -11,7 +11,7 @@ export const blogPosts = [
     `,
   },
   {
-    slug: "",
+    slug: "heartbreaking-tragedy",
     title: "A Heartbreaking Tragedy in Visakhapatnam",
     excerpt: "A young mother and her infant lost their lives. Her final letter reveals a painful truth about domestic violence and dowry harassment in modern India.",
     image: "https://jplawsuvidha.com/og_logo.jpg",

@@ -78,20 +78,22 @@ export default function EnterpriseLegalSection() {
       <section className="bg-white container-custom">
         {/* Header Section */}
         <header>
-          <div className="text-black py-10 px-4 text-center mx-auto">
-            <h1 className="text-4xl sm:text-5xl font-bold leading-tight leading-[1.2]">
+          <div className="text-black py-10 px-4 text-center rounded-t-3xl mx-auto">
+            <img src="/enterprise_legal.png" alt="legal" />
+
+            {/* <h1 className="text-4xl sm:text-5xl font-bold leading-tight leading-[1.2]">
               <Trans i18nKey="hero_title" ns="Legalenterprise" />
             </h1>
             <p className="text-base sm:text-lg leading-relaxed">
               <Trans i18nKey="hero_sub" components={[<strong/>,<em />,<mark/>]} ns="Legalenterprise"/>
-            </p>
+            </p> */}
           </div>
         </header>
       </section>
 
       <section>
         {/* Info Sections */}
-        <div className="max-w-4xl mx-auto text-gray-900 px-4 mb-8">
+        <div className="container-custom mx-auto text-gray-900 px-10">
           <h2 className="text-3xl sm:text-4xl font-semibold leading-snug">
             <Trans i18nKey="section1_title" ns="Legalenterprise" />
           </h2>
@@ -107,7 +109,7 @@ export default function EnterpriseLegalSection() {
             />
           </p>
 
-          <h2 className="text-3xl sm:text-4xl font-semibold leading-snug mt-4">
+          {/* <h2 className="text-3xl sm:text-4xl font-semibold leading-snug mt-4">
             <Trans i18nKey="section2_title" ns="Legalenterprise" />
           </h2>
           <p className="text-base sm:text-lg leading-relaxed text-justify">
@@ -121,7 +123,7 @@ export default function EnterpriseLegalSection() {
               ]}
               ns="Legalenterprise"
             />
-          </p>
+          </p> */}
 
           <h2 className="text-3xl sm:text-4xl font-semibold leading-snug mt-4">
             <Trans i18nKey="section3_title" ns="Legalenterprise" />

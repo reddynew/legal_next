@@ -16,10 +16,10 @@ export default function Expertise_Criminal() {
         <section>
           <h2 className="text-3xl sm:text-4xl font-semibold leading-snug border-l-4 border-gray-400 pl-4">Bail &amp; Anticipatory Bail Assistance</h2>
           <p className="text-base sm:text-lg leading-relaxed text-justify">
-            Bail is a <em>legal provision</em> allowing temporary release of an accused person during trial after arrest.
+            Bail is a <em>legal provision</em> that allows the temporary release of an accused person during trial after arrest.
              Anticipatory Bail, a significant aspect of <em>criminal law in India</em>, serves as a preventive remedy under 
-             Section 482 of  <abbr title="Bharatiya Nagarik Suraksha Sanhita, 2024">BNSS</abbr>, enabling a person to seek bail before arrest. Through its <em>criminal law</em> <em>consultation
-              services</em>, <span className="font-bold text-black">JP Law Suvidha</span> facilitates access to experienced bail and anticipatory bail lawyers <em>ensuring prompt, strategic, and dependable legal representation</em>.</p>
+             Section 482 of  <abbr title="Bharatiya Nagarik Suraksha Sanhita, 2024">BNSS</abbr>, enabling a person to seek bail in anticipation of arrest. Through its <em>criminal law</em> <em>consultation
+              services</em>, <span className="font-bold text-black">JP Law Suvidha</span> facilitates access to experienced bail and anticipatory bail lawyers <em>ensuring prompt, strategic, and reliable legal representation</em>.</p>
           <h4 className="text-xl sm:text-2xl font-semibold leading-relaxed mt-4">Types of Bail</h4>
           <ul className="list-disc ml-6 mb-4 text-gray-700 space-y-1">
             <li><em>Regular Bail</em> – granted after arrest in bailable and non-bailable offenses.</li>
@@ -91,16 +91,14 @@ export default function Expertise_Criminal() {
         <section>
           <h2 className="text-3xl sm:text-4xl font-semibold leading-snug border-l-4 border-gray-400 pl-4">Trial Representation</h2>
           <p className="text-base sm:text-lg leading-relaxed text-justify">
-            <span className="font-bold text-black">JP Law Suvidha</span> matches clients to criminal defense experts for end-to-end 
-            representation during trial. By using online advocate consultation and smart matching, clients get a defense lawyer 
-            suited for their needs including <em>cybercrime</em>, <em>white-collar offenses</em>, and serious criminal cases.
-          </p>
-
-          <p className="text-base sm:text-lg leading-relaxed text-justify">
-            Trial representation ensures legal rights are protected, evidence is properly challenged, and legal arguments are tailored for 
-            the best outcome. The <strong>JP Law Suvidha</strong> platform also improves transparency, affordability, and timely updates throughout the 
-            trial process.
-          </p>
+            <strong>JP Law Suvidha</strong> connects clients with experienced criminal defense advocates for comprehensive representation
+             throughout the trial process. By leveraging <em>online consultation and an intelligent advocate-matching system</em>, 
+             clients are paired with lawyers best suited to handle cases involving cybercrime, white-collar offenses, 
+             and other serious criminal matters. The trial representation ensures that clients’ legal rights are 
+             protected, evidence is effectively challenged, and arguments are strategically presented to achieve 
+             the best possible outcome. <strong>JP Law Suvidha</strong> further enhances transparency, affordability, and timely 
+             communication at every stage of the trial.
+            </p>
         </section>
 
         {/* Cyber Crimes */}

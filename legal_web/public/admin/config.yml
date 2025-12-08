@@ -3,8 +3,8 @@ backend:
   repo: reddynew/legal_next
   branch: main
 
-  base_url: "http://localhost:3001/api/decap"
-  auth_endpoint: "auth"
+  base_url: "http://localhost:3001"
+  auth_endpoint: "api/decap/auth"
 
 publish_mode: simple
 

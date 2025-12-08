@@ -58,18 +58,19 @@ export default function LegalConsultationPage() {
         {/* Hero */}
         <header>
           <div className="text-black py-10 px-4 text-center rounded-t-3xl mx-auto">
-            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight sm:leading-[1.2] text-center">
+            <img src="/legal_consultation.png" alt="legal" />
+            {/* <h1 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight sm:leading-[1.2] text-center">
               <Trans ns="services" i18nKey="hero_title" components={[<strong />, <em />, <mark />]} />
-            </h1>
-            <p className="text-base sm:text-lg leading-relaxed">
+            </h1> */}
+            {/* <p className="text-base sm:text-lg leading-relaxed">
               <Trans ns="services" i18nKey="hero_sub" components={[<strong />, <em />, <mark />]} />
-            </p>
+            </p> */}
           </div>
         </header>
 
         <section>
           {/* Text Sections */}
-          <div className="max-w-4xl mx-auto text-gray-900 px-4">
+          <div className="container-custom mx-auto text-gray-900 px-4">
             <h2 className="text-3xl sm:text-4xl font-semibold leading-snug">
               <Trans ns="services" i18nKey="section1_title" components={[<strong />, <em />, <mark />]} />
             </h2>
@@ -81,7 +82,7 @@ export default function LegalConsultationPage() {
               />
             </p>
 
-            <h2 className="text-3xl sm:text-4xl font-semibold leading-snug mt-4">
+            {/* <h2 className="text-3xl sm:text-4xl font-semibold leading-snug mt-4">
               <Trans ns="services" i18nKey="section2_title" components={[<strong />, <em />, <mark />]} />
             </h2>
             <p className="text-base sm:text-lg leading-relaxed text-justify">
@@ -90,7 +91,7 @@ export default function LegalConsultationPage() {
                 i18nKey="section2_text"
                 components={[<strong />, <em />, <mark />]}
               />
-            </p>
+            </p> */}
 
             <h2 className="text-3xl sm:text-4xl font-semibold leading-snug mt-4">
               <Trans ns="services" i18nKey="section3_title" components={[<strong />, <em />, <mark />]} />
