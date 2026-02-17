@@ -104,3 +104,4 @@ export default function LanguageSwitcher({ onClose }: { onClose?: () => void }) 
     </div>
   );
 }
+

@@ -93,7 +93,7 @@ const UserDisclaimers = () => {
 
     return (
         <div>
-            <Navbar/>
+            <Navbar />
             <section id="user-disclaimers" className="py-20 bg-muted/30">
                 <div className="container mx-auto px-4 max-w-5xl">
                     {/* Header */}
@@ -142,50 +142,6 @@ const UserDisclaimers = () => {
                                 </div>
                             </div>
                         ))}
-                    </div>
-
-                    {/* Declaration Section */}
-                    <div className="bg-card border-2 border-primary/20 rounded-lg p-8">
-                        <h3 className="text-xl font-medium text-foreground mb-6 text-center">
-                            Declaration
-                        </h3>
-
-                        <div className="bg-muted/30 rounded-lg p-6 mb-6">
-                            <p className="text-muted-foreground leading-relaxed text-center">
-                                By clicking "I Agree" or continuing to use this platform, I affirm that I have read, understood,
-                                and voluntarily accept the terms outlined above, and I grant my consent for the ethical handling
-                                of my information in alignment with the platform's goals.
-                            </p>
-                        </div>
-
-                        {/* Checkbox */}
-                        <div className="flex items-center justify-center gap-4">
-                            <button
-                                onClick={handleAgree}
-                                className="flex items-center gap-3 p-4 rounded-lg border border-border hover:border-primary/50 transition-colors duration-200"
-                            >
-                                {isAgreed ? (
-                                    <CheckSquare className="w-6 h-6 text-primary" />
-                                ) : (
-                                    <Square className="w-6 h-6 text-muted-foreground" />
-                                )}
-                                <span className={`font-medium ${isAgreed ? 'text-primary' : 'text-muted-foreground'}`}>
-                                    I Agree to the Terms & Conditions
-                                </span>
-                            </button>
-                        </div>
-
-                        {/* Status Message */}
-                        {isAgreed && (
-                            <div className="mt-6 text-center">
-                                <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-lg">
-                                    <CheckSquare className="w-4 h-4" />
-                                    <span className="text-sm font-medium">
-                                        Thank you for accepting our terms
-                                    </span>
-                                </div>
-                            </div>
-                        )}
                     </div>
 
                     {/* Bottom accent */}

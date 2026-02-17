@@ -3,8 +3,8 @@ import * as LucideIcons from "lucide-react";
 import { useTranslation } from 'react-i18next';
 import '../app/index.css'
 const Expertise = () => {
-    const { t } = useTranslation('expertise');
-    type Service = {
+  const { t } = useTranslation('expertise');
+  type Service = {
     title: string;
     description: string;
     icon?: string;
@@ -20,17 +20,17 @@ const Expertise = () => {
 
   const expertiseAreas: ExpertiseArea[] = Array.isArray(rawData)
     ? rawData.filter(
-        (item): item is ExpertiseArea =>
-          item &&
-          typeof item.category === 'string' &&
-          Array.isArray(item.services) &&
-          item.services.every(
-            (s) =>
-              typeof s.title === 'string' && typeof s.description === 'string'
-          )
-      )
+      (item): item is ExpertiseArea =>
+        item &&
+        typeof item.category === 'string' &&
+        Array.isArray(item.services) &&
+        item.services.every(
+          (s) =>
+            typeof s.title === 'string' && typeof s.description === 'string'
+        )
+    )
     : [];
-  
+
   // dynamically render lucide icons by name
   const renderIcon = (iconName: string, className = "w-6 h-6 text-primary") => {
     const pascalCase = iconName
@@ -46,7 +46,7 @@ const Expertise = () => {
     <section id="expertise" className="py-16 bg-gray-50">
       <div className="container-custom px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="heading-lg font-bold tracking-tight sm:text-4xl mb-4 text-black">
+          <h2 className=" heading-lg tracking-tight sm:text-4xl mb-4 text-black">
             {t(`expertise.section_title`)}
           </h2>
           <p className="paragraph text-gray-600">{t(`expertise.section_desc`)}</p>

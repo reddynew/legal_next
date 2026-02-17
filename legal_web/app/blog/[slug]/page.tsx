@@ -96,27 +96,27 @@
 //     </div>
 //   );
 // }
-  import ReactMarkdown from 'react-markdown'
-  import { PostLayout } from '@/components/BlogLayout'
-  import { getPostSlugs, getPostBySlug } from '@/lib/fetches'
-  import Navbar from '@/components/Navbar'
+import ReactMarkdown from 'react-markdown'
+import { PostLayout } from '@/components/BlogLayout'
+import { getPostSlugs, getPostBySlug } from '@/lib/fetches'
+import Navbar from '@/components/Navbar'
 
-  export async function generateStaticParams() {
-    return getPostSlugs().map((file) => ({
-      slug: file.replace(/\.md$/, ''),
-    }))
-  }
+export async function generateStaticParams() {
+  return getPostSlugs().map((file) => ({
+    slug: file.replace(/\.md$/, ''),
+  }))
+}
 
-  export default async function BlogPostPage({ params }: { params: { slug: string } }) {
-     const { slug } = await params;
-    console.log('page params', params)
-    console.log("slug is", slug)
+export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+  const { slug } = await params;
+  // console.log('page params', params)
+  console.log("slug is", slug)
 
-    const { frontMatter, content } = getPostBySlug(slug)
+  const { frontMatter, content } = getPostBySlug(slug)
 
-    return (
-      <div>
-      <Navbar/>
+  return (
+    <div>
+      <Navbar />
       <PostLayout
         title={frontMatter.title}
         description={frontMatter.description}
@@ -124,10 +124,36 @@
         image={frontMatter.image}
       >
         <ReactMarkdown components={{
-    h1: ({ children }) => (
-      <h1 className="text-3xl font-bold mt-8">{children}</h1>
-        )}}>{content}</ReactMarkdown>
+          h1: ({ children }) => (
+            <h1 className="text-3xl font-bold mt-8 mb-4">
+              {children}
+            </h1>
+          ),
+          h2: ({ children }) => (
+            <h2 className="text-2xl font-semibold mt-6 mb-3">
+              {children}
+            </h2>
+          ),
+          p: ({ children }) => (
+            <p className="text-base text-gray-800 leading-7 mb-4">
+              {children}
+            </p>
+          ),
+          blockquote: ({ children }) => (
+            <blockquote className="border-l-4 border-red-500 pl-4 italic text-gray-600 my-6">
+              {children}
+            </blockquote>
+          ),
+          ul: ({ children }) => (
+            <ul className="list-disc pl-6 mb-4">
+              {children}
+            </ul>
+          ),
+          li: ({ children }) => (
+            <li className="mb-2">{children}</li>
+          ),
+        }}>{content}</ReactMarkdown>
       </PostLayout>
-      </div>
-    )
-  }
+    </div>
+  )
+}

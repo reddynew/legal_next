@@ -2,6 +2,8 @@
 import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from "next/navigation";
 
+import { orderService } from '../lib/api';
+
 // Separate component that uses useSearchParams
 function PaymentContent() {
   const searchParams = useSearchParams();
@@ -10,7 +12,7 @@ function PaymentContent() {
   const qOrderId = searchParams?.get('plan');
   const Order_price = searchParams?.get('price');
 
-alert(`Order ID:${qOrderId}, price:${Order_price}`);
+  // alert(`Order ID:${qOrderId}, price:${Order_price}`);
 
   const [order, setOrder] = useState<{ price?: string | null }>();
   const [loading, setLoading] = useState(false);
@@ -23,13 +25,8 @@ alert(`Order ID:${qOrderId}, price:${Order_price}`);
   useEffect(() => {
     if (!qOrderId) return;
     setLoading(true);
-    fetch(`http://localhost:3001/api/orders/${qOrderId}`)
-      .then((r) => {
-        if (!r.ok) throw new Error('Order not found');
-        return r.json();
-      })
+    orderService.getOrder(qOrderId)
       .then((data) => {
-        // console.log('data in payments page', data);
         if (data.success) {
           setOrder({ price: data.data.price });
         } else {

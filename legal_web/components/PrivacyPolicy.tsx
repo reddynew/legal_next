@@ -9,7 +9,7 @@ export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen bg-background">
       {/* Professional Header */}
-      <Navbar/>
+      <Navbar />
 
       {/* Main Content */}
       <main className="px-4 sm:px-6 lg:px-8 py-12">
@@ -435,7 +435,7 @@ export default function PrivacyPolicy() {
                           <div className="space-y-2 legal-small">
                             <p><strong>Website:</strong> jplawsuvidha.com</p>
                             <p><strong>Email:</strong> support@jplawsuvidha.com</p>
-                            <p><strong>Phone:</strong> +918639930413</p>
+                            <p><strong>Phone:</strong> +91 8019097373</p>
                           </div>
                         </div>
                         <div>

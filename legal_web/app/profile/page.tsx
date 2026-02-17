@@ -1,11 +1,13 @@
 import React from 'react'
 import Profile from '@/components/Profile'
 
+import ProtectedRoute from '@/components/ProtectedRoute'
+
 function page() {
   return (
-    <div>
-        <Profile/>
-    </div>
+    <ProtectedRoute>
+      <Profile />
+    </ProtectedRoute>
   )
 }
 

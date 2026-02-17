@@ -46,7 +46,7 @@ export default function WhyChooseUs() {
       <div className="container-custom mx-auto px-4">
         {/* Heading */}
         <div className="text-center mb-12">
-          <h2 className="mb-4 text-black font-bold text-2xl md:text-4xl font-serif tracking-tight">
+          <h2 className="mb-4 text-black font-semibold text-2xl md:text-4xl font-serif tracking-tight">
             Why Choose <span className="text-gray-700">JP Law Suvidha</span>
           </h2>
           <p className="text-gray-600 paragraph mx-auto">
@@ -144,6 +144,6 @@ export default function WhyChooseUs() {
 `}</style>
 
     </section>
-    
+
   );
 }

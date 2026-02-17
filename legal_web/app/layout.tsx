@@ -6,10 +6,12 @@ import { AuthProvider } from "@/context/LoginContext";
 import { PlanProvider } from "@/context/PlansContext";
 import NotificationBanner from '@/components/NotificationBanner'
 import LayoutVisibilityWrapper from "@/components/IconsWrapper";
-import  I18nextProvider from "@/context/LanguageContext";
+import I18nextProvider from "@/context/LanguageContext";
 import '../i18n';
 import ScrollToTop from "@/components/ScrollToTop";
 import CookieConsent from "@/components/Cookies";
+import { Toaster } from 'sonner';
+import ErrorBoundary from "@/components/ErrorBoundary";
 
 
 
@@ -39,7 +41,9 @@ export const metadata: Metadata = {
     "business law",
     "legal consultation",
     "digital law platform",
-    "lawyer matching"
+    "lawyer matching",
+    "NRI legal services",
+    "NRI legal support"
   ],
   authors: [{ name: "JP Law Suvidha Team", url: "https://jplawsuvidha.com" }],
   openGraph: {
@@ -69,27 +73,50 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <link rel="preload" as="image" href="/hero.avif" />
+      <head>
+        <Script
+          id="gtm-script"
+          strategy="afterInteractive"
+        >
+          {`
+            (function(w,d,s,l,i){
+              w[l]=w[l]||[];
+              w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});
+              var f=d.getElementsByTagName(s)[0],
+                  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+              j.async=true;
+              j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+              f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-5L8TP5BW');
+          `}
+        </Script>
+        <link rel="preload" as="image" href="/hero.avif" />
+
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-          {/* <CookieConsent/> */}
+        {/* <CookieConsent/> */}
+        <ErrorBoundary>
           <LayoutVisibilityWrapper>
-  <I18nextProvider>
-         
-          <PlanProvider>
-        <AuthProvider>
-          <ScrollToTop/>
-          <NotificationBanner/>
+            <I18nextProvider>
+
+              <PlanProvider>
+                <AuthProvider>
+                  <ScrollToTop />
+                  <NotificationBanner />
 
 
-        {children}
-        
+                  {children}
+                  <Toaster richColors position="top-right" />
 
-        </AuthProvider>
-          </PlanProvider>
-          </I18nextProvider>
-           </LayoutVisibilityWrapper>
+
+                </AuthProvider>
+              </PlanProvider>
+            </I18nextProvider>
+          </LayoutVisibilityWrapper>
+        </ErrorBoundary>
 
         {/* Tawk.to widget */}
         <Script
@@ -114,9 +141,36 @@ export default function RootLayout({
             `,
           }}
         />
-        
-        
-      
+
+        <Script
+          id="tawk-datalayer-hook"
+          strategy="afterInteractive"
+        >
+          {`
+            window.dataLayer = window.dataLayer || [];
+            window.Tawk_API = window.Tawk_API || {};
+
+            window.Tawk_API.onChatStarted = function () {
+              window.dataLayer.push({
+                event: "tawk_chat_started"
+              });
+            };
+            window.Tawk_API.onChatMaximized = function () {
+              window.dataLayer.push({
+                event: "tawk_chat_maximized"
+              });
+            };
+             window.Tawk_API.onChatMinimized = function () {
+              window.dataLayer.push({
+                event: "tawk_chat_minimized"
+              });
+            };
+          `}
+        </Script>
+
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5L8TP5BW"
+          height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}></iframe></noscript>
+
       </body>
     </html>
   );

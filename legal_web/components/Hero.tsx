@@ -3,53 +3,53 @@
 import React, { useTransition } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Rocket } from "lucide-react";
-import  '../app/index.css'
+import '../app/index.css'
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
 const Hero = () => {
-  const {t} = useTranslation('hero')
+  const { t } = useTranslation('hero')
   return (
     <section className="pt-28 pb-16 md:pt-24 md:pb-24 relative overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-      <Image
-  src="/hero.avif"
-  alt="Hero banner"
-  width={1600}
-  height={900}
-  priority
-  fetchPriority="high"
-  className="
+        <Image
+          src="/hero.avif"
+          alt="Hero banner"
+          width={1600}
+          height={900}
+          priority
+          fetchPriority="high"
+          className="
     w-full h-full object-cover
     object-[center_100%]
     sm:object-[center_40%]
     md:object-[right_10%]
     md:object-[center_100%]
   "
-/>
-  <div className="absolute inset-0 bg-black/50"></div>
-</div>
+        />
+        <div className="absolute inset-0 bg-black/50 pointer-events-none"></div>
+      </div>
 
       {/* Hero Content */}
-      <div className="container-custom relative z-10 h-[400px]">
-        <div className="grid md:grid-cols-2 gap-12 items-start">
+      <div className="container-custom relative z-10 h-[400px] select-text">
+        <div className="grid md:grid-cols-1 gap-12 items-start">
           <div
             className="
-              max-w-2xl animate-fade-in relative 
-              left-0 sm:left-10 -top-2 sm:-top-6 
+              max-w-2xl  relative 
+            transform sm:translate-x-10 -translate-y-2 sm:-translate-y-6
               px-4 sm:px-0 text-center sm:text-left
             "
           >
-            <h1 className="heading-xl mb-6 text-white">
-             {t('heading')}
+            <h1 className="text-3xl md:text-6xl mb-4 text-white font-serif">
+              {t('heading')}
             </h1>
 
             <p
               className="
                 sm:block paragraph mb-7 text-white/90 
                 text-base sm:text-lg md:text-lg leading-relaxed
-                px-4 sm:px-6 md:px-0 text-center sm:text-left max-w-2xl
+                px-4 sm:px-6 md:px-0 text-center sm:text-left max-w-2xl select-none font-serif
               "
             >
               {t('description')}
@@ -60,7 +60,7 @@ const Hero = () => {
               size="lg"
               className="
                 bg-white group
-                transition-all duration-300 hover:scale-105 hover:bg-white rounded-xl
+                transition-all duration-300 hover:scale-105 hover:bg-white rounded-xl cursor-pointer
               "
               onClick={() => {
                 document.getElementById("contact")?.scrollIntoView({
@@ -76,13 +76,13 @@ const Hero = () => {
               <div className="absolute inset-0 bg-white rounded-xl opacity-0 group-hover:opacity-10 transition-opacity"></div>
 
               {/* Content */}
-              < div>
+              <div>
 
-              <span className="relative z-10 flex items-center gap-2 text-black">
-                <Rocket className="w-5 h-5" />
-               {t('buttonText')}
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </span>
+                <span className="relative z-10 flex items-center gap-2 text-black">
+                  <Rocket className="w-5 h-5" />
+                  {t('buttonText')}
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </span>
               </div>
             </Button>
           </div>

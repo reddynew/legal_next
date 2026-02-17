@@ -1,4 +1,4 @@
-"use client"
+// "use client"
 import React from 'react';
 import {
   Monitor,
@@ -75,7 +75,7 @@ const Disclaimers = () => {
 
   return (
     <div>
-      <Navbar/>
+      <Navbar />
       <section id="disclaimers" className="py-20 bg-background">
 
 
@@ -133,7 +133,7 @@ const Disclaimers = () => {
               </h3>
             </div>
             <p className="text-muted-foreground mb-4">
-              If any user notices misleading or incorrect information, or has suggestions for correction, they are encouraged to contact our Support Team.
+              If any user notices misleading or incorrect information, or has suggestions for correction, they are encouraged to <a href='/contact_us' className='text-blue-500'>contact us</a>.
             </p>
             <p className="text-sm text-muted-foreground">
               The platform is committed to compliance, fairness, and continuous improvement.

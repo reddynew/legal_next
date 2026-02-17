@@ -253,7 +253,7 @@ function NriServices() {
                 <div className="lg:fixed  bottom-2 left-1/2 transform -translate-x-1/2  z-50 transition-opacity duration-500">
                     <button
                         onClick={handleScroll}
-                        className="relative flex flex-col items-center group"
+                        className="relative flex flex-col items-center group cursor-pointer"
                     >
                         <div className="p-3 bg-white rounded-full shadow-lg transition relative
                     ring-2 ring-gray-400 group-hover:ring-2 group-hover:ring-black
@@ -267,7 +267,7 @@ function NriServices() {
                 <div className="lg:fixed  bottom-16 left-1/2 transform -translate-x-1/2 z-50 transition-opacity duration-500">
                     <button
                         onClick={handleScrollTop}
-                        className="relative flex flex-col items-center group"
+                        className="relative flex flex-col items-center group cursor-pointer"
                     >
                         <div className="p-3 bg-white rounded-full shadow-lg transition relative
                     ring-2 ring-white group-hover:ring-2 group-hover:ring-black
@@ -305,7 +305,7 @@ function NriServices() {
 
                             </CardContent>
 
-                            <Button className=" self-end mb-4 mr-4  rounded-lg"
+                            <Button className=" self-end mb-4 mr-4 rounded-lg cursor-pointer"
                                 onClick={() => {
                                     document.getElementById("contact")?.scrollIntoView({
                                         behavior: "smooth",
@@ -342,7 +342,7 @@ function NriServices() {
                             </ul>
                         </CardContent>
                         <Button
-                            className="self-center mt-6 mb-4 rounded-lg bg-blue-600 hover:bg-blue-700 text-white px-8 py-2"
+                            className="self-center mt-6 mb-4 rounded-lg bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 cursor-pointer"
                             onClick={() => {
                                 document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
                                 if (typeof window !== "undefined" && (window as any).Tawk_API) {

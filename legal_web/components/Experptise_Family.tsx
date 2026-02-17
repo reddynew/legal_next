@@ -6,7 +6,7 @@ export default function Experptise_Family() {
   return (
     <main className="bg-white text-black min-h-screen font-sans">
       <section className="container mx-auto px-6 md:px-12 lg:px-20 py-10 space-y-14 max-w-5xl">
-        
+
         {/* FAMILY LAW */}
         <header className="pb-6">
           <h1 className="text-4xl sm:text-5xl font-bold text-center leading-tight sm:leading-[1.2]">
@@ -21,26 +21,26 @@ export default function Experptise_Family() {
           </h2>
 
           <p className="text-base sm:text-lg leading-relaxed text-justify">
-            <strong>JP Law Suvidha</strong> offers expert <mark>legal help</mark> with filing and settling 
-            <em> divorce matters</em>, providing support through every step of the process. 
-            The <em>platform</em> specializes in <em>family law</em>, including <em>divorce and separation</em>, 
-            <em>child custody</em>, and <em>maintenance claims</em>, ensuring clients receive professional 
-            guidance tailored to their case. Using <strong>JP Law Suvidha</strong>, clients can 
-            <em>connect</em> easily with <em>trusted advocates</em> for secure and 
+            <strong>JP Law Suvidha</strong> offers expert <mark>legal help</mark> with filing and settling
+            <em> divorce matters</em>, providing support through every step of the process.
+            The <em>platform</em> specializes in <em>family law</em>, including <em>divorce and separation</em>,
+            <em>child custody</em>, and <em>maintenance claims</em>, ensuring clients receive professional
+            guidance tailored to their case.Through <strong>JP Law Suvidha</strong>, clients can
+            <em> connect</em> easily with <em>trusted advocates</em> for secure and
             <em> hassle-free legal assistance</em>.
           </p>
 
           <p className="text-base sm:text-lg leading-relaxed text-justify mt-4">
-            The <em>legal help</em> provided includes <em>assistance</em> with filing petitions, 
-            representation in court, mediation, counselling, and guidance on matters like 
-            <em> child custody</em> and <em>alimony</em>. The process typically involves filing a divorce petition, 
-            issuing notice, attending hearings, mediation attempts, and finally obtaining a 
-            divorce decree. JP Law Suvidha aims to simplify the process and save clients time.
+            The <em>services</em> provided include help with filing petitions,
+            representation in court, mediation, counselling, and guidance on issues such as
+            <em> child custody</em> and <em>alimony</em>. The process typically involves filing a divorce petition,
+            issuing notice, attending hearings, participating in mediation, and finally obtaining a
+            divorce decree. JP Law Suvidha aims to simplify the process and save clients valuable time.
           </p>
 
           <p className="text-base sm:text-lg leading-relaxed text-justify mt-4">
-            This makes <strong>JP Law Suvidha</strong> a reliable, <mark>technology-powered</mark> partner 
-            for anyone seeking legal help with divorce issues in India, offering a smooth path 
+            This makes <strong>JP Law Suvidha</strong> a reliable, <mark>technology-driven</mark> partner
+            for anyone seeking legal help with divorce issues in India, offering a smooth and efficient path
             to resolving family law disputes.
           </p>
         </section>
@@ -94,8 +94,8 @@ export default function Experptise_Family() {
           </h2>
 
           <p className="text-base sm:text-lg leading-relaxed text-justify">
-            Alimony refers to financial support paid by one spouse to another post-separation 
-            to maintain a similar standard of living. Maintenance also includes support for children 
+            Alimony refers to financial support paid by one spouse to another post-separation
+            to maintain a similar standard of living. Maintenance also includes support for children
             and dependent parents.
           </p>
 
@@ -118,7 +118,7 @@ export default function Experptise_Family() {
           </h2>
 
           <p className="text-base sm:text-lg leading-relaxed">
-            Women facing domestic violence are protected under the PWDVA, 2005, offering civil 
+            Women facing domestic violence are protected under the PWDVA, 2005, offering civil
             and limited criminal remedies.
           </p>
 
@@ -132,7 +132,7 @@ export default function Experptise_Family() {
           </ul>
 
           <p className="text-base sm:text-lg leading-relaxed">
-            <strong>JP Law Suvidha</strong> assists clients with protection orders, residence rights, 
+            <strong>JP Law Suvidha</strong> assists clients with protection orders, residence rights,
             compensation, and <em>legal remedies</em>.
           </p>
         </section>
@@ -144,7 +144,7 @@ export default function Experptise_Family() {
           </h2>
 
           <p className="text-base sm:text-lg leading-relaxed">
-            Property inheritance in India is governed by succession laws. The Hindu Succession Act 
+            Property inheritance in India is governed by succession laws. The Hindu Succession Act
             and Indian Succession Act are key laws.
           </p>
 
@@ -156,7 +156,7 @@ export default function Experptise_Family() {
           </ul>
 
           <p className="text-base sm:text-lg leading-relaxed">
-            <strong>JP Law Suvidha</strong> assists with probate, succession certificates, 
+            <strong>JP Law Suvidha</strong> assists with probate, succession certificates,
             partitions, and dispute resolution.
           </p>
         </section>
@@ -164,8 +164,8 @@ export default function Experptise_Family() {
         {/* FOOTER */}
         <footer className="border-t border-gray-300 pt-8 mt-12 text-center text-gray-600 text-base italic">
           <p className="text-base sm:text-lg leading-relaxed">
-            <span className="font-bold text-black italic">JP Law Suvidha</span> is your 
-            <mark>trusted legal technology partner</mark> for family law experts and reliable 
+            <span className="font-bold text-black italic">JP Law Suvidha</span> is your
+            <mark>trusted legal technology partner</mark> for family law experts and reliable
             <mark>digital legal solutions</mark>.
           </p>
         </footer>

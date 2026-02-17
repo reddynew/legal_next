@@ -5,18 +5,20 @@ import { useEffect } from "react";
 import { useAuth } from "@/context/LoginContext";
 
 export default function ProtectedRoute({ children }) {
-  const { loading, login } = useAuth();
+  const { loading, accessToken } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
-    if (!loading && !login) {
+    console.log('[ProtectedRoute] state update:', { loading, accessToken });
+    if (!loading && !accessToken) {
+      console.log(`[ProtectedRoute] REDIRECTING to / : loading=${loading}, accessToken=${accessToken}`)
       router.replace("/"); // redirect to login
     }
-  }, [loading, login, router]);
+  }, [loading, accessToken, router]);
 
   if (loading) return <div>Loading...</div>;
 
-  if (!login) return null; // prevent flicker before redirect
+  if (!accessToken) return null; // prevent flicker before redirect
 
   return <>{children}</>;
 }

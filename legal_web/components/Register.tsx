@@ -15,15 +15,17 @@ import Link from 'next/link'
 // import ChangePlan from '@/components/Plans';
 import plans from '@/Data/plans_data';
 
+import { registerService } from '@/lib/api';
 import Footer from '@/components/Footer';
 import axios from 'axios';
 import { usePlan } from '@/context/PlansContext';
 import ChangePlan from '../components/ChangePlan';
 import regions from '@/Data/regions_data';
+import { toast } from 'sonner';
 const TermsAndConditionsModalSubscription = ({ onClose, onAccept }: { onClose: () => void; onAccept: () => void }) => (
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-        <div className="bg-white rounded-xl max-w-2xl w-full max-h-[80vh] overflow-hidden shadow-2xl">
-            <div className="p-6 border-b border-gray-200">
+        <div className="bg-white rounded-xl max-w-2xl w-full max-h-[85vh] flex flex-col overflow-hidden shadow-2xl">
+            <div className="p-6 border-b border-gray-200 flex-shrink-0">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                         <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
@@ -40,7 +42,7 @@ const TermsAndConditionsModalSubscription = ({ onClose, onAccept }: { onClose: (
                 </div>
             </div>
 
-            <div className="p-6 overflow-y-auto max-h-96">
+            <div className="p-6 overflow-y-auto flex-1">
                 <div className="prose prose-sm max-w-none text-gray-700 space-y-4">
                     <section>
                         <h4 className="font-semibold text-gray-900 mb-2">1. Subscription Services</h4>
@@ -50,7 +52,7 @@ const TermsAndConditionsModalSubscription = ({ onClose, onAccept }: { onClose: (
                     <section>
                         <h4 className="font-semibold text-gray-900 mb-2">2. Payment Terms</h4>
                         <ul className="text-sm space-y-1 list-disc pl-4">
-                            <li>Subscription fees are billed monthly or annually as selected</li>
+                            <li>Subscription fees are billed monthly or half yearly as selected</li>
                             <li>All payments are processed securely through encrypted payment gateways</li>
                             <li>Refunds are available within 30 days of initial subscription</li>
                             <li>Auto-renewal can be cancelled anytime before the next billing cycle</li>
@@ -79,7 +81,7 @@ const TermsAndConditionsModalSubscription = ({ onClose, onAccept }: { onClose: (
                 </div>
             </div>
 
-            <div className="p-6 border-t border-gray-200 bg-gray-50">
+            <div className="p-6 border-t border-gray-200 bg-gray-50 flex-shrink-0">
                 <div className="flex gap-3">
                     <Button variant="outline" onClick={onClose} className="flex-1">
                         Cancel
@@ -98,7 +100,35 @@ const TermsAndConditionsModalSubscription = ({ onClose, onAccept }: { onClose: (
 //     const faqItems = [
 //         {
 //             question: "How does the subscription billing work?",
-//             answer: "Subscriptions are billed automatically based on your selected plan (monthly or yearly). You'll receive an invoice 3 days before each billing cycle and can cancel anytime with 30 days notice."
+//             answer: "Subscriptions are billed automatically based on your selected plan (monthly or half yearly). You'll receive an invoice 3 days before each billing cycle and can cancel anytime with 30 days notice."
+//         },
+//         {
+//             question: "What types of leads will I receive?",
+//             answer: "You'll receive verified leads from potential clients actively seeking legal services in your practice areas. All leads include contact information, case details, and urgency level."
+//         },
+//         {
+//             question: "Can I upgrade or downgrade my plan?",
+//             answer: "Yes, you can change your plan anytime. Upgrades take effect immediately, while downgrades take effect at your next billing cycle. No fees for plan changes."
+//         },
+//         {
+//             question: "Is there a minimum contract period?",
+//             answer: "No, there are no long-term contracts. You can cancel your subscription anytime with 30 days written notice. We believe in earning your business through value."
+//         },
+//         {
+//             question: "How is my data protected?",
+//             answer: "We use bank-level encryption and comply with all legal industry standards including attorney-client privilege protection. All data is stored securely and never shared with third parties."
+//         },
+//         {
+//             question: "What support is included?",
+//             answer: "All plans include email support. Growth plan includes priority support (24hr response), and Pro Plus includes dedicated account management with real-time support."
+//         }
+//     ];
+
+// const FAQModal = ({ onClose }: { onClose: () => void }) => {
+//     const faqItems = [
+//         {
+//             question: "How does the subscription billing work?",
+//             answer: "Subscriptions are billed automatically based on your selected plan (monthly or half yearly). You'll receive an invoice 3 days before each billing cycle and can cancel anytime with 30 days notice."
 //         },
 //         {
 //             question: "What types of leads will I receive?",
@@ -124,8 +154,8 @@ const TermsAndConditionsModalSubscription = ({ onClose, onAccept }: { onClose: (
 
 //     return (
 //         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-//             <div className="bg-white rounded-xl max-w-2xl w-full max-h-[80vh] overflow-hidden shadow-2xl">
-//                 <div className="p-6 border-b border-gray-200">
+//             <div className="bg-white rounded-xl max-w-2xl w-full max-h-[85vh] flex flex-col overflow-hidden shadow-2xl">
+//                 <div className="p-6 border-b border-gray-200 flex-shrink-0">
 //                     <div className="flex items-center justify-between">
 //                         <div className="flex items-center gap-3">
 //                             <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
@@ -142,7 +172,7 @@ const TermsAndConditionsModalSubscription = ({ onClose, onAccept }: { onClose: (
 //                     </div>
 //                 </div>
 
-//                 <div className="p-6 overflow-y-auto max-h-96">
+//                 <div className="p-6 overflow-y-auto flex-1">
 //                     <Accordion type="single" collapsible className="w-full">
 //                         {faqItems.map((item, idx) => (
 //                             <AccordionItem key={idx} value={`item-${idx}`} className="border-gray-200">
@@ -157,8 +187,11 @@ const TermsAndConditionsModalSubscription = ({ onClose, onAccept }: { onClose: (
 //                     </Accordion>
 //                 </div>
 
-//                 <div className="p-6 border-t border-gray-200 bg-gray-50">
-//                     <Button onClick={onClose} className="w-full">
+//                 <div className="p-6 border-t border-gray-200 bg-gray-50 flex-shrink-0">
+//                     <Button 
+//                         onClick={onClose} 
+//                         className="w-full bg-blue-600 hover:bg-blue-700 text-white active:bg-blue-800 transition-all duration-200 shadow-sm"
+//                     >
 //                         Close
 //                     </Button>
 //                 </div>
@@ -170,7 +203,7 @@ const TermsAndConditionsModalSubscription = ({ onClose, onAccept }: { onClose: (
 // Success Modal
 const SuccessModal = ({ onClose, planName }: { onClose: () => void; planName: string }) => (
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-        <div className="bg-white rounded-xl max-w-md w-full shadow-2xl overflow-hidden">
+        <div className="bg-white rounded-xl max-w-md w-full max-h-[90vh] overflow-y-auto shadow-2xl">
             <div className="p-8 text-center">
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
                     <CheckCircle className="w-8 h-8 text-green-600" />
@@ -180,7 +213,7 @@ const SuccessModal = ({ onClose, planName }: { onClose: () => void; planName: st
                     Your {planName} plan subscription request has been received. Our team will contact you within 24 hours to complete the setup.
                 </p>
                 <div className="bg-blue-50 rounded-lg p-4 mb-6">
-                    <p className="text-sm text-blue-800">
+                    <p className="text-sm text-blue-800 ">
                         <strong>Next Steps:</strong><br />
                         1. Check your email for confirmation<br />
                         2. Our team will verify your credentials<br />
@@ -188,7 +221,7 @@ const SuccessModal = ({ onClose, planName }: { onClose: () => void; planName: st
                     </p>
                 </div>
                 <Button onClick={onClose} className="w-full bg-blue-600 hover:bg-blue-700">
-                    Continue to Login
+                    Continue to Home
                 </Button>
             </div>
         </div>
@@ -202,60 +235,57 @@ const SubscriptionForm = () => {
         Crown,
         Building
     };
-    // Get plan details from mock location state (in real app this would come from useLocation)
-    const navigate=useRouter()
-   const { selectedPlan,isPlanLoaded,selectedRegions,setSelectedRegions } = usePlan();
- useEffect(()=>{
+    const navigate = useRouter()
+    const { selectedPlan, isPlanLoaded, selectedRegions, setSelectedRegions, billingCycle } = usePlan();
+    useEffect(() => {
 
-    //  console.log("Selected Plan:", selectedPlan);
- },[selectedPlan])
+        //  console.log("Selected Plan:", selectedPlan);
+    }, [selectedPlan])
 
-  // state setup
-  const [price, setPrice] = useState('');
-  const [planName, setPlanName] = useState('');
-  const [icon, setIcon] = useState('');
-//   const IconComponent=selectedPlan.icon
-  useEffect(() => {
-  if (isPlanLoaded && selectedPlan) {
-    setPrice(selectedPlan.price);
-    setPlanName(selectedPlan.name);
-    setIcon(selectedPlan.icon);
-    // setSelectedRegions(selectedPlan.regions)
-  }
-}, [isPlanLoaded, selectedPlan]);
-useEffect(() => {
-    // console.log('useeffect register')
-  if (isPlanLoaded && selectedPlan) {
-    setPrice(selectedPlan.price);
-    // console.log('inside register',selectedPlan.price)
-    setPlanName(selectedPlan.name);
-  
-    //  console.log('inside register',selectedPlan.name)
-    setIcon(selectedPlan.icon);
-      const IconComponent=iconMap[selectedPlan?.icon]
-    //  console.log('inside register',selectedPlan.icon)
-    setSelectedRegions(selectedPlan.regions); // ✅ sync regions here
+    // state setup
+    const [price, setPrice] = useState('');
+    const [planName, setPlanName] = useState('');
+    const [icon, setIcon] = useState('');
+    //   const IconComponent=selectedPlan.icon
+    useEffect(() => {
+        if (isPlanLoaded && selectedPlan) {
+            setPrice(selectedPlan.price);
+            setPlanName(selectedPlan.name);
+            setIcon(selectedPlan.icon);
+            // setSelectedRegions(selectedPlan.regions)
+        }
+    }, [isPlanLoaded, selectedPlan]);
+    useEffect(() => {
+        // console.log('useeffect register')
+        if (isPlanLoaded && selectedPlan) {
+            console.log('inside the register', billingCycle)
+            setPrice(selectedPlan.price);
+            // console.log('inside register',selectedPlan.price)
+            setPlanName(selectedPlan.name);
 
-    // also update formData to include those regions
-    setFormData(prev => ({
-      ...prev,
-      regions: selectedPlan.regions
-    }));
- setFormData(prev => ({
-      ...prev,
-      plan: selectedPlan.name
-    }));
+            //  console.log('inside register',selectedPlan.name)
+            setIcon(selectedPlan.icon);
+            const IconComponent = iconMap[selectedPlan?.icon as keyof typeof iconMap]
+            //  console.log('inside register',selectedPlan.icon)
+            setSelectedRegions({ [selectedPlan.name]: selectedPlan.regions }); // Fixed logic for sync regions
 
-  }
-}, [isPlanLoaded, selectedPlan]);
-// useEffect(() => {
-//   if (isPlanLoaded && !selectedPlan) {
-//     alert("Please select a plan before proceeding.");
-//     navigate.replace("/signup"); // or whatever your plans page route is
-//   }
-// }, [isPlanLoaded, selectedPlan, navigate]);
-  const [changePlan, setChangePlan] = useState(false);
-  const [isSubmit, setIsSubmit] = useState(false);
+            // also update formData to include those regions
+            setFormData(prev => ({
+                ...prev,
+                regions: selectedPlan.regions,
+                plan: selectedPlan.name,
+                annual: billingCycle
+            }));
+        }
+    }, [isPlanLoaded, selectedPlan, billingCycle]);
+    // useEffect(() => {
+    //   if (isPlanLoaded && !selectedPlan) {
+    //     alert("Please select a plan before proceeding.");
+    //     navigate.replace("/signup"); // or whatever your plans page route is
+    //   }
+    // }, [isPlanLoaded, selectedPlan, navigate]);
+    const [changePlan, setChangePlan] = useState(false);
+    const [isSubmit, setIsSubmit] = useState(false);
     const plan = plans.find((p) => p.name === planName)
     // console.log(plans)
     // console.log("this are the plans", plan)
@@ -263,19 +293,19 @@ useEffect(() => {
     type IconName = keyof typeof iconMap;
     const IconComponent = iconMap[icon as IconName]
     // console.log(IconComponent)
-type Lawyer = {
-  lawyerName: string;
-  barCouncilId: string;
-  jurisdiction: string;
-  phone: string;
-  email: string;
-  practiceAreas: string[];
-  experience: string;
-  firm: string;
-  plan:any;
-  regions:any
-
-};
+    type Lawyer = {
+        lawyerName: string;
+        barCouncilId: string;
+        jurisdiction: string;
+        phone: string;
+        email: string;
+        practiceAreas: string[];
+        experience: string;
+        firm: string;
+        plan: string;
+        regions: string[];
+        annual: string;
+    };
 
     const [formData, setFormData] = useState<Lawyer>({
         lawyerName: '',
@@ -286,8 +316,9 @@ type Lawyer = {
         practiceAreas: [] as string[],
         experience: '',
         firm: '',
-        plan:selectedPlan?.name,
-        regions:selectedPlan?.regions
+        plan: selectedPlan?.name || '',
+        regions: selectedPlan?.regions || [],
+        annual: billingCycle
     });
 
     const [formState, setFormState] = useState({
@@ -302,7 +333,8 @@ type Lawyer = {
     const [validation, setValidation] = useState({
         email: { isValid: true, message: '' },
         phone: { isValid: true, message: '' },
-        name: { isValid: true, message: '' }
+        name: { isValid: true, message: '' },
+        barCouncilId: { isValid: true, message: '' }
     });
 
     const [focusedFields, setFocusedFields] = useState({
@@ -316,7 +348,7 @@ type Lawyer = {
     const practiceAreaOptions = [
         'Civil Law', 'Criminal Law', 'Family Law', 'Corporate Law',
         'Tax Law', 'Property Law', 'Labour Law', 'Constitutional Law',
-        'Environmental Law', 'Intellectual Property', 'Immigration Law'
+        'Environmental Law', 'Intellectual Property', 'Immigration Law', 'Cyber Law'
     ];
 
     const handleInputChange = (field: any, value: string) => {
@@ -335,7 +367,8 @@ type Lawyer = {
         }
 
         if (field === 'phone') {
-            const phoneRegex = /^[+]?[\d\s\-\(\)]{10,}$/;
+            const phoneRegex = /^\d{10}$/;
+            ;
             setValidation(prev => ({
                 ...prev,
                 phone: {
@@ -351,6 +384,17 @@ type Lawyer = {
                 name: {
                     isValid: value.length >= 2 || value === '',
                     message: value.length >= 2 || value === '' ? '' : 'Name must be at least 2 characters'
+                }
+            }));
+        }
+
+        if (field === 'barCouncilId') {
+            const barCouncilRegex = /^(TS|AP|ts|ap)\/\d{3,4}\/\d{4}$/;
+            setValidation(prev => ({
+                ...prev,
+                barCouncilId: {
+                    isValid: barCouncilRegex.test(value) || value === '',
+                    message: barCouncilRegex.test(value) || value === '' ? '' : 'Format: TS/123/2024 or TS/1234/2024'
                 }
             }));
         }
@@ -373,23 +417,33 @@ type Lawyer = {
 
 
         if (!formState.termsAccepted) {
-            alert("Please agree to the Terms and Conditions before submitting.");
+            toast.warning("Please agree to the Terms and Conditions before submitting.");
             return;
         }
 
         // Validate required fields
-        const requiredFields = ['lawyerName', 'email', 'phone','barCouncilId'];
-        const missingFields = requiredFields.filter(field => !formData[field as keyof Lawyer]);
-
-        if (missingFields.length > 0) {
-            alert("Please fill in all required fields.");
-            return;
-        }
+        if (!formData.lawyerName) { toast.error("Please enter your Full Name."); return; }
+        if (!formData.email) { toast.error("Please enter your Email Address."); return; }
+        if (!formData.phone) { toast.error("Please enter your Phone Number."); return; }
+        if (!formData.barCouncilId) { toast.error("Please enter your Bar Council ID."); return; }
+        if (!formData.experience) { toast.error("Please select your Years of Experience."); return; }
+        if (formData.practiceAreas.length === 0) { toast.error("Please select at least one Practice Area."); return; }
 
         // Check validation
-        const hasValidationErrors = Object.values(validation).some(v => !v.isValid);
-        if (hasValidationErrors) {
-            alert("Please fix the validation errors before submitting.");
+        if (!validation.name.isValid) {
+            toast.error(validation.name.message || "Please enter a valid name.");
+            return;
+        }
+        if (!validation.email.isValid) {
+            toast.error(validation.email.message || "Please enter a valid email address.");
+            return;
+        }
+        if (!validation.phone.isValid) {
+            toast.error(validation.phone.message || "Please enter a valid phone number.");
+            return;
+        }
+        if (!validation.barCouncilId.isValid) {
+            toast.error(validation.barCouncilId.message || "Please enter a valid Bar Council ID.");
             return;
         }
 
@@ -397,23 +451,41 @@ type Lawyer = {
 
         try {
             // Simulate API call
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            const res = await axios.post('http://localhost:3001/api/register', { formData })
-            // console.log('res from server', res)
-            // console.log('Subscription form submitted:', formData);
-            const planName = res.data.planDetails.name;
-            const price = res.data.planDetails.price;
-            // console.log(planName,price)
-        navigate.replace(`/Payments?plan=${encodeURIComponent(planName)}&price=${price}`);
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            console.log('register hit frontend', formData)
+            console.log('biling cycle', billingCycle)
+            const res = await registerService.subscribe(formData); // API CALL
+            console.log(res)
+
+            // On success (201), the backend returns { message, user }
+            const price = selectedPlan?.price || "0";
+
+            toast.success("Subscription request submitted successfully!");
 
             setFormState(prev => ({
                 ...prev,
                 isSubmitting: false,
                 showSuccessModal: true
             }));
-        } catch (error) {
+
+            // Optional: Redirect after a delay or let the success modal handle it
+            // navigate.replace(`/Payments?plan=${encodeURIComponent(planName)}&price=${price}`);
+
+        } catch (error: any) {
             setFormState(prev => ({ ...prev, isSubmitting: false }));
-            alert("Submission failed. Please try again.");
+
+            if (axios.isAxiosError(error) && error.response) {
+                const { status, data } = error.response;
+                if (status === 409 || data?.status === 'conflict') {
+                    console.log(data)
+                    toast.error(data?.message || "Email or Phone number already exists.");
+                } else {
+                    toast.error(data?.message || "Submission failed. Please try again.");
+                }
+            } else {
+                toast.error("An unexpected error occurred. Please try again.");
+                console.error("Registration error:", error);
+            }
         }
         setFormData((prev) => ({
             ...prev,
@@ -429,31 +501,32 @@ type Lawyer = {
     }
     const handleSuccessClose = () => {
         setFormState(prev => ({ ...prev, showSuccessModal: false }));
-        navigate.replace('/login');
+        navigate.replace('/');
     };
 
     const setFieldFocus = (field: string, focused: boolean) => {
         setFocusedFields(prev => ({ ...prev, [field]: focused }));
     };
 
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
             {/* Header */}
-            <div className="bg-black shadow-sm border-b border-gray-200">
+            <div className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-10">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-7">
                     <div className="flex items-center justify-between h-16">
                         <Link href='/signup' className="inline-flex items-center text-white hover:text-white transition-colors group">
                             <>
-                                <ArrowLeft size={20} className="mr-2 group-hover:-translate-x-1 transition-transform" />
-                                <span className="font-medium">Back to Plans</span>
+                                <ArrowLeft size={20} className="mr-2 group-hover:-translate-x-1 transition-transform text-black cursor-pointer" />
+                                <span className="font-medium text-black">Back to Plans</span>
                             </></Link>
 
                         <div className="hidden lg:flex items-center gap-3">
                             <div className="w-14 h-14 bg-white flex items-center rounded-lg  justify-center">
                                 {/* <Scale className="w-7 h-7 text-white" /> */}
-                                <img src="/jpicon4.png" alt="img" className="w-14 h-14 rounded-lg" />
+                                <img src="/TLogo.png" alt="img" className="w-14 h-14 rounded-lg" />
                             </div>
-                            <span className="text-xl font-semibold text-white font-serif">JP Law Suvidha</span>
+                            <span className="text-xl font-semibold text-black font-serif ">JP Law Suvidha</span>
                         </div>
                     </div>
                 </div>
@@ -600,7 +673,7 @@ type Lawyer = {
                                                         : 'top-4 text-base text-gray-500'
                                                         }`}
                                                 >
-                                                   Place of Practice
+                                                    Place of Practice
                                                 </Label>
                                             </div>
                                         </div>
@@ -623,9 +696,12 @@ type Lawyer = {
                                                     onChange={(e) => handleInputChange('barCouncilId', e.target.value)}
                                                     onFocus={() => setFieldFocus('barCouncilId', true)}
                                                     onBlur={() => setFieldFocus('barCouncilId', false)}
-                                                    className={`w-full h-14 px-4 pt-6 pb-2 border-2 rounded-lg transition-colors bg-white ${focusedFields.barCouncilId ? 'border-blue-500 focus:border-blue-500' : 'border-gray-200 hover:border-gray-300'
+                                                    className={`w-full h-14 px-4 pt-6 pb-2 border-2 rounded-lg transition-colors bg-white ${validation.barCouncilId.isValid
+                                                        ? focusedFields.barCouncilId ? 'border-blue-500 focus:border-blue-500' : 'border-gray-200 hover:border-gray-300'
+                                                        : 'border-red-500'
                                                         }`}
                                                     placeholder=" "
+                                                    required
                                                 />
                                                 <Label
                                                     htmlFor="barCouncilId"
@@ -636,7 +712,10 @@ type Lawyer = {
                                                 >
                                                     Bar Council ID *
                                                 </Label>
-                                                <span className='text-sm'>* Bar Council ID is compulsory for verification.</span>
+                                                {!validation.barCouncilId.isValid && (
+                                                    <p className="text-xs text-red-600 mt-1">{validation.barCouncilId.message}</p>
+                                                )}
+                                                <span className='text-xs text-gray-400 mt-1 block'>* Format: TS/123/2024 or TS/1234/2024 (Mandatory for verification)</span>
                                             </div>
                                             {/* <div>some text</div> */}
 
@@ -660,7 +739,7 @@ type Lawyer = {
 
                                             {/* Experience */}
                                             <div className='relative -mt-4'>
-                                                <Label className="block text-sm font-medium text-gray-700">Years of Experience</Label>
+                                                <Label className="block text-sm font-medium text-gray-700">Years of Experience *</Label>
                                                 <Select value={formData.experience} onValueChange={(value: string) => handleInputChange('experience', value)}>
                                                     <SelectTrigger className="w-full h-14 border-2 border-gray-200 hover:border-gray-300">
                                                         <SelectValue placeholder="Select experience" />
@@ -678,7 +757,7 @@ type Lawyer = {
 
                                         {/* Practice Areas */}
                                         <div className="mt-6">
-                                            <Label className="block text-sm font-medium text-gray-700 mb-3">Practice Areas (Select all that apply)</Label>
+                                            <Label className="block text-sm font-medium text-gray-700 mb-3">Practice Areas * (Select all that apply)</Label>
                                             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                                                 {practiceAreaOptions.map((area) => (
                                                     <div key={area} className="flex items-center space-x-2">
@@ -705,13 +784,13 @@ type Lawyer = {
                                                 id="terms"
                                                 checked={formState.termsAccepted}
                                                 onCheckedChange={(checked: boolean) => setFormState(prev => ({ ...prev, termsAccepted: checked as boolean }))}
-                                                className="mt-1 rounded"
+                                                className="mt-1 rounded cursor-pointer"
                                             />
-                                            <Label htmlFor="terms" className="text-sm text-gray-700 cursor-pointer leading-relaxed">
+                                            <Label htmlFor="terms" className="text-sm text-gray-700  leading-relaxed">
                                                 I agree to the{' '}
                                                 <button
                                                     type="button"
-                                                    className="text-blue-600 hover:text-blue-800 underline transition-colors"
+                                                    className="text-blue-600 hover:text-blue-800 underline transition-colors cursor-pointer"
                                                     onClick={() => setFormState(prev => ({ ...prev, showTermsModal: true }))}
                                                 >
                                                     Terms and Conditions
@@ -724,7 +803,7 @@ type Lawyer = {
                                             <Button
                                                 type="submit"
                                                 disabled={formState.isSubmitting || !formState.termsAccepted}
-                                                className="flex-1 h-12 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 transition-colors"
+                                                className="flex-1 h-12 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors cursor-pointer"
                                             >
                                                 {formState.isSubmitting ? (
                                                     <div className="flex items-center gap-2">
@@ -764,156 +843,163 @@ type Lawyer = {
 
                     </div>
                     <div className="lg:col-span-1">
-  {/* ✅ Case 1: Plan is still loading */}
-  {!isPlanLoaded ? (
-    <div className="h-[400px] flex flex-col items-center justify-center text-center bg-gray-50 rounded-xl shadow-sm">
-      <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-600 mb-4"></div>
-      <h2 className="text-xl font-semibold text-gray-700">Loading selected plan...</h2>
-      <p className="text-gray-500 mt-2">
-        Please wait while we fetch your subscription details.
-      </p>
-    </div>
-  ) : !selectedPlan ? (
-    /* ✅ Case 2: No plan selected */
-    <div className="h-[400px] flex flex-col items-center justify-center text-center bg-gray-50 rounded-xl shadow-sm">
-      <div className="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mb-4">
-        <X className="w-8 h-8" />
-      </div>
-      <h2 className="text-2xl font-semibold text-gray-800">No Plan Selected</h2>
-      <p className="text-gray-600 mt-2">
-        Please go back and choose a subscription plan to continue.
-      </p>
-      <Button
-        onClick={() => navigate.push("/signup")}
-        className="mt-4 bg-blue-600 hover:bg-blue-700 text-white"
-      >
-        View Plans
-      </Button>
-    </div>
-  ) : (
-    /* ✅ Case 3: Plan loaded successfully */
-    <Card
-      key={plan?.name}
-      className={`relative flex flex-col justify-between rounded-xl border ${
-        plan?.highlight
-          ? "border-orange-400 ring-2 ring-orange-300"
-          : "border-gray-200"
-      } shadow-sm overflow-hidden`}
-    >
-      {/* Popular Badge */}
-      {plan?.highlight && (
-        <div className="absolute top-0 right-0 bg-gradient-to-r from-orange-400 to-yellow-400 text-white px-4 py-1 text-sm font-bold rounded-bl-lg">
-          {plan.badge}
-        </div>
-      )}
+                        {/* ✅ Case 1: Plan is still loading */}
+                        {!isPlanLoaded ? (
+                            <div className="h-[400px] flex flex-col items-center justify-center text-center bg-gray-50 rounded-xl shadow-sm">
+                                <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-600 mb-4"></div>
+                                <h2 className="text-xl font-semibold text-gray-700">Loading selected plan...</h2>
+                                <p className="text-gray-500 mt-2">
+                                    Please wait while we fetch your subscription details.
+                                </p>
+                            </div>
+                        ) : !selectedPlan ? (
+                            /* ✅ Case 2: No plan selected */
+                            <div className="h-[400px] flex flex-col items-center justify-center text-center bg-gray-50 rounded-xl shadow-sm">
+                                <div className="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mb-4">
+                                    <X className="w-8 h-8" />
+                                </div>
+                                <h2 className="text-2xl font-semibold text-gray-800">No Plan Selected</h2>
+                                <p className="text-gray-600 mt-2">
+                                    Please go back and choose a subscription plan to continue.
+                                </p>
+                                <Button
+                                    onClick={() => navigate.push("/signup")}
+                                    className="mt-4 bg-blue-600 hover:bg-blue-700 text-white"
+                                >
+                                    View Plans
+                                </Button>
+                            </div>
+                        ) : (
+                            /* ✅ Case 3: Plan loaded successfully */
+                            <Card
+                                key={plan?.name}
+                                className={`relative flex flex-col justify-between rounded-xl border ${plan?.highlight
+                                    ? "border-orange-400 ring-2 ring-orange-300"
+                                    : "border-gray-200"
+                                    } shadow-sm overflow-hidden`}
+                            >
+                                {/* Popular Badge */}
+                                {plan?.highlight && (
+                                    <div className="absolute top-0 right-0 bg-gradient-to-r from-orange-400 to-yellow-400 text-white px-4 py-1 text-sm font-bold rounded-bl-lg">
+                                        {plan.badge}
+                                    </div>
+                                )}
 
-      {/* Savings Badge */}
-      {!plan?.highlight && (
-        <div className="absolute top-4 right-4">
-          {plan?.name !== "Corporate" && plan?.name !== "Trial" && (
-            <Badge
-              variant="secondary"
-              className="bg-green-100 text-green-800 text-xs"
-            >
-              {plan?.savings}
-            </Badge>
-          )}
-        </div>
-      )}
+                                {/* Savings Badge */}
+                                {!plan?.highlight && (
+                                    <div className="absolute top-4 right-4">
 
-      <CardHeader className={`bg-gradient-to-br ${plan?.color} p-8`}>
-        <div className="flex items-center gap-3 mb-4">
-          <div className="w-12 h-12 rounded-xl bg-white/80 flex items-center justify-center">
-          {IconComponent ? (
-    <IconComponent className="w-6 h-6 text-gray-700" />
-  ) : (
-    <div className="w-6 h-6" /> // or a skeleton/placeholder
-  )}
-          </div>
-          <div>
-            <h3 className="text-2xl font-bold text-gray-900">{plan?.name}</h3>
-            {!plan?.highlight && (
-              <p className="text-sm text-gray-600">{plan?.badge}</p>
-            )}
-          </div>
-        </div>
+                                    </div>
+                                )}
 
-        <div className="mb-4">
-          <div className="flex items-baseline gap-2">
-            <span className="text-4xl font-bold text-gray-900">
-              {plan?.name === "Corporate" ? " " : `₹${plan?.price}`}
-            </span>
-            <span className="text-gray-600">
-              {plan?.name === "Corporate" ? "" : `/${plan?.period}`}
-            </span>
-          </div>
-          <div className="flex items-center gap-2 mt-1">
-            <span className="text-lg text-gray-400 line-through">
-              {plan?.name !== "Corporate" && plan?.name !== "Trial"
-                ? `₹${plan?.originalPrice}`
-                : ""}
-            </span>
+                                <CardHeader className={`bg-gradient-to-br ${plan?.color} p-8`}>
+                                    <div className="flex items-center gap-3 mb-4">
+                                        <div className="w-12 h-12 rounded-xl bg-white/80 flex items-center justify-center">
+                                            {IconComponent ? (
+                                                <IconComponent className="w-6 h-6 text-gray-700" />
+                                            ) : (
+                                                <div className="w-6 h-6" /> // or a skeleton/placeholder
+                                            )}
+                                        </div>
+                                        <div>
+                                            <h3 className="text-2xl font-bold text-gray-900">{plan?.name}</h3>
+                                            {true && (
+                                                <p className="text-sm text-gray-600">{plan?.badge}</p>
+                                            )}
+                                        </div>
+                                    </div>
 
-            {plan?.name !== "Corporate" && plan?.name !== "Trial" && (
-              <Badge
-                variant="secondary"
-                className="bg-green-100 text-green-800 text-xs"
-              >
-                {plan?.savings}
-              </Badge>
-            )}
-          </div>
-        </div>
+                                    <div className="mb-4">
+                                        <div className="flex items-baseline gap-2">
+                                            <span className="text-4xl font-bold text-gray-900">
+                                                {plan?.name === "Corporate" ? " " : `₹${billingCycle === 'Half_Yearly' ? plan?.annualdisprice : plan?.price}`}
+                                            </span>
+                                            <span className="text-gray-600">
+                                                {plan?.name === "Corporate" ? "" : `/ ${billingCycle === 'Half_Yearly' ? plan?.annual : plan?.period}`}
+                                            </span>
+                                        </div>
+                                        <div className="flex items-center gap-2 mt-1">
+                                            <span className="text-lg text-gray-400 line-through">
+                                                {plan?.name !== "Corporate" && plan?.name !== "Trial"
+                                                    ? `₹${billingCycle === 'Half_Yearly' ? plan?.annualprice : plan?.originalPrice}`
+                                                    : ""}
+                                            </span>
 
-        <p className="text-gray-600 leading-relaxed">{plan?.description}</p>
-      </CardHeader>
+                                            {plan?.name !== "Corporate" && plan?.name !== "Trial" && (
+                                                <div
 
-      <CardContent className="p-6">
-        <div className="space-y-3">
-          <ul className="space-y-2 mt-4">
-            {plan?.features.map((feature, idx) => (
-              <li
-                key={idx}
-                className="flex items-start gap-2 text-sm text-gray-700"
-              >
-                {feature.status ? (
-                  <Check className="w-5 h-5 text-green-600 mt-0.5" />
-                ) : (
-                  <X className="w-5 h-5 text-red-500 mt-0.5" />
-                )}
-                <span
-                  className={
-                    feature.status ? "" : "line-through text-gray-400"
-                  }
-                >
-                  {feature.label}
-                </span>
-              </li>
-            ))}
-          </ul>
-          <span className=''>selected regions</span>
-         {Array.isArray(selectedPlan?.regions) && selectedPlan.regions.length > 0 ? (
-  selectedPlan.regions.map((r) => <li key={r}>{r}</li>)
-) : (
-  <li>No regions selected</li>
-)}
-        </div>
+                                                    className="bg-green-100 text-green-800 text-base p-1 rounded-lg"
+                                                >
+                                                    {billingCycle === 'Half_Yearly' ? plan?.annualsavings : plan?.savings}
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
 
-        <div className="mt-6 pt-6 border-t border-gray-200">
-          <div className="flex items-center gap-2 text-sm text-gray-600">
-            <button
-              className="px-4 py-2 border border-blue-700 text-blue-700 font-medium rounded-lg hover:bg-blue-700 hover:text-white transition duration-200 shadow-sm"
-              onClick={() => setChangePlan(!changePlan)}
-              disabled={isSubmit}
-            >
-              Change Plan
-            </button>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
-  )}
-</div>
+                                    <p className="text-gray-600 leading-relaxed">{plan?.description}</p>
+                                </CardHeader>
+
+                                <CardContent className="p-6">
+                                    <div className="space-y-0">
+                                        <ul className="space-y-2 mt-4">
+                                            {plan?.features.map((feature, idx) => (
+                                                <li
+                                                    key={idx}
+                                                    className="flex items-start gap-2 text-sm text-gray-700"
+                                                >
+                                                    {feature.status ? (
+                                                        <Check className="w-5 h-5 text-green-600 mt-0.5" />
+                                                    ) : (
+                                                        <X className="w-5 h-5 text-red-500 mt-0.5" />
+                                                    )}
+                                                    <span
+                                                        className={
+                                                            feature.status ? "" : "line-through text-gray-400"
+                                                        }
+                                                    >
+                                                        {feature.label}
+                                                    </span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                        {plan?.name && !['Trial', 'Corporate'].includes(plan?.name ?? '') && <div className='mt-4'>
+                                            <span className='text-black ml-1'>Selected Regions</span>
+                                            {Array.isArray(selectedPlan?.regions) && selectedPlan.regions.length > 0 ? (
+                                                selectedPlan.regions.map(
+                                                    (r) => <li
+                                                        key={r}
+                                                        className="flex items-start gap-2 text-sm text-gray-700 ml-1 mt-1"
+                                                    >
+                                                        <Check className="w-5 h-5 text-green-600 mt-0.5" />
+
+                                                        <span
+
+                                                        >
+                                                            {r}
+                                                        </span>
+                                                    </li>)
+                                            ) : (
+                                                <li>No regions selected</li>
+                                            )}
+
+                                        </div>}
+                                    </div>
+
+                                    <div className="mt-6 pt-6 border-t border-gray-200">
+                                        <div className="flex items-center gap-2 text-sm text-gray-600">
+                                            <button
+                                                className="px-4 py-2 border border-blue-700 text-blue-700 font-medium rounded-lg hover:bg-blue-700 hover:text-white transition duration-200 shadow-sm  cursor-pointer"
+                                                onClick={() => setChangePlan(!changePlan)}
+                                                disabled={isSubmit}
+                                            >
+                                                Change Plan
+                                            </button>
+                                        </div>
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        )}
+                    </div>
 
 
                 </div>
@@ -935,22 +1021,22 @@ type Lawyer = {
         <FAQModal onClose={() => setFormState(prev => ({ ...prev, showFaqModal: false }))} />
       )} */}
             {
-        changePlan &&
-        (<ChangePlan onSelect={function (planName: string, price: string, icon: any,requiredRegions:any): void {
-          //  price=price
-          //  planName=planName
-          //  console.log('new price',price)
-          setPrice(price)
-          setPlanName(planName)
-          setIcon(icon)
-          // console.log(icon)
-          setChangePlan(!changePlan)
+                changePlan &&
+                (<ChangePlan onSelect={function (planName: string, price: string, icon: any, requiredRegions: any): void {
+                    //  price=price
+                    //  planName=planName
+                    //  console.log('new price',price)
+                    setPrice(price)
+                    setPlanName(planName)
+                    setIcon(icon)
+                    // console.log(icon)
+                    setChangePlan(!changePlan)
 
-        }} onClose={function (): void {
-          // throw new Error('Function not implemented.');
-          setChangePlan(!changePlan)
-        }} />)
-      }
+                }} onClose={function (): void {
+                    // throw new Error('Function not implemented.');
+                    setChangePlan(!changePlan)
+                }} />)
+            }
             {formState.showSuccessModal && (
                 <SuccessModal onClose={handleSuccessClose} planName={planName} />
             )}

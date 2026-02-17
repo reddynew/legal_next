@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: reddynew/legal_next
+  repo: hanumanreddy7123/decap
   branch: main
 
   base_url: "http://localhost:3001"
@@ -8,15 +8,15 @@ backend:
 
 publish_mode: simple
 
-media_folder: "public/images/uploads"
-public_folder: "/images/uploads"
+media_folder: "."
+public_folder: "/"
 
 collections:
   - name: blog
     label: Blog Posts
-    folder: "legal_web/app/blog/content"
+    folder: "content"
     create: true
-    slug: "{{slug}}"
+    slug: "{{slug}}.md"
     fields:
       - { label: Title, name: title, widget: string }
       - { label: Description, name: description, widget: string }

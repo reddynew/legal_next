@@ -23,15 +23,15 @@ export default function page() {
                 >
                   <h2 className="text-xl font-semibold mb-4">{post.title}</h2>
                   {post.excerpt && (
-                  <p className="text-sm text-gray-600 mb-4 line-clamp-2">
-                    {post.excerpt}
-                  </p>
-                )}
+                    <p className="text-sm text-gray-600 mb-4 line-clamp-2">
+                      {post.excerpt}
+                    </p>
+                  )}
                   <Link
                     href={`/blog/${post.slug}`}
                     className="mt-auto px-4 py-2 text-blue-500 hover:text-blue-700"
                   >
-                    Read
+                    Read more...
                   </Link>
                 </div>
               ))}
@@ -46,7 +46,7 @@ export default function page() {
       </div>  */}
         </section>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

@@ -1,15 +1,14 @@
-
 /* ------------------------------------
 
    🌐 Font Imports
 ------------------------------------ */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 /* ------------------------------------
    🧩 Tailwind + Local Styles
 ------------------------------------ */
-@import "tailwindcss";
 @import "./index.css";
+@import "tailwindcss";
 
 /* ------------------------------------
    ⚙️ Tailwind Config Inline (v4)
@@ -31,7 +30,7 @@
 
 /* Light / Dark themes using CSS variables */
 .dark {
-  --foreground:#0a0a0a;
+  --foreground: #0a0a0a;
   --background: #ededed;
 }
 
@@ -39,8 +38,6 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: Inter, sans-serif;
-  --font-serif: "Playfair Display", serif;
   --font-mono: var(--font-geist-mono);
   --container-padding: 2rem;
   --container-max-2xl: 1400px;
@@ -52,97 +49,218 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans, Arial, Helvetica, sans-serif);
 }
+
 @media (prefers-color-scheme: dark) {
   .dark\:bg-gray-900 {
-    color: #111827; /* gray-900 */
+    color: #111827;
+    /* gray-900 */
   }
+
   .dark\:text-white {
     background-color: #ffffff;
   }
 }
+
 /* ------------------------------------
    ✨ Custom Animations (Tailwind v4)
 ------------------------------------ */
 @keyframes accordion-down {
-  from { height: 0 }
-  to { height: var(--radix-accordion-content-height) }
+  from {
+    height: 0
+  }
+
+  to {
+    height: var(--radix-accordion-content-height)
+  }
 }
 
 @keyframes accordion-up {
-  from { height: var(--radix-accordion-content-height) }
-  to { height: 0 }
+  from {
+    height: var(--radix-accordion-content-height)
+  }
+
+  to {
+    height: 0
+  }
 }
 
 @keyframes fade-in {
-  0% { opacity: 0 }
-  100% { opacity: 1 }
+  0% {
+    opacity: 0
+  }
+
+  100% {
+    opacity: 1
+  }
 }
 
 @keyframes fade-out {
-  0% { opacity: 1 }
-  100% { opacity: 0 }
+  0% {
+    opacity: 1
+  }
+
+  100% {
+    opacity: 0
+  }
 }
 
 @keyframes slide-in {
-  0% { transform: translateY(20px); opacity: 0 }
-  100% { transform: translateY(0); opacity: 1 }
+  0% {
+    transform: translateY(20px);
+    opacity: 0
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1
+  }
 }
 
 @keyframes slide-up {
-  0% { transform: translateY(100%); opacity: 0 }
-  100% { transform: translateY(0); opacity: 1 }
+  0% {
+    transform: translateY(100%);
+    opacity: 0
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1
+  }
 }
 
 @keyframes scale-in {
-  0% { transform: scale(0.9); opacity: 0 }
-  100% { transform: scale(1); opacity: 1 }
+  0% {
+    transform: scale(0.9);
+    opacity: 0
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1
+  }
 }
 
 @keyframes blink {
-  0%, 100% { background-color: #1fce19ff }
-  50% { background-color: #facc15 }
+
+  0%,
+  100% {
+    background-color: rgb(178, 184, 178)
+  }
+
+  50% {
+    background-color: #de8a8a
+  }
 }
 
 @keyframes blink1 {
-  0%, 100% { background-color: #facc15 }
-  50% { background-color: #facc15 }
+
+  0%,
+  100% {
+    background-color: #facc15
+  }
+
+  50% {
+    background-color: #facc15
+  }
 }
 
 @keyframes whatsapp-glow-pulse {
-  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.9); transform: scale(1) }
-  50% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); transform: scale(1.05) }
-  75% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); transform: scale(1.3) }
-  100% { box-shadow: 0 0 0 0 rgba(216, 222, 210, 0.9); transform: scale(1) }
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.9);
+    transform: scale(1)
+  }
+
+  50% {
+    box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
+    transform: scale(1.05)
+  }
+
+  75% {
+    box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
+    transform: scale(1.3)
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(216, 222, 210, 0.9);
+    transform: scale(1)
+  }
 }
 
 @keyframes whatsapp-glow-pulse1 {
-  0% { transform: scale(1) }
-  50% { transform: scale(1) }
-  75% { transform: scale(1.3) }
-  100% { transform: scale(1) }
+  0% {
+    transform: scale(1)
+  }
+
+  50% {
+    transform: scale(1)
+  }
+
+  75% {
+    transform: scale(1.3)
+  }
+
+  100% {
+    transform: scale(1)
+  }
 }
 
 @keyframes shimmer {
-  0% { transform: translateX(-100%) }
-  100% { transform: translateX(100%) }
+  0% {
+    transform: translateX(-100%)
+  }
+
+  100% {
+    transform: translateX(100%)
+  }
 }
 
 /* ------------------------------------
    🧩 Animation Utilities
 ------------------------------------ */
-@utility animate-accordion-down { animation: accordion-down 0.2s ease-out }
-@utility animate-accordion-up { animation: accordion-up 0.2s ease-out }
-@utility animate-fade-in { animation: fade-in 0.5s ease-out forwards }
-@utility animate-fade-out { animation: fade-out 0.3s ease-out forwards }
-@utility animate-slide-in { animation: slide-in 0.6s ease-out forwards }
-@utility animate-slide-up { animation: slide-up 0.5s ease-out forwards }
-@utility animate-scale-in { animation: scale-in 0.4s ease-out forwards }
-@utility animate-blink { animation: blink 1.5s linear infinite }
-@utility animate-blink1 { animation: blink1 1s step-start infinite }
-@utility animate-whatsapp { animation: whatsapp-glow-pulse1 1.4s ease-in-out infinite }
-@utility animate-shimmer { animation: shimmer 4s infinite linear }
+@utility animate-accordion-down {
+  animation: accordion-down 0.2s ease-out
+}
+
+@utility animate-accordion-up {
+  animation: accordion-up 0.2s ease-out
+}
+
+@utility animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards
+}
+
+@utility animate-fade-out {
+  animation: fade-out 0.3s ease-out forwards
+}
+
+@utility animate-slide-in {
+  animation: slide-in 0.6s ease-out forwards
+}
+
+@utility animate-slide-up {
+  animation: slide-up 0.5s ease-out forwards
+}
+
+@utility animate-scale-in {
+  animation: scale-in 0.4s ease-out forwards
+}
+
+@utility animate-blink {
+  animation: blink 1.5s linear infinite
+}
+
+@utility animate-blink1 {
+  animation: blink1 1s step-start infinite
+}
+
+@utility animate-whatsapp {
+  animation: whatsapp-glow-pulse1 1.4s ease-in-out infinite
+}
+
+@utility animate-shimmer {
+  animation: shimmer 4s infinite linear
+}
 
 /* ------------------------------------
    🎨 Color System
@@ -193,8 +311,25 @@ body {
 }
 
 @keyframes blink-border {
-  0%   { border-color: #ff4070; }
-  50%  { border-color: #fff; }
-  100% { border-color: #ff4070; }
+  0% {
+    border-color: #ff4070;
+  }
+
+  50% {
+    border-color: #fff;
+  }
+
+  100% {
+    border-color: #ff4070;
+  }
 }
 
+.heading-xl,
+.paragraph {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+.heading-xl {
+  line-height: 1.2;
+}

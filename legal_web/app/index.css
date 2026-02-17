@@ -27,8 +27,8 @@
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
 
-  --font-sans: Inter, sans-serif;
-  --font-serif: "Playfair Display", serif;
+  --font-sans: "Poppins", sans-serif;
+  --font-serif: "Poppins", serif;
 }
 
 /* ------------------------------
@@ -77,7 +77,7 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
-    font-family: var(--font-sans);
+    /* font-family: var(--font-serif); */
   }
 
   .glass {
@@ -98,11 +98,11 @@
   }
 
   .heading-xl {
-    @apply font-serif text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
+    @apply font-serif text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight;
   }
 
   .heading-lg {
-    @apply font-serif text-3xl md:text-4xl font-bold tracking-tight;
+    @apply font-serif text-3xl md:text-4xl font-semibold tracking-tight;
   }
 
   .heading-md {
@@ -154,4 +154,44 @@
 
 .text-shadow-deboss {
   text-shadow: 1px 1px 1px #fff, -1px -1px 2px #000;
+}
+
+.billing-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+}
+
+.slider {
+  width: 48px;
+  height: 24px;
+  background: #ccc;
+  border-radius: 999px;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+.slider.Half_Yearly {
+  background: #4f46e5;
+}
+
+.knob {
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s ease;
+}
+
+.slider.Half_Yearly .knob {
+  transform: translateX(24px);
+}
+
+.active {
+  color: #4f46e5;
 }

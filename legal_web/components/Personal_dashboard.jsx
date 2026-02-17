@@ -1,242 +1,50 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Menu, CircleUserRound, Inbox, Users, Settings, LogOut, FileText, MapPin, Gavel, Landmark, Tag, Hourglass, Calendar } from 'lucide-react';
+import { Menu, CircleUserRound, Inbox, Users, Settings, LogOut, FileText, MapPin, Gavel, Landmark, Tag, Hourglass, Calendar, CrossIcon } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import {useAuth} from '@/context/LoginContext'
+import { useAuth } from '@/context/LoginContext'
 import CustomCalendar from '@/components/Calendar'
-const mockLeads = [
-  {
-    id: 1,
-    name: 'Aarav Reddy',
-    phone: '7894561230',
-    connected: false,
-    caseType: 'Civil',
-    status: 'Pending',
-    location: 'Hyderabad',
-    court: 'District Court',
-    assignedDate: '2025-07-01',
-  },
-  {
-    id: 2,
-    name: 'Meera Rao',
-    phone: '9123045671',
-    connected: true,
-    caseType: "Family",
-    status: 'Completed',
-    location: 'Warangal',
-    court: 'Family Court',
-    assignedDate: '2025-07-02',
-  },
-  {
-    id: 3,
-    name: 'Rohan Goud',
-    phone: '9988776655',
-    connected: false,
-    caseType: 'Criminal',
-    status: 'Pending',
-    location: 'Nizamabad',
-    court: 'District Court',
-    assignedDate: '2025-07-03',
-  },
-  {
-    id: 4,
-    name: 'Ananya Raju',
-    phone: '9012345678',
-    connected: true,
-    caseType: "Property",
-    status: 'Completed',
-    location: 'Karimnagar',
-    court: 'Civil Court',
-    assignedDate: '2025-07-04',
-  },
-  {
-    id: 5,
-    name: 'Dev Kumar',
-    phone: '8123456789',
-    connected: false,
-    caseType: 'Labor',
-    status: 'Pending',
-    location: 'Khammam',
-    court: 'Labor Court',
-    assignedDate: '2025-07-05',
-  },
-  {
-    id: 6,
-    name: 'Sneha Naik',
-    phone: '8999911122',
-    connected: true,
-    caseType: "Divorce",
-    status: 'Completed',
-    location: 'Nalgonda',
-    court: 'Family Court',
-    assignedDate: '2025-07-06',
-  },
-  {
-    id: 7,
-    name: 'Varun Yadav',
-    phone: '7888999000',
-    connected: false,
-    caseType: 'Criminal',
-    status: 'Pending',
-    location: 'Mahbubnagar',
-    court: 'District Court',
-    assignedDate: '2025-07-07',
-  },
-  {
-    id: 8,
-    name: 'Nisha Jadhav',
-    phone: '9090909090',
-    connected: true,
-    caseType: "Civil",
-    status: 'Completed',
-    location: 'Adilabad',
-    court: 'District Court',
-    assignedDate: '2025-07-08',
-  },
-  {
-    id: 9,
-    name: 'Karan Patil',
-    phone: '8899776655',
-    connected: false,
-    caseType: 'Consumer',
-    status: 'Pending',
-    location: 'Siddipet',
-    court: 'Consumer Court',
-    assignedDate: '2025-07-09',
-  },
-  {
-    id: 10,
-    name: 'Riya Shetty',
-    phone: '8223344556',
-    connected: true,
-    caseType: "Matrimonial",
-    status: 'Completed',
-    location: 'Karimnagar',
-    court: 'Family Court',
-    assignedDate: '2025-07-10',
-  },
-  {
-    id: 11,
-    name: 'Aman Rao',
-    phone: '9445566778',
-    connected: false,
-    caseType: 'Property',
-    status: 'Pending',
-    location: 'Hyderabad',
-    court: 'High Court (Telangana)',
-    assignedDate: '2025-07-11',
-  },
-  {
-    id: 12,
-    name: 'Priya Bheem',
-    phone: '8000111222',
-    connected: true,
-    caseType: "Criminal",
-    status: 'Completed',
-    location: 'Warangal',
-    court: 'Session Court',
-    assignedDate: '2025-07-12',
-  },
-  {
-    id: 13,
-    name: 'Rahul Naidu',
-    phone: '9334455667',
-    connected: false,
-    caseType: 'Cyber Crime',
-    status: 'Pending',
-    location: 'Hyderabad',
-    court: 'Cyber Crime Cell',
-    assignedDate: '2025-07-13',
-  },
-  {
-    id: 14,
-    name: 'Divya Sharma',
-    phone: '9988007766',
-    connected: true,
-    caseType: "Family",
-    status: 'Completed',
-    location: 'Khammam',
-    court: 'Family Court',
-    assignedDate: '2025-07-14',
-  },
-  {
-    id: 15,
-    name: 'Yash Rao',
-    phone: '8888999900',
-    connected: false,
-    caseType: 'Tax',
-    status: 'Pending',
-    location: 'Nizamabad',
-    court: 'Tribunal Court',
-    assignedDate: '2025-07-15',
-  },
-  {
-    id: 16,
-    name: 'Kritika Iyer',
-    phone: '8777766655',
-    connected: true,
-    caseType: "Divorce",
-    status: 'Completed',
-    location: 'Mahbubnagar',
-    court: 'Family Court',
-    assignedDate: '2025-07-16',
-  },
-  {
-    id: 17,
-    name: 'Raj Goud',
-    phone: '8111223344',
-    connected: false,
-    caseType: 'Labor',
-    status: 'Pending',
-    location: 'Hyderabad',
-    court: 'Labor Court',
-    assignedDate: '2025-07-17',
-  },
-  {
-    id: 18,
-    name: 'Pooja Chary',
-    phone: '9223344556',
-    connected: true,
-    caseType: "Child Custody",
-    status: 'Completed',
-    location: 'Adilabad',
-    court: 'Family Court',
-    assignedDate: '2025-07-18',
-  },
-  {
-    id: 19,
-    name: 'Nikhil Raju',
-    phone: '9667788990',
-    connected: false,
-    caseType: 'Corporate',
-    status: 'Pending',
-    location: 'Hyderabad',
-    court: 'Company Court',
-    assignedDate: '2025-07-19',
-  },
-  {
-    id: 20,
-    name: 'Ishita Yadav',
-    phone: '9111223344',
-    connected: true,
-    caseType: "Consumer",
-    status: 'Completed',
-    location: 'Nalgonda',
-    court: 'Consumer Court',
-    assignedDate: '2025-07-20',
-  }
-];
+import { leadService, authService, profileService } from '@/lib/api'
+import DashboardBanner from '@/components/DashboardBanner'
+import { X } from 'lucide-react';
+import formatActivityTime from '@/lib/TimeFormat';
+import { PhoneClickTracker } from '@/lib/PhoneClickTracker';
 
+const ActivityItem = ({ act }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const showButton = act.activity_text && act.activity_text.length > 50;
 
+  return (
+    <div className="bg-white p-3 rounded-lg border border-gray-100 shadow-sm transition-shadow hover:shadow-md flex flex-col gap-2 ">
+      <div className={`text-gray-700 text-sm leading-relaxed break-words ${!isExpanded ? 'line-clamp-1' : ''}`}>
+        {act.activity_text}
+      </div>
+      <div className="flex justify-between items-center w-full pt-2 border-t border-gray-50">
+        {showButton ? (
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="text-blue-600 font-medium text-xs hover:text-blue-700 transition-colors focus:outline-none"
+          >
+            {isExpanded ? 'See Less' : 'See More'}
+          </button>
+        ) : <div />}
+        <p className="text-xs text-gray-400 font-medium ml-auto">
+          {formatActivityTime(act.created_at)}
+        </p>
+      </div>
+    </div>
+  );
+};
 
 function PersonalDashboard() {
   const [leads, setLeads] = useState([]);
   const [locationFilter, setLocationFilter] = useState('');
   const [courtFilter, setCourtFilter] = useState('');
   const [selectedLead, setSelectedLead] = useState(null);
+  const [profile, setProfile] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [visiblePhone, setVisiblePhone] = useState(null)
-  const [caseType, setCaseType] = useState('')
+  const [casetype, setCaseType] = useState('')
   const [statusFilter, setStatusFilter] = useState('')
   const [showmodal, setShowModal] = useState(false)
   const [disconnectInfo, setDisconnectInfo] = useState({})
@@ -246,13 +54,19 @@ function PersonalDashboard() {
   const [currentPage, setCurrentPage] = useState(1);
   const [clickCount, setClickCount] = useState({})
   const [response, setResponse] = useState(false)
-  const [password,setpassword]=useState(false)
+  const [password, setpassword] = useState(false)
   const [form, setForm] = useState({ current: '', newPass: '', confirm: '' });
-  const {id:userid,name:username,login}=useAuth()
-  const[phone,setPhone]=useState({})
-//   console.log('user id is',userid)
-// console.log('login from context is ',login)
-  const handleChange = (e ) => {
+  const { id: userid, name: username, accessToken } = useAuth()
+  const [phone, setPhone] = useState({})
+  const [loading, setLoading] = useState(true);
+  const [fetchError, setFetchError] = useState(null);
+  const [isAddingActivity, setIsAddingActivity] = useState(false);
+  const [newActivityText, setNewActivityText] = useState('');
+  const [activities, setActivities] = useState([]);
+  const [isActivitiesLoading, setIsActivitiesLoading] = useState(false);
+  //   console.log('user id is',userid)
+  // console.log('login from context is ',login)
+  const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
   const handleSubmit = (e) => {
@@ -274,23 +88,59 @@ function PersonalDashboard() {
   const itemsPerPage = 15;
   const navigate = useRouter()
   const [sortOrder, setSortOrder] = useState('desc');
+
   useEffect(() => {
-    const stored = localStorage.getItem('leads');
-    if (stored) {
-      setLeads(JSON.parse(stored));
-    } else {
-      setLeads(mockLeads);
-    }
+    const controller = new AbortController();
+
+    const fetchLeads = async () => {
+      setLoading(true);
+      try {
+        const data = await leadService.getLeads(controller.signal);
+        console.log('getLeads call done', data)
+        const { leads } = data
+        if (leads && leads.length > 0) {
+          setLeads(leads);
+          setFetchError(null);
+        } else {
+          console.log('No leads found from API');
+          setLeads([]);
+          // Optional: set a subtle error/info message if no leads found
+        }
+      } catch (err) {
+        if (!controller.signal.aborted) {
+          setFetchError('Failed to load real-time leads/No leads assigned');
+          console.error('Error fetching leads:', err);
+          setLeads([]);
+        }
+      } finally {
+        if (!controller.signal.aborted) {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchLeads();
+    return () => controller.abort();
   }, []);
+
   useEffect(() => {
-    setLeads(mockLeads);
+    const fetchProfile = async () => {
+      try {
+        const data = await profileService.getProfile();
+        console.log('profile data', data)
+        setProfile(data);
+      } catch (err) {
+        console.error("Failed to fetch profile in dashboard:", err);
+      }
+    };
+    fetchProfile();
   }, []);
+
+
+
+
   useEffect(() => {
     localStorage.setItem('leads', JSON.stringify(leads));
-  }, [leads]);
-  const locationOptions = useMemo(() => {
-    const locations = leads.map(lead => lead.location);
-    return Array.from(new Set(locations));
   }, [leads]);
 
   useEffect(() => {
@@ -308,6 +158,7 @@ function PersonalDashboard() {
       window.removeEventListener('beforeunload', handleBeforeUnload);
     };
   }, [visiblePhone, response]);
+
   useEffect(() => {
     const handlePopState = (event) => {
       if (visiblePhone && !response) {
@@ -327,13 +178,43 @@ function PersonalDashboard() {
       window.removeEventListener("popstate", handlePopState);
     };
   }, [visiblePhone, response]);
+
+  useEffect(() => {
+    if (selectedLead) {
+      const fetchActivities = async () => {
+        setIsActivitiesLoading(true);
+        try {
+          const data = await leadService.getActivities(selectedLead.id);
+          console.log('activiteis fetched', data.activities)
+          setActivities(data.activities || []);
+        } catch (err) {
+          console.error("Failed to fetch activities:", err);
+        } finally {
+          setIsActivitiesLoading(false);
+        }
+      };
+      fetchActivities();
+    } else {
+      setActivities([]);
+      setIsActivitiesLoading(false);
+      setIsAddingActivity(false);
+      setNewActivityText('');
+    }
+  }, [selectedLead]);
+
+  const locationOptions = useMemo(() => {
+    const locations = leads.map(lead => lead.location);
+    return Array.from(new Set(locations));
+  }, [leads]);
+
   const courtOptions = useMemo(() => {
+    console.log('inside court options')
     const courts = leads.map(lead => lead.court);
     return Array.from(new Set(courts));
   }, [leads]);
 
   const caseOptions = useMemo(() => {
-    const caseTypes = leads.map(lead => lead.caseType)
+    const caseTypes = leads.map(lead => lead.casetype)
     return Array.from(new Set(caseTypes))
   }, [leads])
   const statusOptions = useMemo(() => {
@@ -341,10 +222,61 @@ function PersonalDashboard() {
     return Array.from(new Set(statustype))
   }, [leads])
 
+  // helper for updating lead status with optimistic UI and error handling
+  const updateLeadStatus = async (leadId, isConnected, additionalData = {}) => {
+    const originalLeads = [...leads];
+    console.log('additionl details', additionalData)
+
+    // Set up request tracking to prevent race conditions
+    const requestId = Date.now();
+    if (!window._pendingLeadUpdates) window._pendingLeadUpdates = {};
+    window._pendingLeadUpdates[leadId] = requestId;
+
+    // Optimistic Update
+    setLeads(prev =>
+      prev.map(lead =>
+        lead.id === leadId
+          ? { ...lead, connected: isConnected, ...additionalData }
+          : lead
+      )
+    );
+
+    try {
+      const response = await leadService.updateLead(leadId, {
+        connected: isConnected,
+        ...additionalData
+      });
+      console.log('response from', response)
+      // If a newer update has been initiated, do nothing
+      if (window._pendingLeadUpdates[leadId] !== requestId) return;
+
+      // Update state with actual backend response to ensure synchronization
+      // Assuming response contains the updated lead or lead data
+      if (response && (response.lead || typeof response === 'object')) {
+        const updatedData = response.lead || response;
+        setLeads(prev =>
+          prev.map(lead =>
+            lead.id === leadId
+              ? { ...lead, ...updatedData }
+              : lead
+          )
+        );
+      }
+    } catch (err) {
+      console.error('Failed to update lead status:', err);
+      // Only rollback if this was the latest request
+      if (window._pendingLeadUpdates[leadId] === requestId) {
+        setLeads(originalLeads);
+        alert('Failed to save changes. Please check your connection and try again.');
+      }
+    }
+  };
+
   // advocate yes click handling
-  const handleYes = (phone, value) => {
+  const handleYes = (lead, value) => {
     const decision = 'yes'
     setResponse(true)
+    const phone = lead.phone;
     const updatedClicks = {
       ...clickCount[phone],
       [decision]: (clickCount[phone]?.[decision] || 0) + 1
@@ -356,6 +288,7 @@ function PersonalDashboard() {
     }));
 
     setConnectInfo({
+      leadId: lead.id,
       phone,
       clicks: updatedClicks
     });
@@ -364,9 +297,10 @@ function PersonalDashboard() {
   }
 
   // advocate No click handling
-  const handleNo = (phone, value) => {
+  const handleNo = (lead, value) => {
     const decision = 'no';
     setResponse(true)
+    const phone = lead.phone;
 
     const updatedClicks = {
       ...clickCount[phone],
@@ -377,7 +311,11 @@ function PersonalDashboard() {
       ...prev,
       [phone]: updatedClicks
     }));
-    setDisconnectInfo({ phone, clicks: updatedClicks });
+    setDisconnectInfo({
+      leadId: lead.id,
+      phone,
+      clicks: updatedClicks
+    });
     setShowModal(true);
     setVisiblePhone(null);
   };
@@ -386,18 +324,18 @@ function PersonalDashboard() {
     return (
       (locationFilter ? lead.location === locationFilter : true) &&
       (courtFilter ? lead.court === courtFilter : true) &&
-      (caseType ? lead.caseType === caseType : true) &&
+      (casetype ? lead.casetype === casetype : true) &&
       (statusFilter ? lead.status === statusFilter : true)
     );
   });
   const sortedLeads = useMemo(() => {
     return [...filteredLeads].sort((a, b) => {
-      const dateA = new Date(a.assignedDate);
-      const dateB = new Date(b.assignedDate);
+      const dateA = new Date(a.assigned_date);
+      const dateB = new Date(b.assigned_date);
       return sortOrder === 'asc' ? dateA - dateB : dateB - dateA;
     });
   }, [filteredLeads, sortOrder]);
-  
+
   const totalPages = Math.ceil(filteredLeads.length / itemsPerPage);
   const paginatedLeads = sortedLeads.slice(
     (currentPage - 1) * itemsPerPage,
@@ -409,39 +347,41 @@ function PersonalDashboard() {
     return phone.replace(/^(\d{4})\d{6}$/, '$1******');
   }
 
-  const handlePhoneClick = (phone) => {
-  // increment count
-  const storedCounts = JSON.parse(localStorage.getItem("phone_clicks") || "{}");
-  const newCount = (storedCounts[phone] || 0) + 1;
-  storedCounts[phone] = newCount;
+  const handlePhoneClick = (lead) => {
+    const phone = lead.phone;
+    // increment count
+    const storedCounts = JSON.parse(localStorage.getItem("phone_clicks") || "{}");
+    const newCount = (storedCounts[phone] || 0) + 1;
+    storedCounts[phone] = newCount;
 
-  // update state and persist
-  setClickCount((prev) => ({ ...prev, [phone]: newCount }));
-  localStorage.setItem("phone_clicks", JSON.stringify(storedCounts));
+    // update state and persist
+    setClickCount((prev) => ({ ...prev, [phone]: newCount }));
+    localStorage.setItem("phone_clicks", JSON.stringify(storedCounts));
 
-  // console.log(`Phone ${phone} clicked ${newCount} times`);
+    // console.log(`Phone ${phone} clicked ${newCount} times`);
 
 
-  // show number modal
-  setVisiblePhone(phone);
-};
+    // show number modal
+    setVisiblePhone(lead);
+  };
 
 
   const handleProfile = () => {
     navigate.replace('/profile')
   }
-  const handlechangePassword=()=>{
-    setpassword(!password)
+  const handlechangePassword = () => {
+    navigate.replace('/forgot-password')
   }
- const handlelogout=()=>{
-     navigate.replace('/')
- }
+  const { logoutUser } = useAuth();
+  const handlelogout = () => {
+    logoutUser();
+  }
 
 
   return (
-    <div className="flex bg-gray-50 min-h-screen">
+    <div className="flex bg-gray-50 h-screen">
       {/* Sidebar */}
-      <div className={`flex flex-col transition-all duration-200 ease-in-out ${sidebarOpen ? 'w-64' : 'w-16'} bg-white border-r min-h-screen shadow-md fixed z-20 `}>
+      <div className={`flex flex-col transition-all duration-200 ease-in-out ${sidebarOpen ? 'w-64' : 'w-16'} bg-white border-r min-h-screen shadow-md fixed z-20  `}>
         <div className="flex items-center justify-between px-4 py-3 border-b">
           <h2 className={`text-lg font-semibold ${sidebarOpen ? 'block' : 'hidden'}`}>Dashboard</h2>
           <button onClick={() => setSidebarOpen(prev => !prev)} className="p-2 rounded hover:bg-gray-200">
@@ -468,7 +408,7 @@ function PersonalDashboard() {
             ))}
 
             {/* Location Filter */}
-            <li className="relative group flex flex-col gap-1 p-2 rounded hover:bg-gray-100 cursor-pointer">
+            {/* <li className="relative group flex flex-col gap-1 p-2 rounded hover:bg-gray-100 cursor-pointer">
               <div className="flex items-center gap-2">
                 <MapPin size={20} />
                 {sidebarOpen && <span className="text-sm font-medium">Region</span>}
@@ -490,7 +430,7 @@ function PersonalDashboard() {
                   ))}
                 </select>
               )}
-            </li>
+            </li> */}
 
             {/* Court Filter */}
             <li className="relative group flex flex-col gap-1 p-2 rounded hover:bg-gray-100 cursor-pointer">
@@ -516,28 +456,28 @@ function PersonalDashboard() {
                 </select>
               )}
             </li>
-            
+
             {/* casetypefiler */}
             <li className="relative group flex flex-col gap-1 p-2 rounded hover:bg-gray-100 cursor-pointer">
               <div className="flex items-center gap-2">
                 {/* <Gavel size={20} /> */}
                 <Tag size={20} className="text-gray-600" />
-                {sidebarOpen && <span className="text-sm font-medium">CaseType</span>}
+                {sidebarOpen && <span className="text-sm font-medium">Case Type</span>}
                 {!sidebarOpen && (
                   <span className="absolute left-full top-1/2 -translate-y-1/2 ml-2 bg-gray-700 text-white text-xs rounded px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                    CaseType
+                    Case Type
                   </span>
                 )}
               </div>
               {sidebarOpen && (
                 <select
                   className="w-full mt-1 border border-gray-300 px-3 py-2 rounded text-sm bg-white"
-                  value={caseType}
+                  value={casetype}
                   onChange={(e) => setCaseType(e.target.value)}
                 >
                   <option value="">All Cases</option>
-                  {caseOptions.map((caseType, idx) => (
-                    <option key={idx} value={caseType}>{caseType}</option>
+                  {caseOptions.map((casetype, idx) => (
+                    <option key={idx} value={casetype}>{casetype}</option>
                   ))}
                 </select>
               )}
@@ -566,10 +506,10 @@ function PersonalDashboard() {
               )}
             </li>
           </ul>
-        
-        <CustomCalendar id={userid} name={username} value={sidebarOpen}/>
-        {/* <CalendarApp user={userid}/> */}
-     
+
+          <CustomCalendar value={sidebarOpen} />
+          {/* <CalendarApp user={userid}/> */}
+
         </nav>
       </div>
 
@@ -585,7 +525,7 @@ function PersonalDashboard() {
             className="w-10 h-10 rounded-full overflow-hidden border border-gray-300 hover:ring-2 hover:ring-blue-400"
           >
             <img
-             src="https://www.gravatar.com/avatar/?d=mp"
+              src="https://www.gravatar.com/avatar/?d=mp"
               alt="User Avatar"
               className="w-full h-full object-cover"
             />
@@ -594,27 +534,27 @@ function PersonalDashboard() {
           {menuOpen && (
             <div className="absolute right-0 mt-2 w-64 bg-white shadow-xl rounded-xl border overflow-hidden">
               <div className="p-4 border-b">
-                <p className="font-semibold text-gray-800">Jagath Reddy</p>
+                <p className="font-semibold text-gray-800">{profile?.name || username || 'Advocate'}</p>
                 <p className="text-sm text-gray-500">Advocate</p>
               </div>
               <ul className="py-2 text-sm text-gray-700">
                 <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                  <button className="w-full text-left text-gray-700 hover:text-blue-600"
-                  
+                  <button className="w-full text-left text-gray-700 cursor-pointer hover:text-blue-600"
+
                     onClick={handleProfile}
                   >
                     Profile
                   </button>
                 </li>
                 <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                  <button className="w-full text-left text-gray-700 hover:text-blue-600"
-                  onClick={handlechangePassword}>
+                  <button className="w-full text-left text-gray-700 cursor-pointer hover:text-blue-600"
+                    onClick={handlechangePassword}>
                     Change Password
                   </button>
                 </li>
                 <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                  <button className="w-full text-left text-gray-700 hover:text-red-600"
-                  onClick={handlelogout}
+                  <button className="w-full text-left text-gray-700 cursor-pointer hover:text-red-600"
+                    onClick={handlelogout}
                   >
                     Logout
                   </button>
@@ -626,128 +566,273 @@ function PersonalDashboard() {
 
         <h1 className="text-4xl font-bold mb-8 text-center text-gray-800">Personal Dashboard</h1>
 
-        <div className="rounded-lg  w-full">
-          <table className="w-full text-sm text-left text-gray-700">
-            <thead className="text-xs uppercase bg-gray-200 text-gray-700 sticky top-0 z-10">
-              <tr>
-                <th className="p-4 border">Name</th>
-                <th className="p-4 border">Phone</th>
-                <th className="p-4 border">Connected</th>
-                <th className='p-4 border'>CaseType</th>
-                <th className="p-4 border">Status</th>
-                <th className='p-4 border'>Details</th>
-                <th
-                  className="p-4 border cursor-pointer select-none"
-                  onClick={() => setSortOrder(prev => (prev === 'asc' ? 'desc' : 'asc'))}
-                >
-                  LeadDate {sortOrder === 'asc' ? '🔼' : '🔽'}
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {paginatedLeads.map((lead) => (
-                <tr key={lead.id} className="bg-white even:bg-gray-50">
-                  <td className="p-4 border font-medium text-gray-900">{lead.name}</td>
-                  <td className="p-4 border">
-                    <button
-                     onClick={() => handlePhoneClick(lead.phone)}
-                      className="text-blue-600 hover:underline"
-                    >
-                      {maskPhone(lead.phone)}
-                    </button>
-                  </td>
-                  <td className="p-4 border">
-                    <button
-                      className={`px-3 py-1 rounded font-medium transition ${lead.connected
-                        ? 'bg-green-100 text-green-800 hover:bg-green-200'
-                        : 'bg-red-100 text-red-800 hover:bg-red-200'
-                        }`}
-                    >
-                      {lead.connected ? 'Yes' : 'No'}
-                    </button>
-                  </td>
-                  <td className='p-4 border'>{lead.caseType}</td>
-                  <td className="p-4 border">{lead.status}</td>
-                  <td className='p-4 border'>
-                    <button onClick={() => setSelectedLead(lead)} className="bg-blue-100 text-blue-700 px-3 py-1 rounded hover:bg-blue-200 transition">
-                      Details
-                    </button>
-                  </td>
-                  <td className="p-4 border">{lead.assignedDate}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <div className="mt-4 flex justify-center  gap-2 text-sm ">
-            <button
-              onClick={() => setCurrentPage(p => Math.max(p - 1, 1))}
-              disabled={currentPage === 1}
-              className="px-3 py-1 border rounded disabled:opacity-50"
-            >
-              Prev
-            </button>
 
-            <span className="px-3 py-1">
-              Page {currentPage} of {totalPages}
-            </span>
+        <DashboardBanner />
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden w-full">
+          {loading ? (
+            <div className="flex justify-center items-center py-20">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+              <p className="ml-4 text-gray-500 font-medium">Loading leads...</p>
+            </div>
+          ) : (
+            <>
+              {fetchError && (
+                <div className="bg-orange-50 text-orange-700 p-4 m-4 rounded-lg text-center border border-orange-200">
+                  {fetchError}
+                </div>
+              )}
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm text-left">
+                  <thead className="text-xs uppercase bg-gray-50/50 text-gray-500 font-semibold tracking-wider border-b border-gray-100">
+                    <tr>
+                      <th className="px-6 py-4 font-medium whitespace-nowrap">Name</th>
+                      <th className="px-6 py-4 font-medium whitespace-nowrap text-center">Phone</th>
+                      <th className="px-6 py-4 font-medium whitespace-nowrap text-center">Connected</th>
+                      <th className="px-6 py-4 font-medium whitespace-nowrap text-center">Case Type</th>
+                      <th className="px-6 py-4 font-medium whitespace-nowrap text-center">Status</th>
+                      <th className="px-6 py-4 font-medium whitespace-nowrap text-center">Details</th>
+                      <th className="px-6 py-4 font-medium whitespace-nowrap text-center">Assigned To</th>
+                      <th
+                        className="px-6 py-4 font-medium whitespace-nowrap cursor-pointer select-none text-right hover:text-blue-600 transition-colors"
+                        onClick={() => setSortOrder(prev => (prev === 'asc' ? 'desc' : 'asc'))}
+                      >
+                        <div className="flex items-center justify-end gap-1">
+                          Assigned Date
+                          <span>{sortOrder === 'asc' ? '↑' : '↓'}</span>
+                        </div>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-50">
+                    {paginatedLeads.map((lead) => (
+                      <tr key={lead.id} className="bg-white hover:bg-blue-50/30 transition-colors duration-150">
+                        <td className="px-6 py-4 whitespace-nowrap text-left">
+                          <span className="font-semibold text-gray-900">{lead.name}</span>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-center">
+                          <button
+                            onClick={() => {
+                              handlePhoneClick(lead);
+                              if (lead?.phone) {
+                                PhoneClickTracker(lead.phone);
+                              }
+                            }}
+                            className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-blue-50 text-blue-700 hover:bg-blue-100 transition-colors"
+                          >
+                            {maskPhone(lead.phone)}
+                          </button>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-center">
+                          <span
+                            className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${lead.connected
+                              ? 'bg-green-50 text-green-700 border-green-200'
+                              : 'bg-red-50 text-red-700 border-red-200'
+                              }`}
+                          >
+                            {lead.connected ? 'Yes' : 'No'}
+                          </span>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-left">
+                          <span className="text-gray-600">{lead.casetype}</span>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-center">
+                          <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800">
+                            {lead.status}
+                          </span>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-center bg-blue-50/50">
+                          <button
+                            onClick={() => setSelectedLead(lead)}
+                            className="text-blue-600 hover:text-blue-800 font-medium text-sm transition-colors p-2 rounded-full hover:bg-blue-100/50"
+                          >
+                            <FileText size={18} />
+                          </button>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-center text-gray-500 text-xs">
+                          {lead.assigned ? (
+                            <span className="bg-gray-100 px-2 py-1 rounded">{lead.assigned}</span>
+                          ) : (
+                            <span className="text-gray-900">-</span>
+                          )}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-center text-gray-500 tabular-nums">
+                          {new Date(lead.created_at).toLocaleDateString('en-IN', {
+                            year: 'numeric',
+                            month: 'short',
+                            day: 'numeric'
+                          })}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div className="p-4 border-t border-gray-100 bg-gray-50/30 flex items-center justify-end">
 
-            <button
-              onClick={() => setCurrentPage(p => Math.min(p + 1, totalPages))}
-              disabled={currentPage === totalPages}
-              className="px-3 py-1 border rounded disabled:opacity-50"
-            >
-              Next
-            </button>
-          </div>
-          {/* <CalendarApp/> */}
-          {/* <div className='absolute inset-0 z-40'>
-
-          </div> */}
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => setCurrentPage(p => Math.max(p - 1, 1))}
+                    disabled={currentPage === 1}
+                    className="px-3 py-1.5 text-sm font-medium text-gray-600 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm"
+                  >
+                    Previous
+                  </button>
+                  <button
+                    onClick={() => setCurrentPage(p => Math.min(p + 1, totalPages))}
+                    disabled={currentPage === totalPages}
+                    className="px-3 py-1.5 text-sm font-medium text-gray-600 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm"
+                  >
+                    Next
+                  </button>
+                </div>
+              </div>
+            </>
+          )}
         </div>
 
         {selectedLead && (
-          <div className="fixed inset-0 bg-transparent bg-opacity-20 flex items-center justify-center z-20">
-            <div className="w-[700px] p-6 bg-white rounded-lg shadow-xl relative flex flex-col items-center justify-center">
-              <h2 className="text-xl font-semibold mb-2 text-gray-800">Lead Details</h2>
-              <p><strong>Name:</strong> {selectedLead.name}</p>
-              <p><strong>Phone:</strong> {maskPhone(selectedLead.phone)}</p>
-              <p><strong>Connected:</strong> {selectedLead.connected ? 'Yes' : 'No'}</p>
-              <p><strong>CaseType:</strong></p>
-              <p><strong>Status:</strong> {selectedLead.status}</p>
-              <p><strong>Location:</strong> {selectedLead.location}</p>
-              <p><strong>Court:</strong> {selectedLead.court}</p>
-              <button
-                className="mt-4 px-4 py-1 bg-red-100 hover:bg-red-200 rounded"
-                onClick={() => setSelectedLead(null)}
-              >
-                Close
-              </button>
+          <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 transition-opacity duration-300">
+            <div className="w-[700px] h-[80vh] overflow-hidden bg-white rounded-2xl shadow-2xl flex flex-col transform transition-all duration-300 scale-100">
+              {/* Header */}
+              <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between bg-white sticky top-0 z-10">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-blue-50 text-blue-600 rounded-lg">
+                    <FileText size={20} />
+                  </div>
+                  <h2 className="text-xl font-bold text-gray-900">Case Details</h2>
+                </div>
+                <button
+                  onClick={() => setSelectedLead(null)}
+                  className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-colors"
+                >
+                  <X size={20} />
+                </button>
+              </div>
+
+              {/* Main Content Wrapper - Fixed Layout with specific internal scrolling */}
+              <div className="flex-1 flex flex-col min-h-0 bg-gray-50/50 overflow-hidden">
+
+                {/* Case Summary Section (Fixed at top) */}
+                <div className="flex-none p-6 pb-2">
+                  <div className="bg-white p-5 rounded-xl border border-gray-200/60 shadow-sm relative overflow-hidden group">
+                    <div className="absolute top-0 left-0 w-1 h-full bg-blue-500"></div>
+                    <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-3 flex items-center gap-2">
+                      Case Summary
+                    </h3>
+                    <p className="text-gray-600 text-sm leading-relaxed whitespace-pre-wrap max-h-32 overflow-y-auto custom-scrollbar">
+                      {selectedLead.description || 'No description provided for this case.'}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Activity Section (Takes remaining space) */}
+                <div className="flex-1 flex flex-col min-h-0 px-6 pb-6">
+                  <div className="flex items-center justify-between mb-4 flex-none">
+                    <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2">
+                      Activity Log
+
+                    </h3>
+
+                    {!isAddingActivity && (
+                      <button
+                        onClick={() => setIsAddingActivity(true)}
+                        className="flex items-center gap-1.5 px-3 py-1.5 bg-gray-900 text-white text-sm font-medium rounded-lg hover:bg-gray-800 transition-all shadow-sm active:scale-95"
+                      >
+                        <span>+ Add Note</span>
+                      </button>
+                    )}
+                  </div>
+
+                  {isAddingActivity && (
+                    <div className="flex-none mb-4 bg-white p-4 rounded-xl border border-gray-200 shadow-md animate-in fade-in slide-in-from-top-2 duration-200">
+                      <textarea
+                        className="w-full p-3 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all resize-none"
+                        rows={3}
+                        placeholder="Type your activity note here..."
+                        value={newActivityText}
+                        onChange={(e) => setNewActivityText(e.target.value)}
+                        autoFocus
+                      />
+                      <div className="flex justify-end gap-3 mt-3">
+                        <button
+                          className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
+                          onClick={() => {
+                            setIsAddingActivity(false);
+                            setNewActivityText('');
+                          }}
+                        >
+                          Cancel
+                        </button>
+                        <button
+                          className="px-4 py-2 text-sm font-medium bg-blue-600 text-white rounded-lg hover:bg-blue-700 shadow-sm hover:shadow transition-all active:scale-95"
+                          onClick={async () => {
+                            if (!newActivityText.trim()) return;
+                            try {
+                              await leadService.addActivity(selectedLead.id, newActivityText);
+                              setNewActivityText('');
+                              setIsAddingActivity(false);
+                              const data = await leadService.getActivities(selectedLead.id);
+                              setActivities(data.activities || []);
+                            } catch (e) {
+                              console.error(e);
+                              alert("Failed to add activity");
+                            }
+                          }}
+                        >
+                          Save Note
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Scrollable Activity List */}
+                  <div className="flex-1 overflow-y-auto space-y-3 pr-2 custom-scrollbar relative">
+                    {isActivitiesLoading ? (
+                      <div className="absolute inset-0 flex items-center justify-center bg-white/50 z-10">
+                        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary border-blue-600"></div>
+                      </div>
+                    ) : (
+                      <>
+                        {activities.length > 0 ? (
+                          activities.slice(0, 5).map((act, idx) => (
+                            <ActivityItem key={idx} act={act} />
+                          ))
+                        ) : (
+                          <div className="text-center py-8 bg-white rounded-xl border border-dashed border-gray-200">
+                            <p className="text-sm text-gray-400">No activity recorded yet.</p>
+                          </div>
+                        )}
+                      </>
+                    )}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         )}
       </div>
       {visiblePhone && (
-        <div className="fixed inset-0 bg-transparent bg-opacity-40 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-white/30 backdrop-blur-[2px] bg-opacity-40 flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded shadow-lg w-[300px] text-center">
             <h3 className="text-lg font-semibold mb-2 text-gray-800">Phone Number</h3>
-            <p className="text-xl text-gray-700">{visiblePhone}</p>
+            <p className="text-xl text-gray-700">{visiblePhone.phone}</p>
             <div className='flex flex-col'>
               <span>Is Client Connected</span>
               <div className='flex items-center justify-center gap-2'>
                 <button
                   onClick={() => handleYes(visiblePhone, true)}
-                  className="mt-4 px-4 py-2 bg-blue-100 hover:bg-blue-200 text-blue-800 rounded"
+                  className="mt-4 px-4 py-2 bg-blue-100 hover:bg-blue-200 text-blue-800 rounded cursor-pointer"
                 >
                   Yes
                 </button>
                 <button
                   onClick={() => handleNo(visiblePhone, false)}
-                  className="mt-4 px-4 py-2 bg-blue-100 hover:bg-blue-200 text-blue-800 rounded"
+                  className="mt-4 px-4 py-2 bg-blue-100 hover:bg-blue-200 text-blue-800 rounded cursor-pointer"
                 >
                   No
                 </button>
                 {/* <p className="mt-2 text-sm text-gray-500">
-                  Yes: {clickCount[visiblePhone]?.yes || 0} | No: {clickCount[visiblePhone]?.no || 0}
+                  Yes: {clickCount[visiblePhone.phone]?.yes || 0} | No: {clickCount[visiblePhone.phone]?.no || 0}
                 </p> */}
               </div>
             </div>
@@ -758,18 +843,18 @@ function PersonalDashboard() {
 
       {/* ADVOCATE NO HANDLING MODAL */}
       {showmodal && (
-        <div className="fixed inset-0 bg-transparent bg-opacity-40 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-white/30 backdrop-blur-[2px] bg-opacity-40 flex items-center justify-center z-50">
           <div className="bg-white w-[400px] p-6 rounded shadow-xl text-center relative">
             <h3 className="text-lg font-semibold text-red-700 mb-4">Why is the client not connected?</h3>
 
             <form className="flex flex-col items-start space-y-2">
               {['Wrong Number', 'No Response', 'Not Interested', 'Other'].map((reason, idx) => (
-                <label key={idx} className="flex items-center gap-2 text-gray-700">
+                <label key={idx} className="flex items-center gap-2 text-gray-700 ">
                   <input
                     type="radio"
                     name="disconnectReason"
                     value={reason}
-                    className="accent-red-500"
+                    className="accent-red-500 cursor-pointer"
                     onChange={(e) => {
                       setDisconnectInfo(prev => ({ ...prev, reason }))
                       // console.log('Selected reason:', e.target.value)
@@ -805,21 +890,16 @@ function PersonalDashboard() {
                     alert("Please select a reason before submitting.");
                     return;
                   }
-                  setLeads(prev =>
-                    prev.map(lead =>
-                      lead.phone === disconnectInfo.phone
-                        ? {
-                          ...lead,
-                          connected: false
-                        }
-                        : lead
-                    )
-                  );
+                  updateLeadStatus(disconnectInfo.leadId, false, {
+                    reason: disconnectInfo.reason,
+                    notes: disconnectInfo.notes,
+                    status: 'Declined'
+                  });
                   setShowModal(false);
                   // console.log('Disconnect Info', disconnectInfo)
                   localStorage.setItem('DisconnectInfo', JSON.stringify(disconnectInfo))
                 }}
-                className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 cursor-pointer"
               >
                 Submit
               </button>
@@ -831,7 +911,7 @@ function PersonalDashboard() {
 
       {/* ADVOCATE YES HANDLING MODAL */}
       {showYesModal && (
-        <div className="fixed inset-0 bg-transparent bg-opacity-40 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-white/30 backdrop-blur-[2px]  bg-opacity-40 flex items-center justify-center z-50">
           <div className="bg-white w-[400px] p-6 rounded shadow-xl text-center relative">
             <h3 className="text-lg font-semibold text-green-700 mb-4">
               Connection Details
@@ -844,7 +924,7 @@ function PersonalDashboard() {
                     type="radio"
                     name="connectStatus"
                     value={status}
-                    className="accent-green-500"
+                    className="accent-green-500 cursor-pointer"
                     onChange={(e) =>
                       setConnectInfo(prev => ({ ...prev, status: e.target.value }))
                     }
@@ -872,21 +952,21 @@ function PersonalDashboard() {
                     alert("Please select a status");
                     return;
                   }
-                  setLeads(prev =>
-                    prev.map(lead =>
-                      lead.phone === connectInfo.phone
-                        ? {
-                          ...lead,
-                          connected: true
-                        }
-                        : lead
-                    )
-                  );
+                  const statusMap = {
+                    'Converted to Business': 'Completed',
+                    'Required Follow-Up': 'In Progress',
+                    'Not Interested': 'Declined'
+                  };
+                  updateLeadStatus(connectInfo.leadId, true, {
+                    reason: connectInfo.status,
+                    notes: connectInfo.notes,
+                    status: statusMap[connectInfo.status] || 'In Progress'
+                  });
                   setShowYesModal(false);
                   // console.log('connect Info', connectInfo)
                   localStorage.setItem('connectInfo', JSON.stringify(connectInfo))
                 }}
-                className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+                className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 cursor-pointer"
               >
                 Submit
               </button>
@@ -895,7 +975,7 @@ function PersonalDashboard() {
         </div>
       )
       }
-   {password &&  (
+      {/* {password && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
           <div className="bg-white w-full max-w-md p-6 rounded-xl shadow-lg relative">
             <h2 className="text-xl font-semibold mb-4">Change Password</h2>
@@ -946,7 +1026,7 @@ function PersonalDashboard() {
             </form>
           </div>
         </div>
-      )}
+      )} */}
       {/* <div className='absolute inset-0 z-40 bg-white'>
 
 <CalendarApp/>

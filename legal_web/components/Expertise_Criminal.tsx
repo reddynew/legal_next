@@ -4,9 +4,9 @@ import React from "react";
 
 export default function Expertise_Criminal() {
   return (
-    <main className="bg-white text-black min-h-screen font-sans">
+    <main className="bg-white text-black min-h-screen font-serif">
       <section className="container mx-auto px-6 md:px-12 lg:px-20 py-10 space-y-14 max-w-5xl">
-        
+
         {/* CRIMINAL LAW */}
         <header className="pb-6">
           <h1 className="text-4xl sm:text-5xl font-bold text-center leading-tight sm:leading-[1.2]">Criminal Law Services</h1>
@@ -16,9 +16,9 @@ export default function Expertise_Criminal() {
         <section>
           <h2 className="text-3xl sm:text-4xl font-semibold leading-snug border-l-4 border-gray-400 pl-4">Bail &amp; Anticipatory Bail Assistance</h2>
           <p className="text-base sm:text-lg leading-relaxed text-justify">
-            Bail is a <em>legal provision</em> that allows the temporary release of an accused person during trial after arrest.
-             Anticipatory Bail, a significant aspect of <em>criminal law in India</em>, serves as a preventive remedy under 
-             Section 482 of  <abbr title="Bharatiya Nagarik Suraksha Sanhita, 2024">BNSS</abbr>, enabling a person to seek bail in anticipation of arrest. Through its <em>criminal law</em> <em>consultation
+            Bail is a <em>legal provision</em> that allows the temporary release of an accused person after arrest during the pendancy of trial.
+            Anticipatory Bail, a significant aspect of <em>criminal law in India</em>, serves as a preventive remedy under
+            Section 482 of  <abbr title="Bharatiya Nagarik Suraksha Sanhita, 2024">BNSS</abbr>, enabling a person to seek bail in anticipation of arrest. Through its <em>criminal law</em> <em>consultation
               services</em>, <span className="font-bold text-black">JP Law Suvidha</span> facilitates access to experienced bail and anticipatory bail lawyers <em>ensuring prompt, strategic, and reliable legal representation</em>.</p>
           <h4 className="text-xl sm:text-2xl font-semibold leading-relaxed mt-4">Types of Bail</h4>
           <ul className="list-disc ml-6 mb-4 text-gray-700 space-y-1">
@@ -39,9 +39,9 @@ export default function Expertise_Criminal() {
           <h4 className="text-xl sm:text-2xl font-semibold leading-relaxed mt-4">Who Can Apply?</h4>
           <p className="text-base sm:text-lg leading-relaxed text-justify">
             The accused or a representative can apply for bail. Anticipatory bail applications are filed when the applicant
-            fears arrest for a non-bailable offense. <strong>JP Law Suvidha</strong> supports 
+            fears arrest for a non-bailable offense. <strong>JP Law Suvidha</strong> supports
             clients with <em>online criminal lawyer</em> consultation, <mark>digital legal help</mark>, and preparation of documentation needed for
-             bail applications.
+            bail applications.
           </p>
 
           <h4 className="text-xl sm:text-2xl font-semibold leading-relaxed mt-4">How to Secure Bail</h4>
@@ -54,7 +54,7 @@ export default function Expertise_Criminal() {
 
           <h4 className="text-xl sm:text-2xl font-semibold leading-relaxed mt-4">Process for Anticipatory Bail</h4>
           <p className="text-base sm:text-lg leading-relaxed text-justify">
-            Applications are filed before the Sessions Court or High Court under Section 482 of <abbr title='Bharatiya Nagarik Suraksha Sanhita, 2024'>BNSS</abbr>. Courts assess reasons for apprehension of arrest, antecedents, and gravity of allegations. Once anticipatory bail is granted, police must release the applicant on bail upon arrest. <span className="font-bold text-black">JP Law Suvidha</span> ensures clients understand all conditions and legal obligations attached to bail.
+            Applications are filed before the Sessions Court or High Court under Section 482 of <abbr title='Bharatiya Nagarik Suraksha Sanhita, 2024'>BNSS</abbr>. The c ourts assess the reasons for apprehension of arrest, the applicants antecedents and gravity of allegations. Once anticipatory bail is granted, police must release the applicant on bail upon arrest. <span className="font-bold text-black">JP Law Suvidha</span> ensures clients understand all conditions and legal obligations attached to bail.
           </p>
         </section>
 
@@ -63,15 +63,16 @@ export default function Expertise_Criminal() {
           <h2 className="text-3xl sm:text-4xl font-semibold leading-snug border-l-4 border-gray-400 pl-4">Filing a Police Complaint and FIR</h2>
           <p className="text-base sm:text-lg leading-relaxed text-justify">
             Complaints can be made orally or in writing at a police station under Section 175 of  <abbr title="Bharatiya Nagarik Suraksha Sanhita, 2024">BNSS</abbr>
-, or online where available. For cognizable offenses, police must register an FIR under Section 173 of  <abbr title="Bharatiya Nagarik Suraksha Sanhita, 2024">BNSS</abbr>
-. <em>Criminal law experts</em> at <strong>JP Law Suvidha</strong> assist clients with drafting complaints, 
- understanding police procedure, and seeking <mark>online legal help</mark> through the platform.
+            , or online where available. For cognizable offenses, police must register an FIR under Section 173 of  <abbr title="Bharatiya Nagarik Suraksha Sanhita, 2024">BNSS</abbr>
+            . <em>Criminal law experts</em> at <strong>JP Law Suvidha</strong> assist clients with drafting complaints,
+            understanding police procedure, and seeking <mark>online legal help</mark> through the platform.
           </p>
 
           <p className="text-base sm:text-lg leading-relaxed text-justify">
-            If police refuse to file an FIR, the complainant may approach senior officers or move a petition before a
-             magistrate under Section 175(3) of  <abbr title="Bharatiya Nagarik Suraksha Sanhita, 2024">BNSS</abbr>
-. <strong>JP Law Suvidha</strong> <em>legal consultation</em> ensures such rights are protected and cases are followed through legally.
+            If police refuse to file an FIR, the complainant may approach senior officers or file a petition before a
+            magistrate under Section 175(3) of  <abbr title="Bharatiya Nagarik Suraksha Sanhita, 2024">BNSS</abbr>
+            . <strong>JP Law Suvidha</strong> <em>legal consultation services</em> ensures that rights are protected and cases are perceived
+            through proper legal channels.
           </p>
         </section>
 
@@ -80,10 +81,10 @@ export default function Expertise_Criminal() {
           <h2 className="text-3xl sm:text-4xl font-semibold leading-snug border-l-4 border-gray-400 pl-4">Responding to a Police Complaint or FIR</h2>
           <p className="text-base sm:text-lg leading-relaxed text-justify">
             Respondents should cooperate with police, provide truthful information, and preferably have a criminal defense
-             lawyer present. Evidence such as communication logs, messages, or documents should be preserved. If police
-              inaction occurs, the remedy is to approach a magistrate under Section 175(3) of  <abbr title="Bharatiya Nagarik Suraksha Sanhita, 2024">BNSS</abbr>  or file a private 
-              complaint under Section 223 of <abbr title="Bharatiya Nagarik Suraksha Sanhita, 2024">BNSS</abbr>
-. <span className="font-bold text-black">JP Law Suvidha</span> <em>connects</em> clients with criminal defense lawyers for every step.
+            lawyer present. Evidence such as communication logs, messages, or documents should be preserved. In case of police
+            inaction, the remedy is to approach a magistrate under Section 175(3) of  <abbr title="Bharatiya Nagarik Suraksha Sanhita, 2024">BNSS</abbr>  or file a private
+            complaint under Section 223 of <abbr title="Bharatiya Nagarik Suraksha Sanhita, 2024">BNSS</abbr>
+            . <span className="font-bold text-black">JP Law Suvidha</span> <em>connects</em> clients with criminal defense lawyers at every step of the process.
           </p>
         </section>
 
@@ -92,13 +93,13 @@ export default function Expertise_Criminal() {
           <h2 className="text-3xl sm:text-4xl font-semibold leading-snug border-l-4 border-gray-400 pl-4">Trial Representation</h2>
           <p className="text-base sm:text-lg leading-relaxed text-justify">
             <strong>JP Law Suvidha</strong> connects clients with experienced criminal defense advocates for comprehensive representation
-             throughout the trial process. By leveraging <em>online consultation and an intelligent advocate-matching system</em>, 
-             clients are paired with lawyers best suited to handle cases involving cybercrime, white-collar offenses, 
-             and other serious criminal matters. The trial representation ensures that clients’ legal rights are 
-             protected, evidence is effectively challenged, and arguments are strategically presented to achieve 
-             the best possible outcome. <strong>JP Law Suvidha</strong> further enhances transparency, affordability, and timely 
-             communication at every stage of the trial.
-            </p>
+            throughout the trial process. By leveraging <em>online consultation and an intelligent advocate-matching system</em>,
+            clients are paired with lawyers best suited to handle cases involving cybercrime, white-collar offenses,
+            and other serious criminal matters. The trial representation ensures that clients’ legal rights are
+            protected, evidence is effectively challenged, and arguments are strategically presented to achieve
+            the best possible outcome. <strong>JP Law Suvidha</strong> further enhances transparency, affordability, and timely
+            communication at every stage of the trial.
+          </p>
         </section>
 
         {/* Cyber Crimes */}
@@ -106,14 +107,14 @@ export default function Expertise_Criminal() {
           <h2 className="text-3xl sm:text-4xl font-semibold leading-snug border-l-4 border-gray-400 pl-4">Cyber Crime Cases</h2>
           <p className="text-base sm:text-lg leading-relaxed text-justify">
             Cybercrime cases including <em>phishing, impersonation, data breaches, internet banking fraud, online financial scams,
-             ransomware, cyberstalking, and identity theft</em> are growing rapidly. <strong>JP Law Suvidha</strong> provides <em>online legal help</em>,
-              supports digital evidence collation, and assists with complaint filing at cyber cells and drafting legal notices under 
-              the IT Act.
+              ransomware, cyberstalking, and identity theft</em> are growing rapidly. <strong>JP Law Suvidha</strong> provides <em>online legal assistance</em>,
+            supports digital evidence collation, and helps with complaint filing at cyber cells and drafting legal notices under
+            the IT Act.
           </p>
 
           <p className="text-base sm:text-lg leading-relaxed text-justify">
-            We assist in safeguarding digital evidence under Section 63 of<abbr title="Bharatiya Sakshya Adhiniyam"> BSA </abbr> and work with cyber experts 
-            and authorities. Our lawyers consult on cyber fraud, reputation harm, and recovery of financial loss related to 
+            We assist in safeguarding digital evidence under Section 63 of<abbr title="Bharatiya Sakshya Adhiniyam"> BSA </abbr> and work with cyber experts
+            and authorities. Our lawyers offers consultation on <em>cyber fraud, reputation damage, and recovery of financial losses</em> arising from
             cybercrimes.
           </p>
         </section>
@@ -122,11 +123,11 @@ export default function Expertise_Criminal() {
         <section>
           <h2 className="text-3xl sm:text-4xl font-semibold leading-snug border-l-4 border-gray-400 pl-4">White Collar Crimes</h2>
           <p className="text-base sm:text-lg leading-relaxed text-justify">
-            White-collar crimes involve fraud, embezzlement, insider trading, money laundering, bribery, tax evasion, and corporate misconduct. Effective defense includes analyzing evidence, identifying lack of intent, and challenging circumstantial/procedural lapses. The criminal law team at <span className="font-bold text-black">JP Law Suvidha</span> guides companies and individuals with criminal lawyer services, regulatory compliance, and strategic defense planning.
+            White-collar crimes involve fraud, embezzlement, insider trading, money laundering, bribery, tax evasion, and corporate misconduct. An effective defense involves analyzing evidence, identifying lack of intent, and challenging circumstantial/procedural lapses. The criminal law team at <span className="font-bold text-black">JP Law Suvidha</span> guides companies and individuals through criminal lawyer services, regulatory compliance, and strategic defense planning.
           </p>
 
           <p className="text-base sm:text-lg leading-relaxed text-justify">
-            Our <em>platform</em> supports those involved in corporate investigations, regulatory disputes, or financial cases and ensures expert representation tailored to white-collar crime defense.
+            Our <em>platform</em> supports clients involved in corporate investigations, regulatory disputes, or financial cases and ensuring expert representation tailored to white-collar crime defense.
           </p>
         </section>
 

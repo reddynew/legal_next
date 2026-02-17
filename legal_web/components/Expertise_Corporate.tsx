@@ -84,7 +84,7 @@ export default function Expertise_Corporate() {
           </ul>
           <h3 className="text-2xl sm:text-3xl font-semibold leading-normal mt-4">How JP Law Suvidha Helps</h3>
           <p className="text-base sm:text-lg leading-relaxed">
-            <strong>JP Law Suvidha</strong> ensures legally strong, clear, compliant, and future-proof agreements that safeguard ownership rights and maintain investor confidence.
+            <strong>JP Law Suvidha</strong> ensures that all agreements are legally sound, clear, compliant, and future-proof agreements, safeguarding ownership rights and maintaining investor confidence.
           </p>
         </section>
 
@@ -107,7 +107,7 @@ export default function Expertise_Corporate() {
           </ul>
           <h3 className="text-2xl sm:text-3xl font-semibold leading-relaxed mt-4">How JP Law Suvidha Helps</h3>
           <p className="text-base sm:text-lg leading-relaxed text-justify">
-            <strong>JP Law Suvidha</strong> provides timely filings, document preparation, compliance tracking, and complete ROC support to maintain corporate credibility and legal standing.
+            <strong>JP Law Suvidha</strong> provides timely filings, document preparation, compliance tracking, and comprehensive ROC support to help businesses maintain corporate credibility and legal standing.
           </p>
         </section>
 
@@ -127,7 +127,7 @@ export default function Expertise_Corporate() {
           </ul>
           <h3 className="text-2xl sm:text-3xl font-semibold leading-normal mt-4">How JP Law Suvidha Helps</h3>
           <p className="text-base sm:text-lg leading-relaxed text-justify">
-            <strong>JP Law Suvidha</strong> ensures <em>legally sound</em>, <em>compliant</em>, <em>risk-mitigated</em>, and well-documented <em>M&A deals</em>, guiding businesses from negotiation to post-closing integration.
+            <strong>JP Law Suvidha</strong> ensures <em>legally sound</em>, <em>compliant</em>, <em>risk-mitigated</em>, and well-documented <em>M&A deals</em>, guiding businesses from negotiation through post-closing integration.
           </p>
         </section>
 
@@ -150,7 +150,7 @@ export default function Expertise_Corporate() {
           </ul>
           <h3 className="text-2xl sm:text-3xl font-semibold leading-normal mt-4">How JP Law Suvidha Helps</h3>
           <p className="text-base sm:text-lg leading-relaxed text-justify">
-            <strong>JP Law Suvidha</strong> provides governance advisory, policy drafting, documentation templates, and compliance automation, enabling companies to operate responsibly and maintain investor trust.
+            <strong>JP Law Suvidha</strong> offers governance advisory, policy drafting, documentation templates, and compliance automation services, enabling companies to operate responsibly and maintain investor trust.
           </p>
         </section>
 

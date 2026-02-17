@@ -1,63 +1,95 @@
 "use client"
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import axios from 'axios';
+import { authService } from '../lib/api';
+import { setAccessToken as setApiAccessToken } from '../lib/privateapi';
+import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-  const [login, setLogin] = useState(true);
-  const [loading, setLoading] = useState(false);
-  const[id,setId]=useState('123')
-  const[name,setName]=useState('123')
-  // const userid=1234
-  // const username='jp'
+  const [login, setLogin] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [id, setId] = useState('')
+  const [name, setName] = useState('')
+  const [accessToken, setAccessToken] = useState(null);
+  const router = useRouter();
+
+  const updateAccessToken = (token) => {
+    setAccessToken(token);
+    setApiAccessToken(token);
+  };
+
   useEffect(() => {
+    const controller = new AbortController();
+
     const validateLogin = async () => {
       try {
-        const res = await axios.get('https://backend.com.jplawsuvidha.com/', {
-          withCredentials: true,
-        });
-        if (res.status === 200 && res.data?.user) {
-    // console.log("Auth Success:", res.data);
-    setLogin(true);
-    setId(res.data.user.email);
-    setName(res.data.user.name);
-  } else {
-    console.warn("Auth failed - invalid data", res.data);
-    setLogin(false);
-  }
+        setLoading(true)
+        console.log('[LoginContext] validateLogin started')
+        const res = await authService.validateLogin(controller.signal);
+
+        if (controller.signal.aborted) return;
+
+        console.log('[LoginContext] validateLogin response:', {
+          status: res.status,
+          data: res.data
+        })
+
+        if (res.status === 200 && res.data?.status === 'success') {
+          setLogin(true);
+          updateAccessToken(res.data.token || null);
+          // Note: Backend currently doesn't return user info here, so id/name might be empty
+          setId(res.data.user?.email || '');
+          console.log('[LoginContext] User authenticated, token set')
+        } else {
+          console.log('[LoginContext] Not authenticated according to backend')
+          setLogin(false);
+          updateAccessToken(null);
+        }
       } catch (err) {
-        console.error("Auth Failed:", err.message);
-        setLogin(true);
+        if (!controller.signal.aborted) {
+          console.error('[LoginContext] validateLogin error:', err);
+          setLogin(false);
+          setAccessToken(null);
+        }
       } finally {
-        setLoading(false);
+        if (!controller.signal.aborted) {
+          setLoading(false);
+          console.log('[LoginContext] validateLogin finished, loading=false')
+        }
       }
     };
 
     validateLogin();
+    return () => controller.abort();
   }, []);
-  
 
   const loginUser = async (email, password) => {
     try {
       setLoading(true);
-      const res = await axios.post('http://localhost:3001/api/login', { email, password }, {
-        withCredentials: true,
-      });
+      console.log('login hit frontend')
+      const data = await authService.login(email, password);
+      console.log('server response for login', data)
 
-      // console.log("Login Successful:", res.data);
-      if (res.data.status === 'success' || res.data.status === 'first_time') {
+      if (data.status === 'success') {
         setLogin(true);
-        localStorage.setItem('atoken',res.data.token)
-        // Update user state based on the login response
-        setId(res.data.data.email);
-        // console.log('user email is',res.data.data.email)
-        setName(res.data.data.name);
-
-        // This ensures the validate call will now succeed
-        // You can make a second call to validate here if needed, or simply trust the login response.
+        // localStorage.setItem('atoken', data.token)
+        updateAccessToken(data.token);
+        // Backend login at this stage returns { status, token }. 
+        // We might need to call validateLogin to get user info if the token is present.
+        // For now, let's just set the token and let validation handle the rest.
+      } else if (data.status === 'first_time') {
+        // For first_time, we don't set login state as they need to set password first.
+        setLogin(false);
       }
-      return res.data;
+      else if (data.status === 'un_verify') {
+
+        // For first_time, we don't set login state as they need to set password first.
+        setLogin(false);
+
+      }
+      return data;
     } catch (err) {
       console.error("Login Failed:", err.response?.data?.message || err.message);
       setLogin(false);
@@ -69,28 +101,27 @@ export const AuthProvider = ({ children }) => {
 
   const logoutUser = async () => {
     try {
-      // You'll need a backend logout endpoint that clears the cookie
-      await axios.post('http://localhost:3000/api/logout', {}, { withCredentials: true });
+      await authService.logout();
       setLogin(false);
       setId('');
       setName('');
+      setApiAccessToken(null);
+      router.push('/');
     } catch (err) {
       console.error("Logout Failed:", err);
     }
   };
 
   return (
-    <AuthContext.Provider value={{ login, loginUser, logoutUser, loading, id, name, setId, setName }}>
+    <AuthContext.Provider value={{ login, loginUser, logoutUser, loading, id, name, setId, setName, accessToken }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
-export const useAuth = () => 
-{
-  const context=useContext(AuthContext);
-  if(!context)
-  {
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) {
     // console.log('use context inside the provider')
   }
   return context

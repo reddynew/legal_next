@@ -109,9 +109,8 @@ const MobileMenu = ({
                     <span>{item.label}</span>
                     {item.children && (
                       <ArrowUp
-                        className={`w-4 h-4 transition-transform duration-300 ${
-                          expanded === item.label ? 'rotate-180 text-black' : 'text-gray-400'
-                        }`}
+                        className={`w-4 h-4 transition-transform duration-300 ${expanded === item.label ? 'rotate-180 text-black' : 'text-gray-400'
+                          }`}
                       />
                     )}
                   </button>
@@ -148,7 +147,7 @@ const MobileMenu = ({
             {/* About Us */}
             <button
               onClick={() => {
-                navigate.push('/Aboutus');
+                navigate.push('/about-us');
                 onClose();
               }}
               className={`
@@ -157,7 +156,7 @@ const MobileMenu = ({
                 text-left font-semibold
                 hover:bg-gray-100 active:bg-gray-200
                 transition-all
-                ${cleanPath === '/Aboutus' || cleanPath === '/Aboutus/' ? 'bg-gray-100 text-black' : 'text-gray-700'}
+                ${cleanPath === '/about-us' || cleanPath === '/about-us/' ? 'bg-gray-100 text-black' : 'text-gray-700'}
               `}
             >
               <span>About Us</span>
@@ -200,7 +199,7 @@ const Navbar = () => {
   const navigate = useRouter();
   const location = usePathname() || '';
   const config = navbarConfig;
-
+  const router = useRouter()
   const hideHome = config.hideHomeOn.includes(location);
   const hideLang = config.hideLangOn.includes(location);
 
@@ -230,7 +229,7 @@ const Navbar = () => {
         { label: 'Family Law', to: '/expertise/family' },
       ],
     },
-    { label: 'NRI Services', href: 'Nriservices' },
+    { label: 'NRI Services', href: 'nri-services' },
   ];
 
   useEffect(() => {
@@ -251,7 +250,9 @@ const Navbar = () => {
     <>
       <div className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md shadow-sm transition-all duration-300">
         <div className="container-custom pl-2 pr-2 mx-auto px-4 max-w-7xl flex items-center justify-between py-4">
-          <Logo onPress={() => navigate.push('/')} />
+          <Logo onPress={() => {
+            router.push('/')
+          }} />
 
           {/* Desktop Menu */}
           <nav className="hidden lg:flex items-center space-x-8 relative">
@@ -262,50 +263,50 @@ const Navbar = () => {
               Home
             </Link>
 
-           {menuItems.map((item) => (
-  <div
-    key={item.label}
-    className="relative group"
-    onMouseEnter={() => item.children && setActiveSection(item.label)}
-    onMouseLeave={() => item.children && setActiveSection('')}
-  >
-    <Link
-      href={item.href ? `/${item.href}` : '#'}
-      className="text-md font-semibold cursor-pointer hover:text-orange-400"
-    >
-      {item.label}
-    </Link>
+            {menuItems.map((item) => (
+              <div
+                key={item.label}
+                className="relative group"
+                onMouseEnter={() => item.children && setActiveSection(item.label)}
+                onMouseLeave={() => item.children && setActiveSection('')}
+              >
+                <Link
+                  href={item.href ? `/${item.href}` : '#'}
+                  className="text-md font-semibold cursor-pointer hover:text-orange-400"
+                >
+                  {item.label}
+                </Link>
 
-    {/* Dropdown for desktop */}
-    {item.children && activeSection === item.label && (
-      <div className="absolute top-full left-0 w-72 bg-white border border-gray-100 shadow-2xl rounded-xl overflow-hidden z-50 backdrop-blur-sm animate-in fade-in slide-in-from-top-3 duration-300">
-        <div className="px-5 py-4 bg-gray-200 border-b border-gray-100">
-          <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider">
-            {`Our ${item.label}`}
-          </h3>
-        </div>
-        <div className="py-2">
-          {item.children.map((child) => (
-            <Link
-              key={child.to}
-              href={child.to}
-              className="group flex items-center justify-between px-5 py-3.5 text-sm font-semibold text-gray-700 hover:bg-gradient-to-r hover:from-gray-50 hover:to-indigo-50 hover:text-gray-700 transition-all duration-300 border-l-4 border-transparent hover:border-gray-600"
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-2 h-2 rounded-full bg-gray-300 group-hover:bg-black transition-colors duration-300" />
-                <span className="font-sm">{child.label}</span>
+                {/* Dropdown for desktop */}
+                {item.children && activeSection === item.label && (
+                  <div className="absolute top-full left-0 w-72 bg-white border border-gray-100 shadow-2xl rounded-xl overflow-hidden z-50 backdrop-blur-sm animate-in fade-in slide-in-from-top-3 duration-300">
+                    <div className="px-5 py-4 bg-gray-200 border-b border-gray-100">
+                      <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider">
+                        {`Our ${item.label}`}
+                      </h3>
+                    </div>
+                    <div className="py-2">
+                      {item.children.map((child) => (
+                        <Link
+                          key={child.to}
+                          href={child.to}
+                          className="group flex items-center justify-between px-5 py-3.5 text-sm font-semibold text-gray-700 hover:bg-gradient-to-r hover:from-gray-50 hover:to-indigo-50 hover:text-gray-700 transition-all duration-300 border-l-4 border-transparent hover:border-gray-600"
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className="w-2 h-2 rounded-full bg-gray-300 group-hover:bg-black transition-colors duration-300" />
+                            <span className="font-sm">{child.label}</span>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
-            </Link>
-          ))}
-        </div>
-      </div>
-    )}
-  </div>
-))}
+            ))}
 
 
             <Link
-              href="/Aboutus"
+              href="/about-us"
               className="text-md font-semibold cursor-pointer hover:text-orange-400"
             >
               About Us
@@ -316,19 +317,19 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center space-x-4">
             <Button
               onClick={() => navigate.push('/login')}
-              className="group bg-white flex items-center gap-2 transform hover:scale-105 hover:bg-gray-100 transition-all duration-200 text-blue-500"
+              className="group bg-white flex items-center gap-2 transform hover:scale-105 hover:bg-gray-100 transition-all duration-200 text-blue-500 cursor-pointer"
             >
               <User className="w-4 h-4 text-yellow-700 group-hover:scale-110 transition-transform" /> Login
             </Button>
             <Button
               onClick={() => navigate.push('/signup')}
-              className="group flex items-center gap-2 text-white hover:text-gray-400 transform hover:scale-105 transition-all duration-200"
+              className="group flex items-center gap-2 text-white hover:text-gray-400 transform hover:scale-105 transition-all duration-200 cursor-pointer"
             >
               <UserPlus className="w-4 h-4 text-emerald-700 group-hover:scale-110 transition-transform" /> Register
             </Button>
             {!hideLang && (
               <div className="relative rounded-lg">
-                <LanguageSwitcher onClose={() => {}} />
+                <LanguageSwitcher onClose={() => { }} />
               </div>
             )}
           </div>
@@ -340,14 +341,12 @@ const Navbar = () => {
           >
             <div className="relative w-6 h-6">
               <Menu
-                className={`absolute inset-0 transform transition-all duration-300 ${
-                  isMenuOpen ? 'rotate-180 opacity-0' : 'rotate-0 opacity-100'
-                }`}
+                className={`absolute inset-0 transform transition-all duration-300 ${isMenuOpen ? 'rotate-180 opacity-0' : 'rotate-0 opacity-100'
+                  }`}
               />
               <X
-                className={`absolute inset-0 transform transition-all duration-300 ${
-                  isMenuOpen ? 'rotate-0 opacity-100' : '-rotate-180 opacity-0'
-                }`}
+                className={`absolute inset-0 transform transition-all duration-300 ${isMenuOpen ? 'rotate-0 opacity-100' : '-rotate-180 opacity-0'
+                  }`}
               />
             </div>
           </button>
